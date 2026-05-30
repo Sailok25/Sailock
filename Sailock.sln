@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37203.1 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sailock", "Sailock\Sailock.csproj", "{1434A266-434D-48B3-9B2A-4BEF04F541E2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1434A266-434D-48B3-9B2A-4BEF04F541E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1434A266-434D-48B3-9B2A-4BEF04F541E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1434A266-434D-48B3-9B2A-4BEF04F541E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1434A266-434D-48B3-9B2A-4BEF04F541E2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {496FE2F0-F24A-4DC5-BAD2-69A8EAA0853A}
+	EndGlobalSection
+EndGlobal

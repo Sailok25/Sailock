@@ -1,0 +1,132 @@
+﻿<UserControl x:Class="Sailock.Views.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#000000">
+
+    <Grid>
+        <Viewbox MaxWidth="480"
+                 MaxHeight="580"
+                 Stretch="Uniform"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Center">
+
+            <StackPanel Width="280">
+
+                <!-- Logo -->
+                <Image Source="/Sailock;component/Resources/sailock_logo.png"
+                       Height="80"
+                       Margin="0,0,0,40"/>
+
+                <!-- Primer uso -->
+                <TextBlock Text="CREA TU CONTRASEÑA MAESTRA"
+                           Foreground="#00ab26"
+                           FontSize="11"
+                           FontFamily="/Fonts/#Supermolot Light"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,8">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsFirstRun}" Value="True">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+
+                <!-- Error -->
+                <TextBlock x:Name="ErrorText"
+                           Text="Contraseña o código incorrectos"
+                           Foreground="#FF4D4D"
+                           FontSize="11"
+                           FontFamily="/Fonts/#Supermolot Light"
+                           HorizontalAlignment="Center"
+                           Margin="0,0,0,8"
+                           Visibility="Collapsed"/>
+
+                <!-- PASO 1: Contraseña maestra -->
+                <StackPanel>
+                    <StackPanel.Style>
+                        <Style TargetType="StackPanel">
+                            <Setter Property="Visibility" Value="Visible"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding AwaitingTotp}" Value="True">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+
+                    <PasswordBox x:Name="PasswordInput"
+                                 Style="{StaticResource CenteredPasswordBox}"
+                                 PasswordChanged="PasswordInput_PasswordChanged"
+                                 KeyDown="PasswordInput_KeyDown"
+                                 Margin="0,0,0,20"/>
+
+                    <Button Style="{StaticResource SailockButton}"
+                            Command="{Binding LoginCommand}">
+                        <Button.Content>
+                            <TextBlock FontFamily="/Fonts/#Supermolot Light" FontSize="14">
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Text" Value="UNLOCK"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsFirstRun}" Value="True">
+                                                <Setter Property="Text" Value="CREATE"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+
+                <!-- PASO 2: Código TOTP -->
+                <StackPanel>
+                    <StackPanel.Style>
+                        <Style TargetType="StackPanel">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding AwaitingTotp}" Value="True">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+
+                    <TextBlock Text="CÓDIGO DE VERIFICACIÓN"
+                               Foreground="#666666"
+                               FontFamily="/Fonts/#Supermolot Light"
+                               FontSize="11"
+                               HorizontalAlignment="Center"
+                               Margin="0,0,0,8"/>
+
+                    <TextBox x:Name="TotpInput"
+                             Text="{Binding TotpCode, UpdateSourceTrigger=PropertyChanged}"
+                             Style="{StaticResource ModalTextBoxWithPlaceholder}"
+                             Tag="000000"
+                             MaxLength="6"
+                             HorizontalContentAlignment="Center"
+                             KeyDown="TotpInput_KeyDown"
+                             Margin="0,0,0,20"/>
+
+                    <Button Content="VERIFICAR"
+                            Style="{StaticResource SailockButton}"
+                            Command="{Binding VerifyTotpCommand}"/>
+                </StackPanel>
+
+                <!-- Versión -->
+                <TextBlock Text="v1.0.2"
+                           Foreground="#555555"
+                           FontSize="10"
+                           FontFamily="/Fonts/#Supermolot Light"
+                           HorizontalAlignment="Center"
+                           Margin="0,20,0,0"/>
+
+            </StackPanel>
+        </Viewbox>
+    </Grid>
+</UserControl>

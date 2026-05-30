@@ -1,0 +1,129 @@
+﻿<Window x:Class="Sailock.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:Sailock.ViewModels"
+        Icon="/Resources/sailock.ico"
+        WindowStyle="None"
+        ResizeMode="CanResize"
+        Background="#000000"
+        Title="Sailock"
+        Height="720"
+        Width="1280"
+        MinHeight="500"
+        MinWidth="900">
+
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- TopBar -->
+        <Grid Grid.Row="0"
+              Background="#0A0A0A"
+              MouseLeftButtonDown="TopBar_MouseLeftButtonDown">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="SAILOCK"
+                       Foreground="#333333"
+                       FontFamily="/Fonts/#Supermolot Light"
+                       FontSize="11"
+                       VerticalAlignment="Center"
+                       Margin="12,0,0,0"
+                       Grid.Column="0"/>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Button x:Name="BtnMinimize"
+                        Content="─"
+                        Width="46" Height="32"
+                        Click="BtnMinimize_Click"
+                        Style="{StaticResource WindowControlButton}"/>
+                <Button x:Name="BtnMaximize"
+                        Content="□"
+                        Width="46" Height="32"
+                        Click="BtnMaximize_Click"
+                        Style="{StaticResource WindowControlButton}"/>
+                <Button x:Name="BtnClose"
+                        Content="✕"
+                        Width="46" Height="32"
+                        Click="BtnClose_Click"
+                        Style="{StaticResource WindowControlButton_Close}"/>
+            </StackPanel>
+        </Grid>
+
+        <!-- Área principal: Sidebar + Contenido -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Sidebar: visible solo cuando NO es LoginViewModel -->
+            <Border Grid.Column="0"
+                    Width="220"
+                    Background="#0A0A0A"
+                    BorderBrush="#1A1A1A"
+                    BorderThickness="0,0,1,0"
+                    Visibility="{Binding SidebarVisibility}">
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Logo -->
+                    <Image Grid.Row="0"
+                           Source="/Sailock;component/Resources/sailock_logo.png"
+                           Height="55"
+                           Margin="30,28,30,32"/>
+
+                    <!-- Navegación -->
+                    <StackPanel Grid.Row="1"
+                                VerticalAlignment="Top"
+                                Margin="0,0,0,0">
+
+                        <Button Content="DASHBOARD"
+                                Style="{StaticResource SidebarButton}"
+                                Command="{Binding NavigateDashboardCommand}"/>
+
+                        <Button Content="GENERATOR"
+                                Style="{StaticResource SidebarButton}"
+                                Command="{Binding NavigateGeneratorCommand}"/>
+
+                        <Button Content="SETTINGS"
+                                Style="{StaticResource SidebarButton}"
+                                Command="{Binding NavigateSettingsCommand}"/>
+
+                    </StackPanel>
+
+                    <!-- Logout + versión -->
+                    <StackPanel Grid.Row="2" Margin="20,0,20,20">
+                        <Button Content="LOGOUT"
+                                Style="{StaticResource SailockButton}"
+                                Command="{Binding LogoutCommand}"
+                                Margin="0,0,0,10"/>
+                        <TextBlock Text="v1.0.2"
+                                   Foreground="#333333"
+                                   FontSize="10"
+                                   FontFamily="/Fonts/#Supermolot Light"
+                                   HorizontalAlignment="Center"/>
+                    </StackPanel>
+
+                </Grid>
+            </Border>
+
+            <!-- Contenido de la vista actual -->
+            <ContentControl Grid.Column="1"
+                            Content="{Binding CurrentView}"/>
+        </Grid>
+    </Grid>
+</Window>

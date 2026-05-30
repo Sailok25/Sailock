@@ -1,0 +1,220 @@
+﻿<UserControl x:Class="Sailock.Views.GeneratorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#000000">
+
+    <Grid Margin="32,28,32,28">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Título -->
+        <TextBlock Grid.Row="0"
+                   Text="GENERATOR"
+                   Foreground="White"
+                   FontFamily="/Fonts/#Supermolot Light"
+                   FontSize="36"
+                   Margin="0,0,0,24"/>
+
+        <!-- Contraseña generada + COPY -->
+        <Grid Grid.Row="1" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0"
+        Background="#0D0D0D"
+        BorderBrush="#1A1A1A"
+        BorderThickness="1"
+        Height="38"
+        Margin="0,0,12,0">
+                <Grid>
+                    <!-- Placeholder -->
+                    <TextBlock Text="YOUR NEW PASSWORD..."
+                   Foreground="#2A2A2A"
+                   FontFamily="/Fonts/#Supermolot Light"
+                   FontSize="13"
+                   VerticalAlignment="Center"
+                   Padding="14,0"
+                   IsHitTestVisible="False">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding GeneratedPassword}" Value="">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding GeneratedPassword}" Value="{x:Null}">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+
+                    <!-- Contraseña generada -->
+                    <TextBlock Text="{Binding GeneratedPassword}"
+                   Foreground="#00FF41"
+                   FontFamily="/Fonts/#Supermolot Light"
+                   FontSize="14"
+                   VerticalAlignment="Center"
+                   Padding="14,0"/>
+                </Grid>
+            </Border>
+
+            <Button Grid.Column="1"
+                    Content="COPY"
+                    Width="100"
+                    Style="{StaticResource SailockButton}"
+                    Command="{Binding CopyCommand}"/>
+        </Grid>
+
+        <!-- Slider de longitud -->
+        <StackPanel Grid.Row="2" Margin="0,0,0,20">
+            <TextBlock Foreground="White"
+                       FontFamily="/Fonts/#Supermolot Light"
+                       FontSize="12"
+                       Margin="0,0,0,8">
+                <Run Text="LENGTH  -  "/>
+                <Run Text="{Binding Length}"/>
+                <Run Text="  CHARACTERS"/>
+            </TextBlock>
+
+            <Slider x:Name="LengthSlider"
+                    Minimum="4"
+                    Maximum="64"
+                    Value="{Binding Length, Mode=TwoWay}"
+                    TickFrequency="1"
+                    IsSnapToTickEnabled="True"
+                    Foreground="#00FF41"
+                    Background="#1A1A1A"
+                    Style="{StaticResource SailockSlider}"/>
+        </StackPanel>
+
+        <!-- Checkboxes -->
+        <Grid Grid.Row="3" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <CheckBox Grid.Column="0"
+                      Content="UPPERCASE"
+                      IsChecked="{Binding UseUppercase}"
+                      Style="{StaticResource SailockCheckBox}"/>
+            <CheckBox Grid.Column="1"
+                      Content="LOWERCASE"
+                      IsChecked="{Binding UseLowercase}"
+                      Style="{StaticResource SailockCheckBox}"/>
+            <CheckBox Grid.Column="2"
+                      Content="NUMBERS"
+                      IsChecked="{Binding UseNumbers}"
+                      Style="{StaticResource SailockCheckBox}"/>
+            <CheckBox Grid.Column="3"
+                      Content="SYMBOLS"
+                      IsChecked="{Binding UseSymbols}"
+                      Style="{StaticResource SailockCheckBox}"/>
+        </Grid>
+
+        <!-- Toggles -->
+        <Grid Grid.Row="4" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       Text="REPEAT CHARACTERS"
+                       Foreground="White"
+                       FontFamily="/Fonts/#Supermolot Light"
+                       FontSize="12"
+                       VerticalAlignment="Center"
+                       Margin="0,0,16,0"/>
+
+            <ToggleButton Grid.Column="1"
+                          IsChecked="{Binding AllowRepeat}"
+                          Style="{StaticResource SailockToggle}"
+                          Margin="0,0,0,0"/>
+
+            <TextBlock Grid.Column="3"
+                       Text="SEQUENTIAL CHARACTERS"
+                       Foreground="White"
+                       FontFamily="/Fonts/#Supermolot Light"
+                       FontSize="12"
+                       VerticalAlignment="Center"
+                       Margin="0,0,16,0"/>
+
+            <ToggleButton Grid.Column="4"
+                          IsChecked="{Binding AllowSequential}"
+                          Style="{StaticResource SailockToggle}"/>
+        </Grid>
+
+        <!-- Excluir caracteres -->
+        <Grid Grid.Row="5" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       Text="EXCLUDE CHARACTERS"
+                       Foreground="White"
+                       FontFamily="/Fonts/#Supermolot Light"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+
+            <TextBox Grid.Column="1"
+                     Text="{Binding ExcludeCharacters, UpdateSourceTrigger=PropertyChanged}"
+                     Style="{StaticResource ModalTextBoxWithPlaceholder}"
+                     Tag="Ex: * J 2 0 _ +"
+                     Height="38"/>
+        </Grid>
+
+        <!-- Start with -->
+        <Grid Grid.Row="6" Margin="0,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       Text="START WITH ..."
+                       Foreground="White"
+                       FontFamily="/Fonts/#Supermolot Light"
+                       FontSize="12"
+                       VerticalAlignment="Center"/>
+
+            <TextBox Grid.Column="1"
+                     Text="{Binding StartWith, UpdateSourceTrigger=PropertyChanged}"
+                     Style="{StaticResource ModalTextBoxWithPlaceholder}"
+                     Width="60"
+                     Height="38"
+                     MaxLength="1"
+                     HorizontalContentAlignment="Center"/>
+        </Grid>
+
+        <!-- Botón Generate -->
+        <Button Grid.Row="8"
+                Content="GENERATE"
+                Width="160"
+                HorizontalAlignment="Center"
+                Style="{StaticResource SailockButton}"
+                Command="{Binding GenerateCommand}"
+                Margin="0,24,0,0"/>
+
+    </Grid>
+</UserControl>
