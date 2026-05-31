@@ -23,8 +23,9 @@ Built with .NET 8, WPF and C#, following an MVVM architecture.
 
 ## Screenshots
 
-> *(Add screenshots here once the UI is stable)*
-
+<img src="Images/Login.png" width="49%"/> <img src="Images/Dashboard.png" width="49%"/>
+<img src="Images/Generator.png" width="49%"/> <img src="Images/Settings.png" width="49%"/>
+<img src="Images/Changelog.png" width="49%"/>
 ---
 
 ## Tech Stack
