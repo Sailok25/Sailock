@@ -42,6 +42,7 @@ Built with .NET 8, WPF and C#, following an MVVM architecture.
 ---
 
 ## Project Structure
+```
 Sailock/
 ├── Helpers/        # RelayCommand, ViewModelBase, Converters, QR helper
 ├── Models/         # PasswordEntry, AppData, AppSettings, ChangelogEntry
@@ -50,7 +51,7 @@ Sailock/
 ├── ViewModels/     # One ViewModel per screen
 ├── Views/          # XAML UserControls
 └── Fonts/          # Supermolot Light
-
+```
 ---
 
 ## Getting Started
