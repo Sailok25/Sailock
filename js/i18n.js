@@ -32,7 +32,7 @@ const translations = {
 
     // Credits section
     cred_title: "CREDITS",
-    cred_dev:   "Developed by Alba Ayala Vilanova.",
+    cred_dev_pre: "Developed by",
     cred_built: "Built with .NET 8 / WPF / C#",
     cred_libs:  "Third-party libraries:",
     cred_lib1:  "(TOTP authentication)",
@@ -65,7 +65,7 @@ const translations = {
     tut_soon:  "Tutoriales próximamente.",
 
     cred_title: "CRÉDITOS",
-    cred_dev:   "Desarrollado por Alba Ayala Vilanova.",
+    cred_dev_pre: "Desarrollado por",
     cred_built: "Construido con .NET 8 / WPF / C#",
     cred_libs:  "Librerías de terceros:",
     cred_lib1:  "(autenticación TOTP)",
