@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Sailock — Secure offline password manager for Windows. AES-256 encryption, no cloud, no account required." />
+  <meta name="keywords" content="password manager, offline, AES-256, Windows, secure, free, open source, Sailock, Alba Ayala" />
+  <meta name="author" content="Alba Ayala Vilanova" />
+  <meta property="og:title" content="Sailock — Offline Password Manager" />
+  <meta property="og:description" content="Store and protect your passwords without relying on cloud services." />
+  <meta property="og:type" content="website" />
+  <title>Sailock — Offline Password Manager</title>
+  <link rel="icon" type="image/x-icon" href="assets/img/sailock.ico" />
+  <link rel="icon" type="image/svg+xml" href="assets/img/sailock-pixel-white.svg" />
+  <link rel="apple-touch-icon" href="assets/img/favicon.png" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <a href="#" class="logo-link" data-section="download">
+        <img src="assets/img/sailock-pixel-white.svg" alt="Sailock Logo" class="logo" />
+      </a>
+      <span class="app-name">SAILOCK</span>
+      <div class="divider">--</div>
+      <nav class="nav">
+        <a href="#" class="nav-link active" data-section="download" data-key="nav_download">DOWNLOAD</a>
+        <a href="#" class="nav-link" data-section="tutorials" data-key="nav_tutorials">TUTORIALS</a>
+        <a href="#" class="nav-link" data-section="credits" data-key="nav_credits">CREDITS</a>
+      </nav>
+    </div>
+    <div class="sidebar-bottom">
+      <div class="divider">--</div>
+      <div class="lang-switch">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <span class="lang-sep">/</span>
+        <button class="lang-btn" data-lang="es">ES</button>
+      </div>
+      <span class="version">[v1.2.2]</span>
+    </div>
+  </aside>
+
+  <!-- VERTICAL DIVIDER -->
+  <div class="vert-divider"></div>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <!-- DOWNLOAD SECTION -->
+    <section class="section active" id="section-download">
+      <div class="section-header">
+        <h1 class="section-title" data-key="dl_title">DOWNLOAD</h1>
+        <span class="section-subtitle">Windows 10/11 (64bit)</span>
+      </div>
+      <p class="tagline" data-key="dl_tagline">Secure offline password manager.</p>
+      <p class="description" data-key="dl_desc">Store, organize and protect your passwords without relying on cloud services or internet connectivity.</p>
+      <ul class="features">
+        <li data-key="feat_1">100% Offline</li>
+        <li data-key="feat_2">AES-256 Encryption</li>
+        <li data-key="feat_3">No Account Required</li>
+        <li data-key="feat_4">No Subscription</li>
+        <li data-key="feat_5">Lightweight &amp; Fast</li>
+        <li data-key="feat_6">Portable Database</li>
+      </ul>
+      <div class="download-block">
+        <a href="https://github.com/Sailok25/Sailock/releases/download/v1.2.2/Sailock.exe" class="download-btn" target="_blank" rel="noopener noreferrer" data-key="dl_btn">
+          [ DOWNLOAD ]
+        </a>
+      </div>
+    </section>
+
+    <!-- TUTORIALS SECTION -->
+    <section class="section" id="section-tutorials">
+      <div class="section-header">
+        <h1 class="section-title" data-key="tut_title">TUTORIALS</h1>
+      </div>
+      <p class="coming-soon">---</p>
+      <p class="description coming-soon-text" data-key="tut_soon">Tutorials coming soon.</p>
+    </section>
+
+    <!-- CREDITS SECTION -->
+    <section class="section" id="section-credits">
+      <div class="section-header">
+        <h1 class="section-title" data-key="cred_title">CREDITS</h1>
+      </div>
+      <p class="credit-line" data-key="cred_dev">Developed by Alba Ayala Vilanova.</p>
+      <p class="credit-line" data-key="cred_built">Built with .NET 8 / WPF / C#</p>
+      <p class="credit-label" data-key="cred_libs">Third-party libraries:</p>
+      <ul class="features">
+        <li>Otp.NET <span class="credit-note" data-key="cred_lib1">(TOTP authentication)</span></li>
+        <li>QRCoder <span class="credit-note" data-key="cred_lib2">(QR code generation)</span></li>
+        <li>JetBrains Mono <span class="credit-note" data-key="cred_lib3">(font)</span></li>
+      </ul>
+      <div class="oss-block">
+        <p class="credit-line" data-key="cred_oss">Sailock is free and open-source software.</p>
+        <p class="credit-line">
+          <span data-key="cred_src">Source code:</span>
+          <a href="https://github.com/Sailok25/Sailock" class="ext-link" target="_blank" rel="noopener noreferrer">https://github.com/Sailok25/Sailock</a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
