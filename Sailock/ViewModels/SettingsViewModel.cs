@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Input;
 using Sailock.Helpers;
 using Sailock.Models;
@@ -94,6 +95,41 @@ namespace Sailock.ViewModels
             set => SetProperty(ref _isDisable2FAModalOpen, value);
         }
 
+        private bool _isChangeMasterPasswordModalOpen;
+        public bool IsChangeMasterPasswordModalOpen
+        {
+            get => _isChangeMasterPasswordModalOpen;
+            set => SetProperty(ref _isChangeMasterPasswordModalOpen, value);
+        }
+
+        private string _currentMasterPasswordInput;
+        public string CurrentMasterPasswordInput
+        {
+            get => _currentMasterPasswordInput;
+            set => SetProperty(ref _currentMasterPasswordInput, value);
+        }
+
+        private string _newMasterPasswordInput;
+        public string NewMasterPasswordInput
+        {
+            get => _newMasterPasswordInput;
+            set => SetProperty(ref _newMasterPasswordInput, value);
+        }
+
+        private string _confirmMasterPasswordInput;
+        public string ConfirmMasterPasswordInput
+        {
+            get => _confirmMasterPasswordInput;
+            set => SetProperty(ref _confirmMasterPasswordInput, value);
+        }
+
+        private string _masterPasswordErrorMessage;
+        public string MasterPasswordErrorMessage
+        {
+            get => _masterPasswordErrorMessage;
+            set => SetProperty(ref _masterPasswordErrorMessage, value);
+        }
+
         private string _statusMessage;
         public string StatusMessage
         {
@@ -116,6 +152,9 @@ namespace Sailock.ViewModels
         public ICommand CancelDeleteCommand { get; }
         public ICommand ConfirmDisable2FACommand { get; }
         public ICommand CancelDisable2FACommand { get; }
+        public ICommand OpenChangeMasterPasswordCommand { get; }
+        public ICommand ConfirmChangeMasterPasswordCommand { get; }
+        public ICommand CancelChangeMasterPasswordCommand { get; }
 
         public SettingsViewModel(AppData appData, StorageService storage, string masterPassword)
         {
@@ -165,16 +204,87 @@ namespace Sailock.ViewModels
                 }
             });
 
-            ChangeMasterPassCommand = new RelayCommand(_ => ChangeMasterPassword());
+            ChangeMasterPassCommand = new RelayCommand(_ => OpenChangeMasterPasswordModal());
             ToggleAutoLockCommand = new RelayCommand(_ => AutoLockEnabled = !AutoLockEnabled);
             ImportCommand = new RelayCommand(_ => Import());
             ExportCommand = new RelayCommand(_ => Export());
             OpenDeleteModalCommand = new RelayCommand(_ => IsDeleteModalOpen = true);
             ConfirmDeleteCommand = new RelayCommand(_ => DeleteAllData());
             CancelDeleteCommand = new RelayCommand(_ => IsDeleteModalOpen = false);
+
+            OpenChangeMasterPasswordCommand = new RelayCommand(_ => OpenChangeMasterPasswordModal());
+            ConfirmChangeMasterPasswordCommand = new RelayCommand(_ => ConfirmChangeMasterPassword());
+            CancelChangeMasterPasswordCommand = new RelayCommand(_ => CancelChangeMasterPassword());
         }
 
-        private void ChangeMasterPassword() { }
+        private void OpenChangeMasterPasswordModal()
+        {
+            CurrentMasterPasswordInput = null;
+            NewMasterPasswordInput = null;
+            ConfirmMasterPasswordInput = null;
+            MasterPasswordErrorMessage = null;
+            IsChangeMasterPasswordModalOpen = true;
+        }
+
+        private void ConfirmChangeMasterPassword()
+        {
+            // Validar que la contraseña actual sea correcta
+            if (CurrentMasterPasswordInput != _masterPassword)
+            {
+                MasterPasswordErrorMessage = "Current password is incorrect.";
+                return;
+            }
+
+            // Validar que las nuevas contraseñas sean iguales
+            if (NewMasterPasswordInput != ConfirmMasterPasswordInput)
+            {
+                MasterPasswordErrorMessage = "New passwords do not match.";
+                return;
+            }
+
+            // Validar que la nueva contraseña no esté vacía
+            if (string.IsNullOrWhiteSpace(NewMasterPasswordInput))
+            {
+                MasterPasswordErrorMessage = "New password cannot be empty.";
+                return;
+            }
+
+            // Validar que la nueva contraseña sea diferente a la actual
+            if (NewMasterPasswordInput == _masterPassword)
+            {
+                MasterPasswordErrorMessage = "New password must be different from the current one.";
+                return;
+            }
+
+            try
+            {
+                // Re-cifrar todos los datos con la nueva contraseña
+                _storage.Save(_appData, NewMasterPasswordInput);
+
+                // Actualizar la contraseña maestra en memoria (si fuera necesario, se propagaría a MainViewModel)
+                StatusMessage = "Master password changed successfully.";
+                IsChangeMasterPasswordModalOpen = false;
+
+                // Limpiar campos
+                CurrentMasterPasswordInput = null;
+                NewMasterPasswordInput = null;
+                ConfirmMasterPasswordInput = null;
+                MasterPasswordErrorMessage = null;
+            }
+            catch (Exception ex)
+            {
+                MasterPasswordErrorMessage = "Error changing password: " + ex.Message;
+            }
+        }
+
+        private void CancelChangeMasterPassword()
+        {
+            IsChangeMasterPasswordModalOpen = false;
+            CurrentMasterPasswordInput = null;
+            NewMasterPasswordInput = null;
+            ConfirmMasterPasswordInput = null;
+            MasterPasswordErrorMessage = null;
+        }
 
         private void Import()
         {
@@ -220,7 +330,7 @@ namespace Sailock.ViewModels
         {
             _storage.DeleteAll();
             IsDeleteModalOpen = false;
-            System.Windows.Application.Current.Shutdown();
+            Application.Current.Shutdown();
         }
 
         private void PersistSettings()

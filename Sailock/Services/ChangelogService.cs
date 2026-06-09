@@ -9,9 +9,38 @@ namespace Sailock.Services
         {
             new ChangelogEntry
             {
+                Version  = "1.3.0",
+                Date     = "2026-06-08",
+                IsLatest = true,
+                Added = new List<string>
+                {
+                    "Implementado un tema claro completo en toda la aplicación",
+                    "Añadida la posibilidad de cambiar la contraseña maestra con validaciones de seguridad",
+                    "Unificadas las barras de desplazamiento en toda la aplicación con un estilo visual consistente",
+                    "Mejorado el efecto hover en los botones de ventana (minimizar, maximizar y cerrar)"
+                },
+                Changed = new List<string>
+                {
+                    "Las barras de desplazamiento ahora utilizan el mismo diseño visual en todas las ventanas",
+                    "La ventana Settings ahora utiliza ScrollViewer para mejorar la navegación en pantallas pequeñas",
+                    "Mejorada la visibilidad del hover en la barra lateral cuando se utiliza el tema claro",
+                    "Los indicadores Latest y Legacy del Changelog ahora utilizan colores personalizables",
+                    "El ScrollViewer del Dashboard ahora se encuentra fuera de la tabla para una experiencia de navegación más fluida"
+                },
+                Fixed = new List<string>
+                {
+                    "Corregidos los textos que permanecían en color blanco en el tema claro",
+                    "Corregida la visibilidad de checkboxes y toggles en el tema claro",
+                    "Mejorada la visibilidad del hover en los botones de ventana en ambos temas",
+                    "Corregido un problema que impedía mostrar la barra de desplazamiento en Generator cuando la ventana era reducida",
+                    "Corregido el contraste visual de los indicadores del Changelog"
+                }
+            },
+            new ChangelogEntry
+            {
                 Version  = "1.2.2",
                 Date     = "2026-06-05",
-                IsLatest = true,
+                IsLatest = false,
                 Fixed = new List<string>
                 {
                     "Restaurada la visibilidad del botón de versión en la barra lateral",

@@ -8,7 +8,7 @@
         ResizeMode="CanResize"
         BorderThickness="0"
         BorderBrush="Transparent"
-        Background="#000000"
+        Background="{DynamicResource AppBackground}"
         Title="Sailock"
         Height="720"
         Width="1280"
@@ -27,7 +27,7 @@
 
         <!-- TopBar -->
         <Grid Grid.Row="0"
-              Background="#0A0A0A"
+              Background="{DynamicResource TopBarBackground}"
               MouseLeftButtonDown="TopBar_MouseLeftButtonDown">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -61,7 +61,7 @@
 
             <!-- Sidebar con escala igual al contenido -->
             <Border Grid.Column="0"
-                    Background="#080808"
+                    Background="{DynamicResource SidebarBackground}"
                     BorderBrush="#1A1A1A"
                     BorderThickness="0,0,1,0"
                     Visibility="{Binding SidebarVisibility}">
@@ -79,7 +79,7 @@
 
                     <!-- Logo con fondo ligeramente diferenciado -->
                     <Border Grid.Row="0"
-                            Background="#0A0A0A"
+                            Background="{DynamicResource AppSurface}"
                             BorderBrush="#1A1A1A"
                             BorderThickness="0,0,0,1"
                             Padding="24,20">
@@ -90,8 +90,6 @@
 
                     <!-- Navegación -->
                     <StackPanel Grid.Row="1" VerticalAlignment="Top" Margin="0,8,0,0">
-
-                        <!-- Separador visual antes de nav -->
                         <Button Content="{DynamicResource Nav_Dashboard}"
                                 Style="{StaticResource SidebarButton}"
                                 Command="{Binding NavigateDashboardCommand}"/>
@@ -103,7 +101,6 @@
                         <Button Content="{DynamicResource Nav_Settings}"
                                 Style="{StaticResource SidebarButton}"
                                 Command="{Binding NavigateSettingsCommand}"/>
-
                     </StackPanel>
 
                     <!-- Zona inferior: versión + logout -->
@@ -119,7 +116,7 @@
 
                             <!-- Versión -->
                             <TextBlock x:Name="VersionText"
-                                   Foreground="#555555"
+                                   Foreground="{DynamicResource AppForegroundDim}"
                                    FontSize="10"
                                    FontFamily="/Fonts/#JetBrains Mono"
                                    HorizontalAlignment="Center"
@@ -131,7 +128,7 @@
             </Border>
 
             <!-- Contenido -->
-            <ContentControl Grid.Column="1" Content="{Binding CurrentView}">
+            <ContentControl Grid.Column="1" Content="{Binding CurrentView}" Background="{DynamicResource AppBackground}">
                 <ContentControl.LayoutTransform>
                     <ScaleTransform ScaleX="{DynamicResource GlobalScale}"
                                     ScaleY="{DynamicResource GlobalScale}"/>

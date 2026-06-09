@@ -6,26 +6,28 @@
 
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto"
-                      HorizontalScrollBarVisibility="Disabled">
+                      HorizontalScrollBarVisibility="Disabled"
+                      Style="{StaticResource SailockScrollViewer}">
             <StackPanel Margin="32,28,32,28">
 
                 <TextBlock Text="{DynamicResource Settings_Title}"
-                           Foreground="White"
+                           Foreground="{DynamicResource AppForeground}"
                            FontFamily="/Fonts/#JetBrains Mono"
                            FontSize="28"
                            Margin="0,0,0,24"/>
 
                 <!-- SECURITY -->
                 <Border BorderBrush="{DynamicResource ContrastBorderBrush}"
-                        BorderThickness="{DynamicResource ContrastBorderThickness}"
-                        Margin="0,0,0,20">
+        BorderThickness="{DynamicResource ContrastBorderThickness}"
+        Margin="0,0,0,20"
+        Background="{DynamicResource AppSurface}">
                     <StackPanel>
 
                         <TextBlock Text="{DynamicResource Settings_Security}"
-                                   Foreground="#444444"
-                                   FontFamily="/Fonts/#JetBrains Mono"
-                                   FontSize="11"
-                                   Margin="16,10,16,10"/>
+                   Foreground="{DynamicResource AppForegroundDim}"
+                   FontFamily="/Fonts/#JetBrains Mono"
+                   FontSize="11"
+                   Margin="16,10,16,10"/>
 
                         <Rectangle Height="1" Fill="{DynamicResource ContrastSeparatorBrush}"/>
 
@@ -37,18 +39,18 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0">
                                 <TextBlock Text="{DynamicResource Settings_2FA_Title}"
-                                           Foreground="White"
-                                           FontFamily="/Fonts/#JetBrains Mono"
-                                           FontSize="13"/>
+                           Foreground="{DynamicResource AppForeground}"
+                           FontFamily="/Fonts/#JetBrains Mono"
+                           FontSize="13"/>
                                 <TextBlock Text="{DynamicResource Settings_2FA_Desc}"
-                                           Foreground="#444444"
-                                           FontFamily="/Fonts/#JetBrains Mono"
-                                           FontSize="10"
-                                           Margin="0,3,0,0"/>
+                           Foreground="{DynamicResource AppForegroundDim}"
+                           FontFamily="/Fonts/#JetBrains Mono"
+                           FontSize="10"
+                           Margin="0,3,0,0"/>
                             </StackPanel>
                             <Button Grid.Column="1" Width="110"
-                                    Style="{StaticResource SailockButton}"
-                                    Command="{Binding Enable2FACommand}">
+                    Style="{StaticResource SailockButton}"
+                    Command="{Binding Enable2FACommand}">
                                 <Button.Content>
                                     <TextBlock FontFamily="/Fonts/#JetBrains Mono" FontSize="12">
                                         <TextBlock.Style>
@@ -76,20 +78,20 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0">
                                 <TextBlock Text="{DynamicResource Settings_MasterPass_Title}"
-                                           Foreground="White"
-                                           FontFamily="/Fonts/#JetBrains Mono"
-                                           FontSize="13"/>
+                           Foreground="{DynamicResource AppForeground}"
+                           FontFamily="/Fonts/#JetBrains Mono"
+                           FontSize="13"/>
                                 <TextBlock Text="{DynamicResource Settings_MasterPass_Desc}"
-                                           Foreground="#444444"
-                                           FontFamily="/Fonts/#JetBrains Mono"
-                                           FontSize="10"
-                                           Margin="0,3,0,0"/>
+                           Foreground="{DynamicResource AppForegroundDim}"
+                           FontFamily="/Fonts/#JetBrains Mono"
+                           FontSize="10"
+                           Margin="0,3,0,0"/>
                             </StackPanel>
                             <Button Grid.Column="1"
-                                    Content="{DynamicResource Settings_MasterPass_Button}"
-                                    Width="110"
-                                    Style="{StaticResource SailockButton}"
-                                    Command="{Binding ChangeMasterPassCommand}"/>
+                    Content="{DynamicResource Settings_MasterPass_Button}"
+                    Width="110"
+                    Style="{StaticResource SailockButton}"
+                    Command="{Binding OpenChangeMasterPasswordCommand}"/>
                         </Grid>
 
                         <Rectangle Height="1" Fill="{DynamicResource ContrastSeparatorBrush}"/>
@@ -102,18 +104,18 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0">
                                 <TextBlock Text="{DynamicResource Settings_AutoLock_Title}"
-                                           Foreground="White"
-                                           FontFamily="/Fonts/#JetBrains Mono"
-                                           FontSize="13"/>
+                           Foreground="{DynamicResource AppForeground}"
+                           FontFamily="/Fonts/#JetBrains Mono"
+                           FontSize="13"/>
                                 <TextBlock Text="{DynamicResource Settings_AutoLock_Desc}"
-                                           Foreground="#444444"
-                                           FontFamily="/Fonts/#JetBrains Mono"
-                                           FontSize="10"
-                                           Margin="0,3,0,0"/>
+                           Foreground="{DynamicResource AppForegroundDim}"
+                           FontFamily="/Fonts/#JetBrains Mono"
+                           FontSize="10"
+                           Margin="0,3,0,0"/>
                             </StackPanel>
                             <Button Grid.Column="1" Width="110"
-                                    Style="{StaticResource SailockButton}"
-                                    Command="{Binding ToggleAutoLockCommand}">
+                    Style="{StaticResource SailockButton}"
+                    Command="{Binding ToggleAutoLockCommand}">
                                 <Button.Content>
                                     <TextBlock FontFamily="/Fonts/#JetBrains Mono" FontSize="12">
                                         <TextBlock.Style>
@@ -136,15 +138,16 @@
 
                 <!-- ACCESSIBILITY -->
                 <Border BorderBrush="{DynamicResource ContrastBorderBrush}"
-                        BorderThickness="{DynamicResource ContrastBorderThickness}"
-                        Margin="0,0,0,20">
+        BorderThickness="{DynamicResource ContrastBorderThickness}"
+        Margin="0,0,0,20"
+        Background="{DynamicResource AppSurface}">
                     <StackPanel>
 
                         <TextBlock Text="{DynamicResource Settings_Accessibility}"
-                                   Foreground="#444444"
-                                   FontFamily="/Fonts/#JetBrains Mono"
-                                   FontSize="11"
-                                   Margin="16,10,16,10"/>
+                   Foreground="{DynamicResource AppForegroundDim}"
+                   FontFamily="/Fonts/#JetBrains Mono"
+                   FontSize="11"
+                   Margin="16,10,16,10"/>
 
                         <Rectangle Height="1" Fill="{DynamicResource ContrastSeparatorBrush}"/>
 
@@ -156,23 +159,23 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0">
                                 <TextBlock Text="{DynamicResource Settings_Theme_Title}"
-                                           Foreground="White"
-                                           FontFamily="/Fonts/#JetBrains Mono"
-                                           FontSize="13"/>
+                           Foreground="{DynamicResource AppForeground}"
+                           FontFamily="/Fonts/#JetBrains Mono"
+                           FontSize="13"/>
                                 <TextBlock Text="{DynamicResource Settings_Theme_Desc}"
-                                           Foreground="#444444"
-                                           FontFamily="/Fonts/#JetBrains Mono"
-                                           FontSize="10"
-                                           Margin="0,3,0,0"/>
+                           Foreground="{DynamicResource AppForegroundDim}"
+                           FontFamily="/Fonts/#JetBrains Mono"
+                           FontSize="10"
+                           Margin="0,3,0,0"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
                                 <CheckBox Content="{DynamicResource Settings_Theme_Light}"
-                                          IsChecked="{Binding IsDarkTheme, Converter={StaticResource InverseBoolConverter}}"
-                                          Style="{StaticResource SailockCheckBox}"
-                                          Margin="0,0,16,0"/>
+                          IsChecked="{Binding IsDarkTheme, Converter={StaticResource InverseBoolConverter}}"
+                          Style="{StaticResource SailockCheckBox}"
+                          Margin="0,0,16,0"/>
                                 <CheckBox Content="{DynamicResource Settings_Theme_Dark}"
-                                          IsChecked="{Binding IsDarkTheme}"
-                                          Style="{StaticResource SailockCheckBox}"/>
+                          IsChecked="{Binding IsDarkTheme}"
+                          Style="{StaticResource SailockCheckBox}"/>
                             </StackPanel>
                         </Grid>
 
@@ -186,23 +189,23 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0">
                                 <TextBlock Text="{DynamicResource Settings_Contrast_Title}"
-                                           Foreground="White"
-                                           FontFamily="/Fonts/#JetBrains Mono"
-                                           FontSize="13"/>
+                           Foreground="{DynamicResource AppForeground}"
+                           FontFamily="/Fonts/#JetBrains Mono"
+                           FontSize="13"/>
                                 <TextBlock Text="{DynamicResource Settings_Contrast_Desc}"
-                                           Foreground="#444444"
-                                           FontFamily="/Fonts/#JetBrains Mono"
-                                           FontSize="10"
-                                           Margin="0,3,0,0"/>
+                           Foreground="{DynamicResource AppForegroundDim}"
+                           FontFamily="/Fonts/#JetBrains Mono"
+                           FontSize="10"
+                           Margin="0,3,0,0"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
                                 <CheckBox Content="{DynamicResource Settings_Contrast_On}"
-                                          IsChecked="{Binding IsHighContrast}"
-                                          Style="{StaticResource SailockCheckBox}"
-                                          Margin="0,0,16,0"/>
+                          IsChecked="{Binding IsHighContrast}"
+                          Style="{StaticResource SailockCheckBox}"
+                          Margin="0,0,16,0"/>
                                 <CheckBox Content="{DynamicResource Settings_Contrast_Off}"
-                                          IsChecked="{Binding IsHighContrast, Converter={StaticResource InverseBoolConverter}}"
-                                          Style="{StaticResource SailockCheckBox}"/>
+                          IsChecked="{Binding IsHighContrast, Converter={StaticResource InverseBoolConverter}}"
+                          Style="{StaticResource SailockCheckBox}"/>
                             </StackPanel>
                         </Grid>
 
@@ -216,20 +219,20 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0">
                                 <TextBlock Text="{DynamicResource Settings_TextSize_Title}"
-                                           Foreground="White"
-                                           FontFamily="/Fonts/#JetBrains Mono"
-                                           FontSize="13"/>
+                           Foreground="{DynamicResource AppForeground}"
+                           FontFamily="/Fonts/#JetBrains Mono"
+                           FontSize="13"/>
                                 <TextBlock Text="{DynamicResource Settings_TextSize_Desc}"
-                                           Foreground="#444444"
-                                           FontFamily="/Fonts/#JetBrains Mono"
-                                           FontSize="10"
-                                           Margin="0,3,0,0"/>
+                           Foreground="{DynamicResource AppForegroundDim}"
+                           FontFamily="/Fonts/#JetBrains Mono"
+                           FontSize="10"
+                           Margin="0,3,0,0"/>
                             </StackPanel>
                             <ComboBox Grid.Column="1"
-                                      SelectedItem="{Binding SelectedTextSize, Mode=TwoWay}"
-                                      Width="160"
-                                      Style="{StaticResource SailockComboBox}"
-                                      ItemsSource="{x:Static local:SettingsView.TextSizeOptions}"/>
+                      SelectedItem="{Binding SelectedTextSize, Mode=TwoWay}"
+                      Width="160"
+                      Style="{StaticResource SailockComboBox}"
+                      ItemsSource="{x:Static local:SettingsView.TextSizeOptions}"/>
                         </Grid>
 
                         <Rectangle Height="1" Fill="{DynamicResource ContrastSeparatorBrush}"/>
@@ -242,20 +245,20 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0">
                                 <TextBlock Text="{DynamicResource Settings_Language_Title}"
-                                           Foreground="White"
-                                           FontFamily="/Fonts/#JetBrains Mono"
-                                           FontSize="13"/>
+                           Foreground="{DynamicResource AppForeground}"
+                           FontFamily="/Fonts/#JetBrains Mono"
+                           FontSize="13"/>
                                 <TextBlock Text="{DynamicResource Settings_Language_Desc}"
-                                           Foreground="#444444"
-                                           FontFamily="/Fonts/#JetBrains Mono"
-                                           FontSize="10"
-                                           Margin="0,3,0,0"/>
+                           Foreground="{DynamicResource AppForegroundDim}"
+                           FontFamily="/Fonts/#JetBrains Mono"
+                           FontSize="10"
+                           Margin="0,3,0,0"/>
                             </StackPanel>
                             <ComboBox Grid.Column="1"
-                                      SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}"
-                                      Width="160"
-                                      Style="{StaticResource SailockComboBox}"
-                                      ItemsSource="{x:Static local:SettingsView.LanguageOptions}"/>
+                      SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}"
+                      Width="160"
+                      Style="{StaticResource SailockComboBox}"
+                      ItemsSource="{x:Static local:SettingsView.LanguageOptions}"/>
                         </Grid>
 
                     </StackPanel>
@@ -263,25 +266,26 @@
 
                 <!-- DATA MANAGEMENT -->
                 <Border BorderBrush="{DynamicResource ContrastBorderBrush}"
-                        BorderThickness="{DynamicResource ContrastBorderThickness}"
-                        Margin="0,0,0,20">
+        BorderThickness="{DynamicResource ContrastBorderThickness}"
+        Margin="0,0,0,20"
+        Background="{DynamicResource AppSurface}">
                     <StackPanel>
 
                         <TextBlock Text="{DynamicResource Settings_DataManagement}"
-                                   Foreground="#444444"
-                                   FontFamily="/Fonts/#JetBrains Mono"
-                                   FontSize="11"
-                                   Margin="16,10,16,10"/>
+                   Foreground="{DynamicResource AppForegroundDim}"
+                   FontFamily="/Fonts/#JetBrains Mono"
+                   FontSize="11"
+                   Margin="16,10,16,10"/>
 
                         <Rectangle Height="1" Fill="{DynamicResource ContrastSeparatorBrush}"/>
 
                         <TextBlock Text="{Binding StatusMessage}"
-                                   Foreground="#00FF41"
-                                   FontFamily="/Fonts/#JetBrains Mono"
-                                   FontSize="11"
-                                   Margin="16,12,16,0"
-                                   TextWrapping="Wrap"
-                                   Visibility="{Binding StatusMessage, Converter={StaticResource NullToVisibilityConverter}}"/>
+                   Foreground="{DynamicResource AppAccent}"
+                   FontFamily="/Fonts/#JetBrains Mono"
+                   FontSize="11"
+                   Margin="16,12,16,0"
+                   TextWrapping="Wrap"
+                   Visibility="{Binding StatusMessage, Converter={StaticResource NullToVisibilityConverter}}"/>
 
                         <!-- Import -->
                         <Grid Margin="16,16,16,16">
@@ -291,20 +295,20 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0">
                                 <TextBlock Text="{DynamicResource Settings_Import_Title}"
-                                           Foreground="White"
-                                           FontFamily="/Fonts/#JetBrains Mono"
-                                           FontSize="13"/>
+                           Foreground="{DynamicResource AppForeground}"
+                           FontFamily="/Fonts/#JetBrains Mono"
+                           FontSize="13"/>
                                 <TextBlock Text="{DynamicResource Settings_Import_Desc}"
-                                           Foreground="#444444"
-                                           FontFamily="/Fonts/#JetBrains Mono"
-                                           FontSize="10"
-                                           Margin="0,3,0,0"/>
+                           Foreground="{DynamicResource AppForegroundDim}"
+                           FontFamily="/Fonts/#JetBrains Mono"
+                           FontSize="10"
+                           Margin="0,3,0,0"/>
                             </StackPanel>
                             <Button Grid.Column="1"
-                                    Content="{DynamicResource Settings_Import_Button}"
-                                    Width="110"
-                                    Style="{StaticResource SailockButton}"
-                                    Command="{Binding ImportCommand}"/>
+                    Content="{DynamicResource Settings_Import_Button}"
+                    Width="110"
+                    Style="{StaticResource SailockButton}"
+                    Command="{Binding ImportCommand}"/>
                         </Grid>
 
                         <Rectangle Height="1" Fill="{DynamicResource ContrastSeparatorBrush}"/>
@@ -317,34 +321,35 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0">
                                 <TextBlock Text="{DynamicResource Settings_Export_Title}"
-                                           Foreground="White"
-                                           FontFamily="/Fonts/#JetBrains Mono"
-                                           FontSize="13"/>
+                           Foreground="{DynamicResource AppForeground}"
+                           FontFamily="/Fonts/#JetBrains Mono"
+                           FontSize="13"/>
                                 <TextBlock Text="{DynamicResource Settings_Export_Desc}"
-                                           Foreground="#444444"
-                                           FontFamily="/Fonts/#JetBrains Mono"
-                                           FontSize="10"
-                                           Margin="0,3,0,0"/>
+                           Foreground="{DynamicResource AppForegroundDim}"
+                           FontFamily="/Fonts/#JetBrains Mono"
+                           FontSize="10"
+                           Margin="0,3,0,0"/>
                             </StackPanel>
                             <Button Grid.Column="1"
-                                    Content="{DynamicResource Settings_Export_Button}"
-                                    Width="110"
-                                    Style="{StaticResource SailockButton}"
-                                    Command="{Binding ExportCommand}"/>
+                    Content="{DynamicResource Settings_Export_Button}"
+                    Width="110"
+                    Style="{StaticResource SailockButton}"
+                    Command="{Binding ExportCommand}"/>
                         </Grid>
 
                     </StackPanel>
                 </Border>
 
                 <!-- DANGER ZONE -->
-                <Border BorderBrush="#2A0000" BorderThickness="1" Margin="0,0,0,20">
+                <Border BorderBrush="#2A0000" BorderThickness="1" Margin="0,0,0,20"
+        Background="{DynamicResource AppSurface}">
                     <StackPanel>
 
                         <TextBlock Text="{DynamicResource Settings_DangerZone}"
-                                   Foreground="#663333"
-                                   FontFamily="/Fonts/#JetBrains Mono"
-                                   FontSize="11"
-                                   Margin="16,10,16,10"/>
+                   Foreground="#663333"
+                   FontFamily="/Fonts/#JetBrains Mono"
+                   FontSize="11"
+                   Margin="16,10,16,10"/>
 
                         <Rectangle Height="1" Fill="#2A0000"/>
 
@@ -356,25 +361,24 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0">
                                 <TextBlock Text="{DynamicResource Settings_DeleteAll_Title}"
-                                           Foreground="#FF4D4D"
-                                           FontFamily="/Fonts/#JetBrains Mono"
-                                           FontSize="13"/>
+                           Foreground="#FF4D4D"
+                           FontFamily="/Fonts/#JetBrains Mono"
+                           FontSize="13"/>
                                 <TextBlock Text="{DynamicResource Settings_DeleteAll_Desc}"
-                                           Foreground="#663333"
-                                           FontFamily="/Fonts/#JetBrains Mono"
-                                           FontSize="10"
-                                           Margin="0,3,0,0"/>
+                           Foreground="#663333"
+                           FontFamily="/Fonts/#JetBrains Mono"
+                           FontSize="10"
+                           Margin="0,3,0,0"/>
                             </StackPanel>
                             <Button Grid.Column="1"
-                                    Content="{DynamicResource Settings_DeleteAll_Button}"
-                                    Width="110"
-                                    Style="{StaticResource SailockButton_Danger}"
-                                    Command="{Binding OpenDeleteModalCommand}"/>
+                    Content="{DynamicResource Settings_DeleteAll_Button}"
+                    Width="110"
+                    Style="{StaticResource SailockButton_Danger}"
+                    Command="{Binding OpenDeleteModalCommand}"/>
                         </Grid>
 
                     </StackPanel>
                 </Border>
-
             </StackPanel>
         </ScrollViewer>
 
@@ -461,6 +465,64 @@
                         <Button Content="{DynamicResource Modal_Cancel}"
                         Width="130" Style="{StaticResource SailockButton}"
                         Command="{Binding CancelDisable2FACommand}"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+        
+        <!-- Modal Change Master Password -->
+        <Grid Visibility="{Binding IsChangeMasterPasswordModalOpen, Converter={StaticResource BoolToVisibilityConverter}}">
+            <Grid.LayoutTransform>
+                <ScaleTransform ScaleX="{DynamicResource GlobalScaleInverse}"
+            ScaleY="{DynamicResource GlobalScaleInverse}"/>
+            </Grid.LayoutTransform>
+            <Rectangle Fill="#000000" Opacity="0.75"/>
+            <Border Background="{DynamicResource ModalBackground}" BorderBrush="{DynamicResource ModalBorderBrush}" BorderThickness="1"
+    Width="460" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="36,30">
+                <StackPanel>
+                    <TextBlock Text="CHANGE MASTER PASSWORD"
+               Foreground="{DynamicResource AppForeground}" FontFamily="/Fonts/#JetBrains Mono"
+               FontSize="18"
+               HorizontalAlignment="Center"
+               TextAlignment="Center"
+               TextWrapping="Wrap"
+               Margin="0,0,0,20"/>
+
+                    <TextBlock Text="CURRENT PASSWORD" Style="{StaticResource ModalLabel}"/>
+                    <PasswordBox x:Name="CurrentMasterPasswordBox"
+                 Style="{StaticResource CenteredPasswordBox}"
+                 PasswordChanged="CurrentMasterPasswordBox_PasswordChanged"
+                 Margin="0,4,0,12"/>
+
+                    <TextBlock Text="NEW PASSWORD" Style="{StaticResource ModalLabel}"/>
+                    <PasswordBox x:Name="NewMasterPasswordBox"
+                 Style="{StaticResource CenteredPasswordBox}"
+                 PasswordChanged="NewMasterPasswordBox_PasswordChanged"
+                 Margin="0,4,0,12"/>
+
+                    <TextBlock Text="CONFIRM NEW PASSWORD" Style="{StaticResource ModalLabel}"/>
+                    <PasswordBox x:Name="ConfirmMasterPasswordBox"
+                 Style="{StaticResource CenteredPasswordBox}"
+                 PasswordChanged="ConfirmMasterPasswordBox_PasswordChanged"
+                 Margin="0,4,0,12"/>
+
+                    <TextBlock Text="{Binding MasterPasswordErrorMessage}"
+               Foreground="#FF4D4D" FontFamily="/Fonts/#JetBrains Mono"
+               FontSize="11"
+               HorizontalAlignment="Center"
+               TextAlignment="Center"
+               TextWrapping="Wrap"
+               Margin="0,0,0,16"
+               Visibility="{Binding MasterPasswordErrorMessage, Converter={StaticResource NullToVisibilityConverter}}"/>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Content="CHANGE"
+                Width="130" Style="{StaticResource SailockButton}"
+                Command="{Binding ConfirmChangeMasterPasswordCommand}"
+                Margin="0,0,16,0"/>
+                        <Button Content="CANCEL"
+                Width="130" Style="{StaticResource SailockButton}"
+                Command="{Binding CancelChangeMasterPasswordCommand}"/>
                     </StackPanel>
                 </StackPanel>
             </Border>

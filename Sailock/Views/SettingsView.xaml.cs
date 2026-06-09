@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace Sailock.Views
@@ -16,6 +17,24 @@ namespace Sailock.Views
         public SettingsView()
         {
             InitializeComponent();
+        }
+
+        private void CurrentMasterPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is ViewModels.SettingsViewModel vm)
+                vm.CurrentMasterPasswordInput = CurrentMasterPasswordBox.Password;
+        }
+
+        private void NewMasterPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is ViewModels.SettingsViewModel vm)
+                vm.NewMasterPasswordInput = NewMasterPasswordBox.Password;
+        }
+
+        private void ConfirmMasterPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is ViewModels.SettingsViewModel vm)
+                vm.ConfirmMasterPasswordInput = ConfirmMasterPasswordBox.Password;
         }
     }
 }

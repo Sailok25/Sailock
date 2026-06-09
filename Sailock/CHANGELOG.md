@@ -4,6 +4,30 @@ Todos los cambios de Sailock se documentan aquí.
 
 ---
 
+## [1.3.0] - 2026-06-08
+
+### Added
+* Tema claro completo implementado en toda la aplicación
+* Cambio de contraseña maestra funcional con validaciones de seguridad
+* Barras de desplazamiento unificadas en toda la app con estilo consistente
+* Hover mejorado en botones de ventana (minimizar, maximizar, cerrar)
+
+### Changed
+* Barras de scroll ahora tienen el mismo estilo visual en Dashboard, Settings, Generator y Changelog
+* Interfaz Settings con ScrollViewer para mejor navegación en pantallas pequeñas
+* Sidebar mejorado con hover más visible en modo claro
+* Badge Latest/Legacy en Changelog con colores personalizables
+* ScrollViewer en Dashboard ahora fuera de la tabla para mejor experiencia
+
+### Fixed
+* Textos blancos en modo claro ahora son visibles (negro/verde oscuro)
+* Checkboxes y toggles ahora visibles en modo claro
+* Botones de ventana con hover más visible en ambos temas
+* ScrollBar en Generator ahora aparece cuando la ventana es pequeña
+* Badges en Changelog ahora con contraste adecuado
+
+---
+
 ## [1.2.2] - 2026-06-05
 
 ### Fixed

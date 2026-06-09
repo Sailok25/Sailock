@@ -44,7 +44,8 @@
                         <Border BorderBrush="{DynamicResource ContrastBorderBrush}"
                                 BorderThickness="{DynamicResource ContrastBorderThickness}"
                                 Margin="0,0,0,16"
-                                Padding="24,20">
+                                Padding="24,20"
+                                Background="{DynamicResource AppSurface}">
                             <StackPanel>
 
                                 <!-- Header versión -->
@@ -72,20 +73,20 @@
                                                    Margin="0,4,0,0"/>
                                     </StackPanel>
 
-                                    <!-- Badge LATEST / LEGACY — se mantiene en inglés -->
+                                    <!-- Badge LATEST / LEGACY -->
                                     <Border Grid.Column="1"
                                             VerticalAlignment="Top"
                                             Padding="10,4"
                                             CornerRadius="2">
                                         <Border.Style>
                                             <Style TargetType="Border">
-                                                <Setter Property="Background"      Value="#1A1A1A"/>
-                                                <Setter Property="BorderBrush"     Value="#333333"/>
+                                                <Setter Property="Background" Value="#808080"/>
+                                                <Setter Property="BorderBrush" Value="#454040"/>
                                                 <Setter Property="BorderThickness" Value="1"/>
                                                 <Style.Triggers>
                                                     <DataTrigger Binding="{Binding IsLatest}" Value="True">
-                                                        <Setter Property="Background"  Value="#1A2A1A"/>
-                                                        <Setter Property="BorderBrush" Value="{DynamicResource AppAccent}"/>
+                                                        <Setter Property="Background" Value="#306D29"/>
+                                                        <Setter Property="BorderBrush" Value="#A2CB8B"/>
                                                     </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
@@ -93,12 +94,12 @@
                                         <TextBlock FontFamily="/Fonts/#JetBrains Mono" FontSize="10">
                                             <TextBlock.Style>
                                                 <Style TargetType="TextBlock">
-                                                    <Setter Property="Text"       Value="LEGACY"/>
-                                                    <Setter Property="Foreground" Value="#555555"/>
+                                                    <Setter Property="Text" Value="LEGACY"/>
+                                                    <Setter Property="Foreground" Value="#FFFFFF"/>
                                                     <Style.Triggers>
                                                         <DataTrigger Binding="{Binding IsLatest}" Value="True">
-                                                            <Setter Property="Text"       Value="LATEST"/>
-                                                            <Setter Property="Foreground" Value="{DynamicResource AppAccent}"/>
+                                                            <Setter Property="Text" Value="LATEST"/>
+                                                            <Setter Property="Foreground" Value="#FFFFFF"/>
                                                         </DataTrigger>
                                                     </Style.Triggers>
                                                 </Style>
