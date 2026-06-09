@@ -5,7 +5,7 @@
 </div>
 
 <p align="center">
-  <img alt="Version" src="https://img.shields.io/badge/version-1.2.2-white?style=flat-square&labelColor=000000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-1.3.0-white?style=flat-square&labelColor=000000" />
   <img alt="Platform" src="https://img.shields.io/badge/platform-Windows%2010%2F11-white?style=flat-square&labelColor=000000" />
   <img alt=".NET" src="https://img.shields.io/badge/.NET-8.0-white?style=flat-square&labelColor=000000" />
   <img alt="Architecture" src="https://img.shields.io/badge/architecture-MVVM-white?style=flat-square&labelColor=000000" />
