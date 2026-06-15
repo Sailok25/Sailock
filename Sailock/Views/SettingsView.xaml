@@ -104,35 +104,21 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0">
                                 <TextBlock Text="{DynamicResource Settings_AutoLock_Title}"
-                           Foreground="{DynamicResource AppForeground}"
-                           FontFamily="/Fonts/#JetBrains Mono"
-                           FontSize="13"/>
+                                           Foreground="White"
+                                           FontFamily="/Fonts/#JetBrains Mono"
+                                           FontSize="13"/>
                                 <TextBlock Text="{DynamicResource Settings_AutoLock_Desc}"
-                           Foreground="{DynamicResource AppForegroundDim}"
-                           FontFamily="/Fonts/#JetBrains Mono"
-                           FontSize="10"
-                           Margin="0,3,0,0"/>
+                                           Foreground="#444444"
+                                           FontFamily="/Fonts/#JetBrains Mono"
+                                           FontSize="10"
+                                           Margin="0,3,0,0"/>
                             </StackPanel>
-                            <Button Grid.Column="1" Width="110"
-                    Style="{StaticResource SailockButton}"
-                    Command="{Binding ToggleAutoLockCommand}">
-                                <Button.Content>
-                                    <TextBlock FontFamily="/Fonts/#JetBrains Mono" FontSize="12">
-                                        <TextBlock.Style>
-                                            <Style TargetType="TextBlock">
-                                                <Setter Property="Text" Value="{DynamicResource Settings_2FA_Enable}"/>
-                                                <Style.Triggers>
-                                                    <DataTrigger Binding="{Binding AutoLockEnabled}" Value="True">
-                                                        <Setter Property="Text" Value="{DynamicResource Settings_2FA_Disable}"/>
-                                                    </DataTrigger>
-                                                </Style.Triggers>
-                                            </Style>
-                                        </TextBlock.Style>
-                                    </TextBlock>
-                                </Button.Content>
-                            </Button>
+                            <ComboBox Grid.Column="1"
+                                      Width="110"
+                                      Style="{StaticResource SailockComboBox}"
+                                      ItemsSource="{x:Static local:SettingsView.AutoLockOptions}"
+                                      SelectedItem="{Binding SelectedAutoLockTimeout, Mode=TwoWay}"/>
                         </Grid>
-
                     </StackPanel>
                 </Border>
 

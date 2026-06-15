@@ -87,8 +87,7 @@
     <sys:String x:Key="Settings_MasterPass_Button">CAMBIAR</sys:String>
 
     <sys:String x:Key="Settings_AutoLock_Title">BLOQUEO AUTOMÁTICO</sys:String>
-    <sys:String x:Key="Settings_AutoLock_Desc">Cierra sesión automáticamente tras 2 minutos de inactividad</sys:String>
-
+    <sys:String x:Key="Settings_AutoLock_Desc">Cierra sesión automáticamente tras un período de inactividad</sys:String>
     <!-- Accessibility -->
     <sys:String x:Key="Settings_Theme_Title">TEMA</sys:String>
     <sys:String x:Key="Settings_Theme_Desc">Cambia el tema entre modo claro y oscuro</sys:String>

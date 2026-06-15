@@ -87,8 +87,7 @@
     <sys:String x:Key="Settings_MasterPass_Button">CHANGE</sys:String>
 
     <sys:String x:Key="Settings_AutoLock_Title">AUTO-LOCK SESSION</sys:String>
-    <sys:String x:Key="Settings_AutoLock_Desc">Automatically log out after 2 minutes of inactivity</sys:String>
-
+    <sys:String x:Key="Settings_AutoLock_Desc">Automatically log out after a period of inactivity</sys:String>
     <!-- Accessibility -->
     <sys:String x:Key="Settings_Theme_Title">THEME</sys:String>
     <sys:String x:Key="Settings_Theme_Desc">Switch the app theme between light and dark mode</sys:String>

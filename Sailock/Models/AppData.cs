@@ -12,8 +12,9 @@ namespace Sailock.Models
     public class AppSettings
     {
         public bool Is2FAEnabled { get; set; } = false;
-        public string TotpSecret { get; set; } = null; // clave TOTP cifrada en el .slock
+        public string TotpSecret { get; set; } = null;
         public bool AutoLockEnabled { get; set; } = true;
+        public string AutoLockTimeout { get; set; } = "2 min";
         public bool IsDarkTheme { get; set; } = true;
         public bool IsHighContrast { get; set; } = true;
         public string Language { get; set; } = "English";

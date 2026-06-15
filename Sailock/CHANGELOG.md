@@ -1,6 +1,15 @@
 ﻿# Changelog — Sailock
-
 Todos los cambios de Sailock se documentan aquí.
+
+
+## [1.3.1] - 2026-06-15
+
+### Added
+* Tiempo de bloqueo automático configurable: 30 segundos, 1 minuto, 2 minutos o 5 minutos, o desactivado por completo
+
+### Changed
+* El selector de Auto-Lock en Ajustes ahora es un desplegable, igual que el de idioma o tamaño de texto
+* La descripción de Auto-Lock en Ajustes ahora es neutral
 
 ---
 

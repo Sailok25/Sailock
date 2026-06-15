@@ -12,6 +12,9 @@ namespace Sailock.Views
         public static List<string> LanguageOptions { get; } =
             new List<string> { "English", "Español" };
 
+        public static List<string> AutoLockOptions { get; } =
+            new List<string> { "Disabled", "30 sec", "1 min", "2 min", "5 min" };
+
         public string SelectedTextSize { get; set; } = "Default";
 
         public SettingsView()
@@ -22,19 +25,19 @@ namespace Sailock.Views
         private void CurrentMasterPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
             if (DataContext is ViewModels.SettingsViewModel vm)
-                vm.CurrentMasterPasswordInput = CurrentMasterPasswordBox.Password;
+                vm.CurrentMasterPasswordInput = ((PasswordBox)sender).Password;
         }
 
         private void NewMasterPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
             if (DataContext is ViewModels.SettingsViewModel vm)
-                vm.NewMasterPasswordInput = NewMasterPasswordBox.Password;
+                vm.NewMasterPasswordInput = ((PasswordBox)sender).Password;
         }
 
         private void ConfirmMasterPasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
             if (DataContext is ViewModels.SettingsViewModel vm)
-                vm.ConfirmMasterPasswordInput = ConfirmMasterPasswordBox.Password;
+                vm.ConfirmMasterPasswordInput = ((PasswordBox)sender).Password;
         }
     }
 }

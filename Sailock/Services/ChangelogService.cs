@@ -9,9 +9,24 @@ namespace Sailock.Services
         {
             new ChangelogEntry
             {
+                Version  = "1.3.1",
+                Date     = "2026-06-15",
+                IsLatest = true,
+                Added = new List<string>
+                {
+                    "Tiempo de bloqueo automático configurable: 30 segundos, 1 minuto, 2 minutos o 5 minutos, o desactivado por completo"
+                },
+                Changed = new List<string>
+                {
+                    "El selector de Auto-Lock en Ajustes ahora es un desplegable, igual que el de idioma o tamaño de texto",
+                    "La descripción de Auto-Lock en Ajustes ahora refleja el periodo de inactividad configurado"
+                }
+            },
+            new ChangelogEntry
+            {
                 Version  = "1.3.0",
                 Date     = "2026-06-08",
-                IsLatest = true,
+                IsLatest = false,
                 Added = new List<string>
                 {
                     "Implementado un tema claro completo en toda la aplicación",

@@ -22,7 +22,6 @@ namespace Sailock.ViewModels
             {
                 SetProperty(ref _currentView, value);
                 OnPropertyChanged(nameof(SidebarVisibility));
-                // Registrar actividad al cambiar de vista
                 _autoLock.Reset();
             }
         }
@@ -80,9 +79,12 @@ namespace Sailock.ViewModels
                 ? "pack://application:,,,/Resources/sailock_logo.png"
                 : "pack://application:,,,/Resources/sailock_logo_dark.png";
 
-            // Activar auto-lock si está configurado
+            // Activar auto-lock con el timeout guardado
             if (_appData.Settings.AutoLockEnabled)
-                _autoLock.Enable(Logout);
+            {
+                var timeout = AutoLockService.ParseTimeout(_appData.Settings.AutoLockTimeout ?? "2 min");
+                _autoLock.Enable(Logout, timeout);
+            }
 
             ShowDashboard();
         }
@@ -127,21 +129,28 @@ namespace Sailock.ViewModels
                     : "pack://application:,,,/Resources/sailock_logo_dark.png";
             };
 
-            // Cuando el usuario cambia Auto-Lock en Settings, aplicarlo en tiempo real
-            settingsVM.OnAutoLockChanged = enabled =>
+            // Firma actualizada: recibe bool + string del timeout
+            settingsVM.OnAutoLockChanged = (enabled, timeoutOption) =>
             {
                 if (enabled)
-                    _autoLock.Enable(Logout);
+                {
+                    var timeout = AutoLockService.ParseTimeout(timeoutOption);
+                    _autoLock.Enable(Logout, timeout);
+                }
                 else
+                {
                     _autoLock.Disable();
+                }
             };
 
             CurrentView = settingsVM;
+
+            settingsVM.OnMasterPasswordChanged = newPassword =>
+            {
+                _masterPassword = newPassword;
+            };
         }
 
-        /// <summary>
-        /// Llamar desde la View en cada interacción del usuario (mouse, teclado).
-        /// </summary>
         public void RegisterActivity() => _autoLock.Reset();
 
         private void Logout()

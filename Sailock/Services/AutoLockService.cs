@@ -5,50 +5,56 @@ namespace Sailock.Services
 {
     public class AutoLockService
     {
-        private readonly DispatcherTimer _timer;
-        private Action _onLockout;
-        private bool _isEnabled;
+        private DispatcherTimer _timer;
+        private Action _onLock;
+        private TimeSpan _timeout = TimeSpan.FromMinutes(2);
 
-        public AutoLockService()
+        public void Enable(Action onLock, TimeSpan? timeout = null)
         {
-            _timer = new DispatcherTimer
+            _onLock = onLock;
+
+            if (timeout.HasValue)
+                _timeout = timeout.Value;
+
+            if (_timer == null)
             {
-                Interval = TimeSpan.FromMinutes(2)
-            };
-            _timer.Tick += (s, e) =>
-            {
-                _timer.Stop();
-                _onLockout?.Invoke();
-            };
+                _timer = new DispatcherTimer();
+                _timer.Tick += (s, e) =>
+                {
+                    _timer.Stop();
+                    _onLock?.Invoke();
+                };
+            }
+
+            _timer.Stop();
+            _timer.Interval = _timeout;
+            _timer.Start();
         }
 
-        /// <summary>
-        /// Activa el auto-lock. onLockout se llama al expirar el tiempo.
-        /// </summary>
-        public void Enable(Action onLockout)
-        {
-            _onLockout = onLockout;
-            _isEnabled = true;
-            Reset();
-        }
-
-        /// <summary>
-        /// Desactiva el auto-lock completamente.
-        /// </summary>
         public void Disable()
         {
-            _isEnabled = false;
-            _timer.Stop();
+            _timer?.Stop();
+            _onLock = null;
         }
 
-        /// <summary>
-        /// Reinicia el contador. Llamar en cada interacción del usuario.
-        /// </summary>
         public void Reset()
         {
-            if (!_isEnabled) return;
-            _timer.Stop();
-            _timer.Start();
+            if (_timer != null && _onLock != null)
+            {
+                _timer.Stop();
+                _timer.Start();
+            }
+        }
+
+        public static TimeSpan ParseTimeout(string option)
+        {
+            return option switch
+            {
+                "30 sec" => TimeSpan.FromSeconds(30),
+                "1 min" => TimeSpan.FromMinutes(1),
+                "5 min" => TimeSpan.FromMinutes(5),
+                _ => TimeSpan.FromMinutes(2) // "2 min" es el default
+            };
         }
     }
 }
