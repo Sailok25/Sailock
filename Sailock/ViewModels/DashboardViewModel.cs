@@ -22,6 +22,20 @@ namespace Sailock.ViewModels
             set => SetProperty(ref _entries, value);
         }
 
+        private ObservableCollection<string> _availableCategories;
+        public ObservableCollection<string> AvailableCategories
+        {
+            get => _availableCategories;
+            set => SetProperty(ref _availableCategories, value);
+        }
+
+        private string _selectedCategory;
+        public string SelectedCategory
+        {
+            get => _selectedCategory;
+            set { SetProperty(ref _selectedCategory, value); ApplyFilter(); }
+        }
+
         private string _searchText;
         public string SearchText
         {
@@ -117,6 +131,8 @@ namespace Sailock.ViewModels
             _allEntries = new ObservableCollection<PasswordEntry>(_appData.Entries);
             Entries = new ObservableCollection<PasswordEntry>(_allEntries);
 
+            RefreshCategories();
+
             OpenAddModalCommand = new RelayCommand(_ => OpenAddModal());
             SaveNewEntryCommand = new RelayCommand(_ => SaveNewEntry());
             CancelAddCommand = new RelayCommand(_ => CancelAdd());
@@ -131,23 +147,57 @@ namespace Sailock.ViewModels
                 IsPasswordVisible = !IsPasswordVisible);
         }
 
+        private void RefreshCategories()
+        {
+            var cats = _allEntries
+                .Select(e => e.Category)
+                .Where(c => !string.IsNullOrWhiteSpace(c))
+                .Select(c => c.Trim())
+                .GroupBy(c => c, System.StringComparer.OrdinalIgnoreCase)
+                .Select(g => g.First())
+                .Distinct(System.StringComparer.OrdinalIgnoreCase)
+                .OrderBy(c => c)
+                .ToList();
+
+            var allText = System.Windows.Application.Current.Resources["Dashboard_CategoryAll"]?.ToString() ?? "All";
+
+            var list = new ObservableCollection<string> { allText };
+            foreach (var c in cats) list.Add(c);
+            AvailableCategories = list;
+
+            if (string.IsNullOrEmpty(_selectedCategory) || !list.Contains(_selectedCategory))
+                _selectedCategory = allText;
+        }
+
         private void ApplyFilter()
         {
-            if (string.IsNullOrWhiteSpace(SearchText))
+            var filtered = _allEntries.AsEnumerable();
+
+            if (!string.IsNullOrWhiteSpace(SearchText))
             {
-                Entries = new ObservableCollection<PasswordEntry>(_allEntries);
-                return;
+                var term = SearchText.ToLower();
+                filtered = filtered.Where(e =>
+                    (e.Title != null && e.Title.ToLower().Contains(term)) ||
+                    (e.Username != null && e.Username.ToLower().Contains(term)) ||
+                    (e.Email != null && e.Email.ToLower().Contains(term)) ||
+                    (e.Category != null && e.Category.ToLower().Contains(term)) ||
+                    (e.Url != null && e.Url.ToLower().Contains(term))
+                );
             }
 
-            var term = SearchText.ToLower();
-            var filtered = _allEntries.Where(e =>
-                (e.Title != null && e.Title.ToLower().Contains(term)) ||
-                (e.Username != null && e.Username.ToLower().Contains(term)) ||
-                (e.Email != null && e.Email.ToLower().Contains(term)) ||
-                (e.Category != null && e.Category.ToLower().Contains(term))
-            );
+            var allText = System.Windows.Application.Current.Resources["Dashboard_CategoryAll"]?.ToString() ?? "All";
+
+            if (!string.IsNullOrWhiteSpace(SelectedCategory) && SelectedCategory != allText)
+                filtered = filtered.Where(e => !string.IsNullOrEmpty(e.Category) &&
+                                                e.Category.Trim().Equals(SelectedCategory, System.StringComparison.OrdinalIgnoreCase));
 
             Entries = new ObservableCollection<PasswordEntry>(filtered);
+        }
+
+        public void RefreshLanguage()
+        {
+            RefreshCategories();
+            ApplyFilter();
         }
 
         private void OpenAddModal()
@@ -172,6 +222,7 @@ namespace Sailock.ViewModels
             _allEntries.Add(EditingEntry);
             _appData.Entries.Add(EditingEntry);
             Persist();
+            RefreshCategories();
             ApplyFilter();
             IsAddModalOpen = false;
             EditingEntry = null;
@@ -208,6 +259,7 @@ namespace Sailock.ViewModels
                 Email = _pendingEditEntry.Email,
                 Username = _pendingEditEntry.Username,
                 Password = _pendingEditEntry.Password,
+                Url = _pendingEditEntry.Url,
                 Note = _pendingEditEntry.Note
             };
 
@@ -232,6 +284,7 @@ namespace Sailock.ViewModels
                 EditingEntry.Email != _pendingEditEntry.Email ||
                 EditingEntry.Username != _pendingEditEntry.Username ||
                 EditingEntry.Password != _pendingEditEntry.Password ||
+                EditingEntry.Url != _pendingEditEntry.Url ||
                 EditingEntry.Note != _pendingEditEntry.Note;
         }
 
@@ -261,6 +314,7 @@ namespace Sailock.ViewModels
             SelectedEntry.Email = EditingEntry.Email;
             SelectedEntry.Username = EditingEntry.Username;
             SelectedEntry.Password = EditingEntry.Password;
+            SelectedEntry.Url = EditingEntry.Url;
             SelectedEntry.Note = EditingEntry.Note;
 
             var index = _allEntries.IndexOf(SelectedEntry);
@@ -275,6 +329,7 @@ namespace Sailock.ViewModels
                 _appData.Entries[dataIndex] = SelectedEntry;
 
             Persist();
+            RefreshCategories();
             ApplyFilter();
             IsEditModalOpen = false;
             EditingEntry = null;
@@ -289,6 +344,7 @@ namespace Sailock.ViewModels
             _allEntries.Remove(SelectedEntry);
             _appData.Entries.RemoveAll(e => e.Id == SelectedEntry.Id);
             Persist();
+            RefreshCategories();
             ApplyFilter();
             IsEditModalOpen = false;
             EditingEntry = null;

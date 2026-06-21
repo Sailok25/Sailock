@@ -22,12 +22,14 @@
     <sys:String x:Key="Dashboard_ColTitle">TÍTULO</sys:String>
     <sys:String x:Key="Dashboard_ColData">DATOS</sys:String>
     <sys:String x:Key="Dashboard_ColValue">VALOR</sys:String>
+    <sys:String x:Key="Dashboard_ColWebsite">SITIO WEB</sys:String>
     <sys:String x:Key="Dashboard_ColOptions">OPCIONES</sys:String>
     <sys:String x:Key="Dashboard_FieldEmail">Email:</sys:String>
     <sys:String x:Key="Dashboard_FieldUsername">Usuario:</sys:String>
     <sys:String x:Key="Dashboard_FieldPassword">Contraseña:</sys:String>
     <sys:String x:Key="Dashboard_CopyPassword">[copiar]</sys:String>
     <sys:String x:Key="Dashboard_Edit">[ EDITAR ]</sys:String>
+    <sys:String x:Key="Dashboard_CategoryAll">Todo</sys:String>
 
     <!-- Modal Add New -->
     <sys:String x:Key="Modal_AddNew_Title">AÑADIR NUEVA</sys:String>
@@ -36,6 +38,7 @@
     <sys:String x:Key="Modal_FieldEmail">EMAIL</sys:String>
     <sys:String x:Key="Modal_FieldUsername">USUARIO</sys:String>
     <sys:String x:Key="Modal_FieldPassword">CONTRASEÑA</sys:String>
+    <sys:String x:Key="Modal_FieldUrl">SITIO WEB / URL</sys:String>
     <sys:String x:Key="Modal_FieldNote">NOTA</sys:String>
     <sys:String x:Key="Modal_Save">GUARDAR</sys:String>
     <sys:String x:Key="Modal_Cancel">CANCELAR</sys:String>
@@ -88,6 +91,7 @@
 
     <sys:String x:Key="Settings_AutoLock_Title">BLOQUEO AUTOMÁTICO</sys:String>
     <sys:String x:Key="Settings_AutoLock_Desc">Cierra sesión automáticamente tras un período de inactividad</sys:String>
+
     <!-- Accessibility -->
     <sys:String x:Key="Settings_Theme_Title">TEMA</sys:String>
     <sys:String x:Key="Settings_Theme_Desc">Cambia el tema entre modo claro y oscuro</sys:String>

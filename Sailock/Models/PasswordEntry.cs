@@ -48,6 +48,13 @@ namespace Sailock.Models
             set { _password = value; OnPropertyChanged(); }
         }
 
+        private string _url;
+        public string Url
+        {
+            get => _url;
+            set { _url = value; OnPropertyChanged(); }
+        }
+
         private string _note;
         public string Note
         {

@@ -28,6 +28,9 @@
     <sys:String x:Key="Dashboard_FieldPassword">Password:</sys:String>
     <sys:String x:Key="Dashboard_CopyPassword">[copy]</sys:String>
     <sys:String x:Key="Dashboard_Edit">[ EDIT ]</sys:String>
+    <sys:String x:Key="Dashboard_ColWebsite">WEBSITE</sys:String>
+    <sys:String x:Key="Modal_FieldUrl">WEBSITE / URL</sys:String>
+    <sys:String x:Key="Dashboard_CategoryAll">All</sys:String>
 
     <!-- Modal Add New -->
     <sys:String x:Key="Modal_AddNew_Title">ADD NEW</sys:String>
