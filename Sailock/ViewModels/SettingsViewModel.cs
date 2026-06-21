@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using Sailock.Helpers;
@@ -20,8 +20,6 @@ namespace Sailock.ViewModels
             set => SetProperty(ref _is2FAEnabled, value);
         }
 
-        // AutoLock: ya no hay bool enabled separado.
-        // "Disabled" = desactivado. Cualquier otro valor = activado con ese timeout.
         private string _selectedAutoLockTimeout;
         public string SelectedAutoLockTimeout
         {
@@ -35,7 +33,6 @@ namespace Sailock.ViewModels
             }
         }
 
-        // Propiedad de conveniencia para la vista (desc dinámica)
         public bool AutoLockEnabled => _selectedAutoLockTimeout != "Disabled";
 
         private bool _isDarkTheme;
@@ -72,8 +69,11 @@ namespace Sailock.ViewModels
                 SetProperty(ref _selectedLanguage, value);
                 LocalizationService.ApplyLanguage(value);
                 PersistSettings();
+                OnLanguageChanged?.Invoke();
             }
         }
+
+        public Action OnLanguageChanged { get; set; }
 
         private string _selectedTextSize;
         public string SelectedTextSize
@@ -130,9 +130,7 @@ namespace Sailock.ViewModels
         public Action? OnDataImported { get; set; }
         public Action<SetupTotpViewModel>? OnOpen2FASetup { get; set; }
         public Action<bool>? OnThemeChanged { get; set; }
-        // Firma cambiada: ahora recibe también el string del timeout
         public Action<bool, string>? OnAutoLockChanged { get; set; }
-        // Notifica al MainViewModel cuando la master password cambia
         public Action<string>? OnMasterPasswordChanged { get; set; }
 
         public ICommand Enable2FACommand { get; }
@@ -160,7 +158,6 @@ namespace Sailock.ViewModels
             _selectedLanguage = _appData.Settings.Language;
             _selectedTextSize = _appData.Settings.TextSize;
 
-            // Migración: si AutoLockEnabled era true y no había timeout guardado, usar "2 min"
             if (!string.IsNullOrEmpty(_appData.Settings.AutoLockTimeout))
                 _selectedAutoLockTimeout = _appData.Settings.AutoLockTimeout;
             else
@@ -246,7 +243,6 @@ namespace Sailock.ViewModels
                 return;
             }
 
-            // Re-encripta y guarda todos los datos con la nueva contraseña
             _storage.Save(_appData, NewMasterPasswordInput);
             _masterPassword = NewMasterPasswordInput;
 
