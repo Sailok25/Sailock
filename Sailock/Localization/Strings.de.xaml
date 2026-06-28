@@ -46,6 +46,11 @@
     <sys:String x:Key="Modal_MasterPass_Error">Falsches Hauptpasswort</sys:String>
     <sys:String x:Key="Modal_Confirm">BESTÄTIGEN</sys:String>
 
+    <!-- New keys for Change Master Password modal -->
+    <sys:String x:Key="Modal_CurrentPassword">AKTUELLES PASSWORT</sys:String>
+    <sys:String x:Key="Modal_NewPassword">NEUES PASSWORT</sys:String>
+    <sys:String x:Key="Modal_ConfirmNewPassword">NEUES PASSWORT BESTÄTIGEN</sys:String>
+
     <!-- ── GeneratorView ── -->
     <sys:String x:Key="Generator_Title">GENERATOR</sys:String>
     <sys:String x:Key="Generator_Placeholder">IHR NEUES PASSWORT...</sys:String>

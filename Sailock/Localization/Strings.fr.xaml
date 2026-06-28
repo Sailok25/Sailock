@@ -46,6 +46,11 @@
     <sys:String x:Key="Modal_MasterPass_Error">Mot de passe principal incorrect</sys:String>
     <sys:String x:Key="Modal_Confirm">CONFIRMER</sys:String>
 
+    <!-- Change Master Password Modal -->
+    <sys:String x:Key="Modal_CurrentPassword">MOT DE PASSE ACTUEL</sys:String>
+    <sys:String x:Key="Modal_NewPassword">NOUVEAU MOT DE PASSE</sys:String>
+    <sys:String x:Key="Modal_ConfirmNewPassword">CONFIRMER LE NOUVEAU MOT DE PASSE</sys:String>
+
     <!-- ── GeneratorView ── -->
     <sys:String x:Key="Generator_Title">GÉNÉRATEUR</sys:String>
     <sys:String x:Key="Generator_Placeholder">VOTRE NOUVEAU MOT DE PASSE...</sys:String>
@@ -133,5 +138,4 @@
     <sys:String x:Key="Login_Create">CRÉER</sys:String>
     <sys:String x:Key="Login_TotpLabel">CODE DE VÉRIFICATION</sys:String>
     <sys:String x:Key="Login_TotpVerify">VÉRIFIER</sys:String>
-
 </ResourceDictionary>

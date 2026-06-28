@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Sailock.Models;
 
 namespace Sailock.Services
@@ -9,9 +9,20 @@ namespace Sailock.Services
         {
             new ChangelogEntry
             {
+                Version  = "1.4.1",
+                Date     = "2026-06-2",
+                IsLatest = true,
+                Fixed = new List<string>
+                {
+                    "Added the missing translations for English, Spanish, German, and French in Change Master Password modal",
+                }
+            },
+
+            new ChangelogEntry
+            {
                 Version  = "1.4.0",
                 Date     = "2026-06-21",
-                IsLatest = true,
+                IsLatest = false,
                 Added = new List<string>
                 {
                     "Nuevo filtro de categorías en Dashboard para visualizar entradas por categoría o todas las entradas",

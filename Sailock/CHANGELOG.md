@@ -1,5 +1,12 @@
-﻿# Changelog — Sailock
+# Changelog — Sailock
 Todos los cambios de Sailock se documentan aquí.
+
+## [1.4.1] - 2026-06-28
+
+### Fixed
+* Added the missing translations for English, Spanish, German, and French in Change Master Password modal
+
+---
 
 ## [1.4.0] - 2026-06-21
 

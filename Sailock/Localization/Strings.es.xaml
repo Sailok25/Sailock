@@ -1,4 +1,4 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
@@ -53,6 +53,11 @@
     <sys:String x:Key="Modal_MasterPass_Label">Introduce tu contraseña maestra para editar esta entrada</sys:String>
     <sys:String x:Key="Modal_MasterPass_Error">Contraseña maestra incorrecta</sys:String>
     <sys:String x:Key="Modal_Confirm">CONFIRMAR</sys:String>
+
+    <!-- New keys for Change Master Password modal -->
+    <sys:String x:Key="Modal_CurrentPassword">CONTRASEÑA ACTUAL</sys:String>
+    <sys:String x:Key="Modal_NewPassword">NUEVA CONTRASEÑA</sys:String>
+    <sys:String x:Key="Modal_ConfirmNewPassword">CONFIRMAR NUEVA CONTRASEÑA</sys:String>
 
     <!-- ── GeneratorView ── -->
     <sys:String x:Key="Generator_Title">GENERADOR</sys:String>
@@ -153,5 +158,4 @@
     <sys:String x:Key="Changelog_Improvements">MEJORAS</sys:String>
     <sys:String x:Key="Changelog_BugFixes">CORRECCIONES</sys:String>
     <sys:String x:Key="Changelog_Back">← VOLVER</sys:String>
-
 </ResourceDictionary>
