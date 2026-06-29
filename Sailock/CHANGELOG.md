@@ -4,7 +4,7 @@ Todos los cambios de Sailock se documentan aquí.
 ## [1.4.1] - 2026-06-28
 
 ### Fixed
-* Added the missing translations for English, Spanish, German, and French in Change Master Password modal
+* Añadida la traducción para Ingles, Español, Aleman y Frances en el modal de Change Master Password
 
 ---
 

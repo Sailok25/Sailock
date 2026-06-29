@@ -10,7 +10,7 @@ namespace Sailock.Services
             new ChangelogEntry
             {
                 Version  = "1.4.1",
-                Date     = "2026-06-2",
+                Date     = "2026-06-28",
                 IsLatest = true,
                 Fixed = new List<string>
                 {
