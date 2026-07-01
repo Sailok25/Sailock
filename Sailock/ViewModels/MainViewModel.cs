@@ -148,6 +148,12 @@ namespace Sailock.ViewModels
                 }
             };
 
+            // Hook for re-login request
+            settingsVM.OnRequestLogout = () =>
+            {
+                Logout();
+            };
+
             CurrentView = settingsVM;
 
             settingsVM.OnMasterPasswordChanged = newPassword =>

@@ -127,11 +127,24 @@ namespace Sailock.ViewModels
         public string NewMasterPasswordInput { get; set; }
         public string ConfirmMasterPasswordInput { get; set; }
 
+        // --- Re-login required modal ---
+        private bool _isReLoginModalOpen;
+        public bool IsReLoginModalOpen
+        {
+            get => _isReLoginModalOpen;
+            set => SetProperty(ref _isReLoginModalOpen, value);
+        }
+
         public Action? OnDataImported { get; set; }
         public Action<SetupTotpViewModel>? OnOpen2FASetup { get; set; }
         public Action<bool>? OnThemeChanged { get; set; }
         public Action<bool, string>? OnAutoLockChanged { get; set; }
         public Action<string>? OnMasterPasswordChanged { get; set; }
+
+        /// <summary>
+        /// This action is provided by the host (MainViewModel) so SettingsViewModel can request a logout/relogin.
+        /// </summary>
+        public Action? OnRequestLogout { get; set; }
 
         public ICommand Enable2FACommand { get; }
         public ICommand ChangeMasterPassCommand { get; }
@@ -145,6 +158,9 @@ namespace Sailock.ViewModels
         public ICommand CancelDeleteCommand { get; }
         public ICommand ConfirmDisable2FACommand { get; }
         public ICommand CancelDisable2FACommand { get; }
+
+        // Command to accept and logout on re-login modal
+        public ICommand AcceptReLoginCommand { get; }
 
         public SettingsViewModel(AppData appData, StorageService storage, string masterPassword)
         {
@@ -220,6 +236,12 @@ namespace Sailock.ViewModels
             OpenDeleteModalCommand = new RelayCommand(_ => IsDeleteModalOpen = true);
             ConfirmDeleteCommand = new RelayCommand(_ => DeleteAllData());
             CancelDeleteCommand = new RelayCommand(_ => IsDeleteModalOpen = false);
+
+            AcceptReLoginCommand = new RelayCommand(_ =>
+            {
+                // User clicked accept on re-login modal — logout now
+                OnRequestLogout?.Invoke();
+            });
         }
 
         private void ChangeMasterPassword()
@@ -243,14 +265,17 @@ namespace Sailock.ViewModels
                 return;
             }
 
+            // Persist using the new password (re-encrypt vault)
             _storage.Save(_appData, NewMasterPasswordInput);
+
+            // Update local stored master password inside this VM so further operations here (if any) use the new pass
             _masterPassword = NewMasterPasswordInput;
 
             MasterPasswordErrorMessage = null;
             IsChangeMasterPasswordModalOpen = false;
-            StatusMessage = "Master password changed successfully.";
 
-            OnMasterPasswordChanged?.Invoke(NewMasterPasswordInput);
+            // Show re-login required modal
+            IsReLoginModalOpen = true;
         }
 
         private void Import()

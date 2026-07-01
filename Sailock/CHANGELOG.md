@@ -1,6 +1,13 @@
 # Changelog — Sailock
 Todos los cambios de Sailock se documentan aquí.
 
+## [1.4.2] - 2026-07-01
+
+### Fixed
+* Corregido el problema de memoria cache al actualizar la contraseña maestra
+
+---
+
 ## [1.4.1] - 2026-06-28
 
 ### Fixed

@@ -157,4 +157,9 @@
     <sys:String x:Key="Changelog_Improvements">IMPROVEMENTS</sys:String>
     <sys:String x:Key="Changelog_BugFixes">BUG FIXES</sys:String>
     <sys:String x:Key="Changelog_Back">← BACK</sys:String>
+    
+    <!-- Re-login modal -->
+    <sys:String x:Key="Modal_ReLogin_Title">Relogin Required</sys:String>
+    <sys:String x:Key="Modal_ReLogin_Body">Your master password has been updated successfully. Please log in again to complete the change.</sys:String>
+    <sys:String x:Key="Modal_ReLogin_Accept">Accept</sys:String>
 </ResourceDictionary>

@@ -158,4 +158,9 @@
     <sys:String x:Key="Changelog_Improvements">MEJORAS</sys:String>
     <sys:String x:Key="Changelog_BugFixes">CORRECCIONES</sys:String>
     <sys:String x:Key="Changelog_Back">← VOLVER</sys:String>
+
+    <!-- Re-login modal -->
+    <sys:String x:Key="Modal_ReLogin_Title">Reinicio de sesión requerido</sys:String>
+    <sys:String x:Key="Modal_ReLogin_Body">Tu contraseña maestra ha sido actualizada con éxito. Por favor, inicia sesión de nuevo para completar el cambio.</sys:String>
+    <sys:String x:Key="Modal_ReLogin_Accept">Aceptar</sys:String>
 </ResourceDictionary>

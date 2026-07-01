@@ -9,9 +9,19 @@ namespace Sailock.Services
         {
             new ChangelogEntry
             {
+                Version  = "1.4.2",
+                Date     = "2026-07-01",
+                IsLatest = true,
+                Fixed = new List<string>
+                {
+                    "Corregido el problema de memoria cache al actualizar la contraseña maestra",
+                }
+            },
+            new ChangelogEntry
+            {
                 Version  = "1.4.1",
                 Date     = "2026-06-28",
-                IsLatest = true,
+                IsLatest = false,
                 Fixed = new List<string>
                 {
                     "Añadida la traducción para Ingles, Español, Aleman y Frances en el modal de Change Master Password",

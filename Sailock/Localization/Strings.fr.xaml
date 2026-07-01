@@ -138,4 +138,9 @@
     <sys:String x:Key="Login_Create">CRÉER</sys:String>
     <sys:String x:Key="Login_TotpLabel">CODE DE VÉRIFICATION</sys:String>
     <sys:String x:Key="Login_TotpVerify">VÉRIFIER</sys:String>
+    
+    <!-- Re-login modal -->
+    <sys:String x:Key="Modal_ReLogin_Title">Reconnexion requise</sys:String>
+    <sys:String x:Key="Modal_ReLogin_Body">Votre mot de passe principal a été mis à jour avec succès. Veuillez vous reconnecter pour finaliser la modification.</sys:String>
+    <sys:String x:Key="Modal_ReLogin_Accept">Accepter</sys:String>
 </ResourceDictionary>

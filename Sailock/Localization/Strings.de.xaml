@@ -139,4 +139,8 @@
     <sys:String x:Key="Login_TotpLabel">VERIFIZIERUNGSCODE</sys:String>
     <sys:String x:Key="Login_TotpVerify">VERIFIZIEREN</sys:String>
 
+    <!-- Re-login modal -->
+    <sys:String x:Key="Modal_ReLogin_Title">Neuanmeldung erforderlich</sys:String>
+    <sys:String x:Key="Modal_ReLogin_Body">Ihr Hauptpasswort wurde erfolgreich aktualisiert. Bitte melden Sie sich erneut an, um die Änderung abzuschließen.</sys:String>
+    <sys:String x:Key="Modal_ReLogin_Accept">Akzeptieren</sys:String>
 </ResourceDictionary>

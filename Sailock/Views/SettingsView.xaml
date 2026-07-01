@@ -513,5 +513,40 @@
                 </StackPanel>
             </Border>
         </Grid>
+
+        <!-- Modal RE-LOGIN REQUIRED (single button with message) -->
+        <Grid Visibility="{Binding IsReLoginModalOpen, Converter={StaticResource BoolToVisibilityConverter}}">
+            <Grid.LayoutTransform>
+                <ScaleTransform ScaleX="{DynamicResource GlobalScaleInverse}"
+                                ScaleY="{DynamicResource GlobalScaleInverse}"/>
+            </Grid.LayoutTransform>
+            <Rectangle Fill="#000000" Opacity="0.80"/>
+            <Border Background="{DynamicResource ModalBackground}" BorderBrush="{DynamicResource ModalBorderBrush}" BorderThickness="1"
+                    Width="420" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="28,24">
+                <StackPanel>
+                    <TextBlock Text="{DynamicResource Modal_ReLogin_Title}"
+                               Foreground="{DynamicResource AppForeground}"
+                               FontFamily="/Fonts/#JetBrains Mono"
+                               FontSize="16"
+                               HorizontalAlignment="Center"
+                               TextAlignment="Center"
+                               Margin="0,0,0,8"/>
+                    <TextBlock Text="{DynamicResource Modal_ReLogin_Body}"
+                               Foreground="{DynamicResource AppForegroundDim}"
+                               FontFamily="/Fonts/#JetBrains Mono"
+                               FontSize="12"
+                               TextAlignment="Center"
+                               TextWrapping="Wrap"
+                               Margin="0,0,0,20"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Content="{DynamicResource Modal_ReLogin_Accept}"
+                                Width="200"
+                                Style="{StaticResource SailockButton}"
+                                Command="{Binding AcceptReLoginCommand}"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Grid>
+
     </Grid>
 </UserControl>
