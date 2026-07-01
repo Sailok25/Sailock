@@ -119,7 +119,7 @@ Each save operation generates a new salt and IV, meaning no two encrypted files 
 ---
 
 ## ✦ Changelog
-See [CHANGELOG.md](CHANGELOG.md) for the full version history.
+See [CHANGELOG.md](https://github.com/Sailok25/Sailock/blob/master/Sailock/CHANGELOG.md) for the full version history.
 
 ---
 
