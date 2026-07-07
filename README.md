@@ -12,14 +12,6 @@
   <img alt="License" src="https://img.shields.io/badge/license-All%20Rights%20Reserved-white?style=flat-square&labelColor=000000" />
 </p>
 
-<p align="center">
-  <a href="#-features">Features</a> ·
-  <a href="#-screenshots">Screenshots</a> ·
-  <a href="#-getting-started">Getting Started</a> ·
-  <a href="#-security">Security</a> ·
-  <a href="#-changelog">Changelog</a>
-</p>
-
 ---
 
 ## ✦ Features
