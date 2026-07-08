@@ -79,7 +79,7 @@
 
                     <!-- Logo con fondo ligeramente diferenciado -->
                     <Border Grid.Row="0"
-                            Background="{DynamicResource AppSurface}"
+                            Background="{DynamicResource SidebarBackground}"
                             BorderBrush="#1A1A1A"
                             BorderThickness="0,0,0,1"
                             Padding="24,20">

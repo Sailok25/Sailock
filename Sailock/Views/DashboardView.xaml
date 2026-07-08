@@ -31,6 +31,8 @@
 
                 <TextBox Grid.Column="0"
                          Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                         Tag="Filtra por servicio, datos, categoría..."
+                         Style="{StaticResource ModalTextBoxWithPlaceholder}"
                          Background="{DynamicResource TextBoxBackground}"
                          Foreground="{DynamicResource TextBoxForeground}"
                          CaretBrush="{DynamicResource TextBoxForeground}"
@@ -41,25 +43,7 @@
                          VerticalContentAlignment="Center"
                          FontFamily="/Fonts/#JetBrains Mono"
                          FontSize="12"
-                         Margin="0,0,12,0">
-                    <TextBox.Style>
-                        <Style TargetType="TextBox">
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="TextBox">
-                                        <Border Background="{TemplateBinding Background}"
-                                                BorderBrush="{TemplateBinding BorderBrush}"
-                                                BorderThickness="{TemplateBinding BorderThickness}">
-                                            <ScrollViewer x:Name="PART_ContentHost"
-                                                          VerticalAlignment="Center"
-                                                          Margin="{TemplateBinding Padding}"/>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </TextBox.Style>
-                </TextBox>
+                         Margin="0,0,12,0"/>
 
                 <!-- ComboBox filtro por categoría -->
                 <ComboBox Grid.Column="1"

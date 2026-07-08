@@ -54,6 +54,11 @@
             <SolidColorBrush x:Key="TopBarBackground" Color="#0A0A0A"/>
             <SolidColorBrush x:Key="WindowControlButtonHover" Color="#1A1A1A"/>
             <SolidColorBrush x:Key="WindowControlButtonCloseHover" Color="#E81123"/>
+            <SolidColorBrush x:Key="PlaceholderForeground" Color="#4D4D4D"/>
+            
+            <!-- ScrollBar y recursos de scroll -->
+            <SolidColorBrush x:Key="ScrollBarBackground" Color="#1A1A1A"/>
+            <SolidColorBrush x:Key="ScrollBarThumbBackground" Color="#333333"/>
 
             <!-- Checkbox, Toggle y Slider -->
             <SolidColorBrush x:Key="CheckBoxBorder" Color="#444444"/>
@@ -460,7 +465,7 @@
                                 <Grid>
                                     <TextBlock x:Name="placeholder"
                                                Text="{TemplateBinding Tag}"
-                                               Foreground="#444444"
+                                               Foreground="{DynamicResource PlaceholderForeground}"
                                                FontFamily="/Fonts/#JetBrains Mono"
                                                FontSize="{TemplateBinding FontSize}"
                                                VerticalAlignment="Center"
@@ -484,7 +489,6 @@
                 </Setter>
             </Style>
 
-            <!-- ComboBox -->
             <!-- ComboBox -->
             <Style x:Key="SailockComboBox" TargetType="ComboBox">
                 <Setter Property="Background" Value="{DynamicResource TextBoxBackground}"/>
@@ -580,9 +584,9 @@
                 </Setter>
             </Style>
 
-            <!-- ScrollBar thumb -->
+            <!-- ScrollBar thumb - MEJORADO CON DINÁMICOS -->
             <Style x:Key="SailockScrollBarThumb" TargetType="Thumb">
-                <Setter Property="Background" Value="{DynamicResource AppSurface2}"/>
+                <Setter Property="Background" Value="{DynamicResource ScrollBarThumbBackground}"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Thumb">
@@ -603,7 +607,7 @@
                 </Setter>
             </Style>
 
-            <!-- ScrollBar vertical -->
+            <!-- ScrollBar vertical - MEJORADO CON DINÁMICOS -->
             <Style x:Key="SailockScrollBar" TargetType="ScrollBar">
                 <Setter Property="Width" Value="8"/>
                 <Setter Property="Background" Value="Transparent"/>
@@ -611,7 +615,7 @@
                     <Setter.Value>
                         <ControlTemplate TargetType="ScrollBar">
                             <Grid Background="Transparent">
-                                <Border Background="{DynamicResource AppSurface}" CornerRadius="4"
+                                <Border Background="{DynamicResource ScrollBarBackground}" CornerRadius="4"
                             HorizontalAlignment="Center" Width="6"/>
                                 <Track x:Name="PART_Track" IsDirectionReversed="True" Margin="1,0,1,0">
                                     <Track.DecreaseRepeatButton>

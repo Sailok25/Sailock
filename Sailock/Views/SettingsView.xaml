@@ -104,7 +104,7 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0">
                                 <TextBlock Text="{DynamicResource Settings_AutoLock_Title}"
-                                        Foreground="White"
+                                        Foreground="{DynamicResource AppForeground}"
                                         FontFamily="/Fonts/#JetBrains Mono"
                                         FontSize="13"/>
                                 <TextBlock Text="{DynamicResource Settings_AutoLock_Desc}"

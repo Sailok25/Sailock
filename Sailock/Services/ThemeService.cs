@@ -77,6 +77,11 @@ namespace Sailock.Services
                 res["TopBarBackground"] = BrushFromHex("#0A0A0A");
                 res["WindowControlButtonHover"] = BrushFromHex("#1A1A1A");
                 res["WindowControlButtonCloseHover"] = BrushFromHex("#E81123");
+                res["PlaceholderForeground"] = BrushFromHex("#4D4D4D");
+
+                // Colores para ScrollBar (tema oscuro - muy visible)
+                res["ScrollBarBackground"] = BrushFromHex("#1A1A1A");
+                res["ScrollBarThumbBackground"] = BrushFromHex("#333333");
 
                 // Colores adicionales para controles
                 res["CheckBoxBorder"] = BrushFromHex("#444444");
@@ -92,24 +97,21 @@ namespace Sailock.Services
                 res["ToggleTrackBackgroundChecked"] = BrushFromHex("#003d10");
                 res["ToggleThumbBackground"] = BrushFromHex("#555555");
                 res["ToggleThumbBackgroundChecked"] = BrushFromHex("#00FF41");
-
-                res["ScrollBarBackground"] = BrushFromHex("#1A1A1A");
-                res["ScrollBarThumbBackground"] = BrushFromHex("#333333");
             }
             else
             {
                 // TEMA CLARO
-                res["AppBackground"] = BrushFromHex("#F8F8F8");
-                res["AppSurface"] = BrushFromHex("#FFFFFF");
-                res["AppSurface2"] = BrushFromHex("#F0F0F0");
+                res["AppBackground"] = BrushFromHex("#E0E0E0");
+                res["AppSurface"] = BrushFromHex("#F0F0F0");
+                res["AppSurface2"] = BrushFromHex("#E8E8E8");
                 res["AppForeground"] = BrushFromHex("#1A1A1A");
-                res["AppForegroundDim"] = BrushFromHex("#666666");
+                res["AppForegroundDim"] = BrushFromHex("#555555");
                 res["AppAccent"] = BrushFromHex("#007A1F");
                 res["AppInputBackground"] = BrushFromHex("#FFFFFF");
                 res["SidebarLogoSource"] = "pack://application:,,,/Resources/sailock_logo_dark.png";
 
                 res["TextBlockForeground"] = BrushFromHex("#1A1A1A");
-                res["TextBoxBackground"] = BrushFromHex("#FFFFFF");
+                res["TextBoxBackground"] = BrushFromHex("#EDEDED");
                 res["TextBoxForeground"] = BrushFromHex("#1A1A1A");
                 res["TextBoxBorderBrush"] = BrushFromHex("#CCCCCC");
                 res["PasswordBoxBackground"] = BrushFromHex("#FFFFFF");
@@ -121,28 +123,30 @@ namespace Sailock.Services
                 res["ButtonHoverForeground"] = BrushFromHex("#FFFFFF");
                 res["ModalBackground"] = BrushFromHex("#FFFFFF");
                 res["ModalBorderBrush"] = BrushFromHex("#007A1F");
-                res["SidebarBackground"] = BrushFromHex("#F8F8F8");
-                res["TopBarBackground"] = BrushFromHex("#EEEEEE");
-                res["WindowControlButtonHover"] = BrushFromHex("#D0D0D0");
+                res["SidebarBackground"] = BrushFromHex("#D4D4D4");
+                res["TopBarBackground"] = BrushFromHex("#CDCDCD");
+                res["WindowControlButtonHover"] = BrushFromHex("#B8B8B8");
                 res["WindowControlButtonCloseHover"] = BrushFromHex("#E81123");
+                res["PlaceholderForeground"] = BrushFromHex("#9A9A9A");
+
+                // Colores para ScrollBar
+                res["ScrollBarBackground"] = BrushFromHex("#C0C0C0");
+                res["ScrollBarThumbBackground"] = BrushFromHex("#808080");
 
                 // Colores adicionales para controles
-                res["CheckBoxBorder"] = BrushFromHex("#999999");
+                res["CheckBoxBorder"] = BrushFromHex("#888888");
                 res["CheckBoxBorderHover"] = BrushFromHex("#007A1F");
                 res["CheckBoxCheckMark"] = BrushFromHex("#007A1F");
                 res["CheckBoxBackground"] = BrushFromHex("#E8F5E9");
 
-                res["SliderBackground"] = BrushFromHex("#E0E0E0");
+                res["SliderBackground"] = BrushFromHex("#D0D0D0");
                 res["SliderThumbBackground"] = BrushFromHex("#007A1F");
                 res["SliderThumbBackgroundHover"] = BrushFromHex("#005A15");
 
-                res["ToggleTrackBackground"] = BrushFromHex("#CCCCCC");
+                res["ToggleTrackBackground"] = BrushFromHex("#BBBBBB");
                 res["ToggleTrackBackgroundChecked"] = BrushFromHex("#C8E6C9");
-                res["ToggleThumbBackground"] = BrushFromHex("#999999");
+                res["ToggleThumbBackground"] = BrushFromHex("#888888");
                 res["ToggleThumbBackgroundChecked"] = BrushFromHex("#007A1F");
-
-                res["ScrollBarBackground"] = BrushFromHex("#E0E0E0");
-                res["ScrollBarThumbBackground"] = BrushFromHex("#999999");
             }
 
             bool isHighContrast = (bool?)res["IsHighContrast"] ?? true;
