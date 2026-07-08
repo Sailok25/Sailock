@@ -3,161 +3,161 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
 
     <!-- ── MainWindow / Sidebar ── -->
-    <sys:String x:Key="Nav_Dashboard">PANEL CENTRAL</sys:String>
-    <sys:String x:Key="Nav_Generator">GENERADOR</sys:String>
-    <sys:String x:Key="Nav_Settings">AJUSTES</sys:String>
-    <sys:String x:Key="Nav_Logout">CERRAR SESIÓN</sys:String>
+    <sys:String x:Key="Nav_Dashboard">Panel Central</sys:String>
+    <sys:String x:Key="Nav_Generator">Generador</sys:String>
+    <sys:String x:Key="Nav_Settings">Ajustes</sys:String>
+    <sys:String x:Key="Nav_Logout">Cerrar sesión</sys:String>
 
     <!-- ── LoginView ── -->
-    <sys:String x:Key="Login_CreateMaster">CREA TU CONTRASEÑA MAESTRA</sys:String>
-    <sys:String x:Key="Login_Error">CONTRASEÑA INCORRECTA</sys:String>
-    <sys:String x:Key="Login_Unlock">ENTRAR</sys:String>
-    <sys:String x:Key="Login_Create">CREAR</sys:String>
-    <sys:String x:Key="Login_TotpLabel">CÓDIGO DE VERIFICACIÓN</sys:String>
-    <sys:String x:Key="Login_TotpVerify">VERIFICAR</sys:String>
+    <sys:String x:Key="Login_CreateMaster">Crea tu contraseña maestra</sys:String>
+    <sys:String x:Key="Login_Error">Contraseña incorrecta</sys:String>
+    <sys:String x:Key="Login_Unlock">Entrar</sys:String>
+    <sys:String x:Key="Login_Create">Crear</sys:String>
+    <sys:String x:Key="Login_TotpLabel">Código de verificación</sys:String>
+    <sys:String x:Key="Login_TotpVerify">Verificar</sys:String>
 
     <!-- ── DashboardView ── -->
-    <sys:String x:Key="Dashboard_Title">PANEL CENTRAL</sys:String>
-    <sys:String x:Key="Dashboard_AddNew">AÑADIR</sys:String>
-    <sys:String x:Key="Dashboard_ColTitle">TÍTULO</sys:String>
-    <sys:String x:Key="Dashboard_ColData">DATOS</sys:String>
-    <sys:String x:Key="Dashboard_ColValue">VALOR</sys:String>
-    <sys:String x:Key="Dashboard_ColWebsite">SITIO WEB</sys:String>
-    <sys:String x:Key="Dashboard_ColOptions">OPCIONES</sys:String>
+    <sys:String x:Key="Dashboard_Title">Panel Central</sys:String>
+    <sys:String x:Key="Dashboard_AddNew">Añadir</sys:String>
+    <sys:String x:Key="Dashboard_ColTitle">Título</sys:String>
+    <sys:String x:Key="Dashboard_ColData">Datos</sys:String>
+    <sys:String x:Key="Dashboard_ColValue">Valor</sys:String>
+    <sys:String x:Key="Dashboard_ColWebsite">Sitio web</sys:String>
+    <sys:String x:Key="Dashboard_ColOptions">Opciones</sys:String>
     <sys:String x:Key="Dashboard_FieldEmail">Email:</sys:String>
     <sys:String x:Key="Dashboard_FieldUsername">Usuario:</sys:String>
     <sys:String x:Key="Dashboard_FieldPassword">Contraseña:</sys:String>
     <sys:String x:Key="Dashboard_CopyPassword">[copiar]</sys:String>
-    <sys:String x:Key="Dashboard_Edit">[ EDITAR ]</sys:String>
+    <sys:String x:Key="Dashboard_Edit">[ Editar ]</sys:String>
     <sys:String x:Key="Dashboard_CategoryAll">Todo</sys:String>
 
     <!-- Modal Add New -->
-    <sys:String x:Key="Modal_AddNew_Title">AÑADIR NUEVA</sys:String>
-    <sys:String x:Key="Modal_FieldTitle">TÍTULO</sys:String>
-    <sys:String x:Key="Modal_FieldCategory">CATEGORÍA</sys:String>
-    <sys:String x:Key="Modal_FieldEmail">EMAIL</sys:String>
-    <sys:String x:Key="Modal_FieldUsername">USUARIO</sys:String>
-    <sys:String x:Key="Modal_FieldPassword">CONTRASEÑA</sys:String>
-    <sys:String x:Key="Modal_FieldUrl">SITIO WEB / URL</sys:String>
-    <sys:String x:Key="Modal_FieldNote">NOTA</sys:String>
-    <sys:String x:Key="Modal_Save">GUARDAR</sys:String>
-    <sys:String x:Key="Modal_Cancel">CANCELAR</sys:String>
+    <sys:String x:Key="Modal_AddNew_Title">Añadir nueva</sys:String>
+    <sys:String x:Key="Modal_FieldTitle">Título</sys:String>
+    <sys:String x:Key="Modal_FieldCategory">Categoría</sys:String>
+    <sys:String x:Key="Modal_FieldEmail">Email</sys:String>
+    <sys:String x:Key="Modal_FieldUsername">Usuario</sys:String>
+    <sys:String x:Key="Modal_FieldPassword">Contraseña</sys:String>
+    <sys:String x:Key="Modal_FieldUrl">Sitio web / URL</sys:String>
+    <sys:String x:Key="Modal_FieldNote">Nota</sys:String>
+    <sys:String x:Key="Modal_Save">Guardar</sys:String>
+    <sys:String x:Key="Modal_Cancel">Cancelar</sys:String>
 
     <!-- Modal Edit -->
-    <sys:String x:Key="Modal_Edit_Title">EDITAR</sys:String>
-    <sys:String x:Key="Modal_SaveChanges">GUARDAR CAMBIOS</sys:String>
-    <sys:String x:Key="Modal_Delete">ELIMINAR</sys:String>
+    <sys:String x:Key="Modal_Edit_Title">Editar</sys:String>
+    <sys:String x:Key="Modal_SaveChanges">Guardar cambios</sys:String>
+    <sys:String x:Key="Modal_Delete">Eliminar</sys:String>
 
     <!-- Modal Master Password confirm -->
-    <sys:String x:Key="Modal_MasterPass_Title">CONFIRMAR CONTRASEÑA MAESTRA</sys:String>
+    <sys:String x:Key="Modal_MasterPass_Title">Confirmar contraseña maestra</sys:String>
     <sys:String x:Key="Modal_MasterPass_Label">Introduce tu contraseña maestra para editar esta entrada</sys:String>
     <sys:String x:Key="Modal_MasterPass_Error">Contraseña maestra incorrecta</sys:String>
-    <sys:String x:Key="Modal_Confirm">CONFIRMAR</sys:String>
+    <sys:String x:Key="Modal_Confirm">Confirmar</sys:String>
 
     <!-- New keys for Change Master Password modal -->
-    <sys:String x:Key="Modal_CurrentPassword">CONTRASEÑA ACTUAL</sys:String>
-    <sys:String x:Key="Modal_NewPassword">NUEVA CONTRASEÑA</sys:String>
-    <sys:String x:Key="Modal_ConfirmNewPassword">CONFIRMAR NUEVA CONTRASEÑA</sys:String>
+    <sys:String x:Key="Modal_CurrentPassword">Contraseña actual</sys:String>
+    <sys:String x:Key="Modal_NewPassword">Nueva contraseña</sys:String>
+    <sys:String x:Key="Modal_ConfirmNewPassword">Confirmar nueva contraseña</sys:String>
 
     <!-- ── GeneratorView ── -->
-    <sys:String x:Key="Generator_Title">GENERADOR</sys:String>
-    <sys:String x:Key="Generator_Placeholder">TU NUEVA CONTRASEÑA...</sys:String>
-    <sys:String x:Key="Generator_Copy">COPIAR</sys:String>
-    <sys:String x:Key="Generator_LengthPrefix">LONGITUD  -</sys:String>
-    <sys:String x:Key="Generator_LengthSuffix">CARACTERES</sys:String>
-    <sys:String x:Key="Generator_Uppercase">MAYÚSCULAS</sys:String>
-    <sys:String x:Key="Generator_Lowercase">MINÚSCULAS</sys:String>
-    <sys:String x:Key="Generator_Numbers">NÚMEROS</sys:String>
-    <sys:String x:Key="Generator_Symbols">SÍMBOLOS</sys:String>
-    <sys:String x:Key="Generator_RepeatChars">REPETIR CARACTERES</sys:String>
-    <sys:String x:Key="Generator_SequentialChars">CARACTERES SECUENCIALES</sys:String>
-    <sys:String x:Key="Generator_ExcludeChars">EXCLUIR CARACTERES</sys:String>
-    <sys:String x:Key="Generator_StartWith">EMPEZAR CON ...</sys:String>
-    <sys:String x:Key="Generator_Generate">GENERAR</sys:String>
+    <sys:String x:Key="Generator_Title">Generador</sys:String>
+    <sys:String x:Key="Generator_Placeholder">Tu nueva contraseña...</sys:String>
+    <sys:String x:Key="Generator_Copy">Copiar</sys:String>
+    <sys:String x:Key="Generator_LengthPrefix">Longitud -</sys:String>
+    <sys:String x:Key="Generator_LengthSuffix">caracteres</sys:String>
+    <sys:String x:Key="Generator_Uppercase">Mayúsculas</sys:String>
+    <sys:String x:Key="Generator_Lowercase">Minúsculas</sys:String>
+    <sys:String x:Key="Generator_Numbers">Números</sys:String>
+    <sys:String x:Key="Generator_Symbols">Símbolos</sys:String>
+    <sys:String x:Key="Generator_RepeatChars">Repetir caracteres</sys:String>
+    <sys:String x:Key="Generator_SequentialChars">Caracteres secuenciales</sys:String>
+    <sys:String x:Key="Generator_ExcludeChars">Excluir caracteres</sys:String>
+    <sys:String x:Key="Generator_StartWith">Empezar con...</sys:String>
+    <sys:String x:Key="Generator_Generate">Generar</sys:String>
 
     <!-- ── SettingsView ── -->
-    <sys:String x:Key="Settings_Title">AJUSTES</sys:String>
+    <sys:String x:Key="Settings_Title">Ajustes</sys:String>
 
     <!-- Section headers -->
-    <sys:String x:Key="Settings_Security">SEGURIDAD</sys:String>
-    <sys:String x:Key="Settings_Accessibility">ACCESIBILIDAD</sys:String>
-    <sys:String x:Key="Settings_DataManagement">GESTIÓN DE DATOS</sys:String>
-    <sys:String x:Key="Settings_DangerZone">ZONA DE PELIGRO</sys:String>
+    <sys:String x:Key="Settings_Security">Seguridad</sys:String>
+    <sys:String x:Key="Settings_Accessibility">Accesibilidad</sys:String>
+    <sys:String x:Key="Settings_DataManagement">Gestión de datos</sys:String>
+    <sys:String x:Key="Settings_DangerZone">Zona de peligro</sys:String>
 
     <!-- Security -->
-    <sys:String x:Key="Settings_2FA_Title">ACTIVAR CONTRASEÑA 2FA</sys:String>
+    <sys:String x:Key="Settings_2FA_Title">Activar contraseña 2FA</sys:String>
     <sys:String x:Key="Settings_2FA_Desc">Añade una capa extra de seguridad activando el 2FA</sys:String>
-    <sys:String x:Key="Settings_2FA_Enable">ACTIVAR</sys:String>
-    <sys:String x:Key="Settings_2FA_Disable">DESACTIVAR</sys:String>
+    <sys:String x:Key="Settings_2FA_Enable">Activar</sys:String>
+    <sys:String x:Key="Settings_2FA_Disable">Desactivar</sys:String>
 
-    <sys:String x:Key="Settings_MasterPass_Title">CAMBIAR CONTRASEÑA MAESTRA</sys:String>
+    <sys:String x:Key="Settings_MasterPass_Title">Cambiar contraseña maestra</sys:String>
     <sys:String x:Key="Settings_MasterPass_Desc">Cambia la contraseña maestra</sys:String>
-    <sys:String x:Key="Settings_MasterPass_Button">CAMBIAR</sys:String>
+    <sys:String x:Key="Settings_MasterPass_Button">Cambiar</sys:String>
 
-    <sys:String x:Key="Settings_AutoLock_Title">BLOQUEO AUTOMÁTICO</sys:String>
+    <sys:String x:Key="Settings_AutoLock_Title">Bloqueo automático</sys:String>
     <sys:String x:Key="Settings_AutoLock_Desc">Cierra sesión automáticamente tras un período de inactividad</sys:String>
 
     <!-- Accessibility -->
-    <sys:String x:Key="Settings_Theme_Title">TEMA</sys:String>
+    <sys:String x:Key="Settings_Theme_Title">Tema</sys:String>
     <sys:String x:Key="Settings_Theme_Desc">Cambia el tema entre modo claro y oscuro</sys:String>
-    <sys:String x:Key="Settings_Theme_Light">CLARO</sys:String>
-    <sys:String x:Key="Settings_Theme_Dark">OSCURO</sys:String>
+    <sys:String x:Key="Settings_Theme_Light">Claro</sys:String>
+    <sys:String x:Key="Settings_Theme_Dark">Oscuro</sys:String>
 
-    <sys:String x:Key="Settings_Contrast_Title">CONTRASTE</sys:String>
+    <sys:String x:Key="Settings_Contrast_Title">Contraste</sys:String>
     <sys:String x:Key="Settings_Contrast_Desc">Mejora la visibilidad del texto y los botones</sys:String>
-    <sys:String x:Key="Settings_Contrast_On">SÍ</sys:String>
-    <sys:String x:Key="Settings_Contrast_Off">NO</sys:String>
+    <sys:String x:Key="Settings_Contrast_On">Sí</sys:String>
+    <sys:String x:Key="Settings_Contrast_Off">No</sys:String>
 
-    <sys:String x:Key="Settings_TextSize_Title">TAMAÑO DE TEXTO</sys:String>
+    <sys:String x:Key="Settings_TextSize_Title">Tamaño de texto</sys:String>
     <sys:String x:Key="Settings_TextSize_Desc">Aumenta o reduce el tamaño de la interfaz</sys:String>
 
-    <sys:String x:Key="Settings_Language_Title">IDIOMA</sys:String>
+    <sys:String x:Key="Settings_Language_Title">Idioma</sys:String>
     <sys:String x:Key="Settings_Language_Desc">Elige tu idioma preferido</sys:String>
 
     <!-- Data Management -->
-    <sys:String x:Key="Settings_Import_Title">IMPORTAR</sys:String>
+    <sys:String x:Key="Settings_Import_Title">Importar</sys:String>
     <sys:String x:Key="Settings_Import_Desc">Importa un archivo .slock</sys:String>
-    <sys:String x:Key="Settings_Import_Button">IMPORTAR</sys:String>
+    <sys:String x:Key="Settings_Import_Button">Importar</sys:String>
 
-    <sys:String x:Key="Settings_Export_Title">EXPORTAR</sys:String>
+    <sys:String x:Key="Settings_Export_Title">Exportar</sys:String>
     <sys:String x:Key="Settings_Export_Desc">Exporta tus datos como copia de seguridad o impórtalos en otro dispositivo</sys:String>
-    <sys:String x:Key="Settings_Export_Button">EXPORTAR</sys:String>
+    <sys:String x:Key="Settings_Export_Button">Exportar</sys:String>
 
     <!-- Danger Zone -->
-    <sys:String x:Key="Settings_DeleteAll_Title">ELIMINAR TODOS LOS DATOS</sys:String>
+    <sys:String x:Key="Settings_DeleteAll_Title">Eliminar todos los datos</sys:String>
     <sys:String x:Key="Settings_DeleteAll_Desc">Elimina todos los datos almacenados. Esta acción no se puede deshacer.</sys:String>
-    <sys:String x:Key="Settings_DeleteAll_Button">ELIMINAR</sys:String>
+    <sys:String x:Key="Settings_DeleteAll_Button">Eliminar</sys:String>
 
     <!-- Modal Delete All -->
-    <sys:String x:Key="Modal_DeleteAll_Title">ELIMINAR TODOS LOS DATOS</sys:String>
-    <sys:String x:Key="Modal_DeleteAll_Warning">ESTA ACCIÓN NO SE PUEDE DESHACER</sys:String>
+    <sys:String x:Key="Modal_DeleteAll_Title">Eliminar todos los datos</sys:String>
+    <sys:String x:Key="Modal_DeleteAll_Warning">Esta acción no se puede deshacer</sys:String>
     <sys:String x:Key="Modal_DeleteAll_Confirm">¿Estás segura de que quieres eliminar todos tus datos?</sys:String>
 
     <!-- Modal Disable 2FA -->
-    <sys:String x:Key="Modal_Disable2FA_Title">DESACTIVAR 2FA</sys:String>
+    <sys:String x:Key="Modal_Disable2FA_Title">Desactivar 2FA</sys:String>
     <sys:String x:Key="Modal_Disable2FA_Desc">Al desactivar el 2FA tu cuenta será menos segura.</sys:String>
-    <sys:String x:Key="Modal_Disable2FA_Warning">NOTA: Los códigos actuales dejarán de funcionar.</sys:String>
-    <sys:String x:Key="Modal_Disable2FA_Button">DESACTIVAR</sys:String>
+    <sys:String x:Key="Modal_Disable2FA_Warning">Nota: los códigos actuales dejarán de funcionar.</sys:String>
+    <sys:String x:Key="Modal_Disable2FA_Button">Desactivar</sys:String>
 
     <!-- ── SetupTotpView ── -->
-    <sys:String x:Key="Totp_Title">ACTIVAR 2FA</sys:String>
+    <sys:String x:Key="Totp_Title">Activar 2FA</sys:String>
     <sys:String x:Key="Totp_ScanDesc">Escanea este QR con Google Authenticator, Authy o cualquier app TOTP compatible.</sys:String>
     <sys:String x:Key="Totp_ManualKey">O introduce manualmente esta clave:</sys:String>
     <sys:String x:Key="Totp_CodeLabel">Introduce el código de 6 dígitos para confirmar:</sys:String>
-    <sys:String x:Key="Totp_Verify">VERIFICAR</sys:String>
-    <sys:String x:Key="Totp_Cancel">CANCELAR</sys:String>
+    <sys:String x:Key="Totp_Verify">Verificar</sys:String>
+    <sys:String x:Key="Totp_Cancel">Cancelar</sys:String>
     <sys:String x:Key="Totp_ErrorMessage">Código incorrecto. Inténtalo de nuevo.</sys:String>
 
     <!-- ── ChangelogView ── -->
-    <sys:String x:Key="Changelog_Title">HISTORIAL</sys:String>
+    <sys:String x:Key="Changelog_Title">Historial</sys:String>
     <sys:String x:Key="Changelog_Subtitle">Mantente al día con las últimas novedades, mejoras y correcciones.</sys:String>
     <sys:String x:Key="Changelog_VersionPrefix">Versión</sys:String>
-    <sys:String x:Key="Changelog_Latest">RECIENTE</sys:String>
-    <sys:String x:Key="Changelog_Legacy">ANTERIOR</sys:String>
-    <sys:String x:Key="Changelog_NewFeatures">NOVEDADES</sys:String>
-    <sys:String x:Key="Changelog_Improvements">MEJORAS</sys:String>
-    <sys:String x:Key="Changelog_BugFixes">CORRECCIONES</sys:String>
-    <sys:String x:Key="Changelog_Back">← VOLVER</sys:String>
+    <sys:String x:Key="Changelog_Latest">Reciente</sys:String>
+    <sys:String x:Key="Changelog_Legacy">Anterior</sys:String>
+    <sys:String x:Key="Changelog_NewFeatures">Novedades</sys:String>
+    <sys:String x:Key="Changelog_Improvements">Mejoras</sys:String>
+    <sys:String x:Key="Changelog_BugFixes">Correcciones</sys:String>
+    <sys:String x:Key="Changelog_Back">← Volver</sys:String>
 
     <!-- Re-login modal -->
     <sys:String x:Key="Modal_ReLogin_Title">Reinicio de sesión requerido</sys:String>
