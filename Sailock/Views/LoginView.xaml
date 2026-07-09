@@ -118,7 +118,7 @@
                 </StackPanel>
 
                 <!-- Versión -->
-                <TextBlock Text="v1.4.2"
+                <TextBlock Text="v1.5.0"
                            Foreground="#555555"
                            FontSize="10"
                            FontFamily="/Fonts/#JetBrains Mono"
