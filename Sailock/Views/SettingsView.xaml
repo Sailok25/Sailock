@@ -108,7 +108,7 @@
                                         FontFamily="/Fonts/#JetBrains Mono"
                                         FontSize="13"/>
                                 <TextBlock Text="{DynamicResource Settings_AutoLock_Desc}"
-                                        Foreground="#444444"
+                                        Foreground="{DynamicResource AppForegroundDim}"
                                         FontFamily="/Fonts/#JetBrains Mono"
                                         FontSize="10"
                                         Margin="0,3,0,0"/>
