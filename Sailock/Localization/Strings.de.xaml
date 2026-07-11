@@ -143,4 +143,40 @@
     <sys:String x:Key="Modal_ReLogin_Title">Neuanmeldung erforderlich</sys:String>
     <sys:String x:Key="Modal_ReLogin_Body">Ihr Hauptpasswort wurde erfolgreich aktualisiert. Bitte melden Sie sich erneut an, um die Änderung abzuschließen.</sys:String>
     <sys:String x:Key="Modal_ReLogin_Accept">Akzeptieren</sys:String>
+
+    <!-- Import Wizard modal -->
+    <sys:String x:Key="Import_Step1_Title">1 - Dateiauswahl</sys:String>
+    <sys:String x:Key="Import_Step1_Header">Datei importieren</sys:String>
+    <sys:String x:Key="Import_Step2_Title">2 - Importmodus</sys:String>
+    <sys:String x:Key="Import_Step2_Header">Wie möchten Sie die Daten importieren?</sys:String>
+    <sys:String x:Key="Import_Step3_Title">3 - Duplikate</sys:String>
+    <sys:String x:Key="Import_Step3_Header">Was soll mit Duplikaten passieren?</sys:String>
+    <sys:String x:Key="Import_Step4_Title">4 - Bestätigung</sys:String>
+    <sys:String x:Key="Import_Step4_Header">Import bestätigen</sys:String>
+    <sys:String x:Key="Import_Step5_Title">5 - Ergebnis</sys:String>
+    <sys:String x:Key="Import_Step5_Header">Import abgeschlossen</sys:String>
+
+    <sys:String x:Key="Import_Button_Cancel">Abbrechen</sys:String>
+    <sys:String x:Key="Import_Button_Continue">Weiter</sys:String>
+    <sys:String x:Key="Import_Button_Back">Zurück</sys:String>
+    <sys:String x:Key="Import_Button_Next">Weiter</sys:String>
+    <sys:String x:Key="Import_Button_Import">Importieren</sys:String>
+    <sys:String x:Key="Import_Button_Close">Schließen</sys:String>
+
+    <sys:String x:Key="Import_Mode_Merge">Zusammenführen (empfohlen)</sys:String>
+    <sys:String x:Key="Import_Mode_ReplaceAll">Alle aktuellen Daten ersetzen</sys:String>
+    <sys:String x:Key="Import_Duplicate_Keep">Vorhandene beibehalten</sys:String>
+    <sys:String x:Key="Import_Duplicate_Overwrite">Vorhandene überschreiben</sys:String>
+    <sys:String x:Key="Import_Duplicate_Rename">Importierte umbenennen</sys:String>
+
+    <sys:String x:Key="Import_Preview_Label">Vorschau:</sys:String>
+
+    <sys:String x:Key="Import_Summary_File">Datei: {0}</sys:String>
+    <sys:String x:Key="Import_Summary_Mode">Modus: {0}</sys:String>
+    <sys:String x:Key="Import_Summary_Duplicates">Duplikate: {0}</sys:String>
+
+    <sys:String x:Key="Import_Result_Added">Neue Einträge hinzugefügt: {0}</sys:String>
+    <sys:String x:Key="Import_Result_Updated">Einträge aktualisiert: {0}</sys:String>
+    <sys:String x:Key="Import_Result_Skipped">Duplikate übersprungen: {0}</sys:String>
+    <sys:String x:Key="Import_Result_Errors">Fehler: {0}</sys:String>
 </ResourceDictionary>

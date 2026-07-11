@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
 using Sailock.Helpers;
 using Sailock.Models;
@@ -7,6 +8,27 @@ using Sailock.Services;
 
 namespace Sailock.ViewModels
 {
+    public enum ImportMode
+    {
+        Merge,
+        ReplaceAll,
+    }
+
+    public enum DuplicateStrategy
+    {
+        KeepExisting,
+        OverwriteExisting,
+        RenameImported
+    }
+
+    public class ImportResult
+    {
+        public int Added { get; set; }
+        public int Updated { get; set; }
+        public int Skipped { get; set; }
+        public int Errors { get; set; }
+    }
+
     public class SettingsViewModel : ViewModelBase
     {
         private readonly StorageService _storage;
@@ -30,6 +52,7 @@ namespace Sailock.ViewModels
                 bool enabled = value != "Disabled";
                 OnAutoLockChanged?.Invoke(enabled, value);
                 PersistSettings();
+                OnPropertyChanged(nameof(AutoLockEnabled));
             }
         }
 
@@ -135,6 +158,127 @@ namespace Sailock.ViewModels
             set => SetProperty(ref _isReLoginModalOpen, value);
         }
 
+        // ===== IMPORT WIZARD =====
+        private bool _isImportWizardOpen;
+        public bool IsImportWizardOpen
+        {
+            get => _isImportWizardOpen;
+            set => SetProperty(ref _isImportWizardOpen, value);
+        }
+
+        private int _importWizardStep = 1;
+        public int ImportWizardStep
+        {
+            get => _importWizardStep;
+            set
+            {
+                if (SetProperty(ref _importWizardStep, value))
+                {
+                    OnPropertyChanged(nameof(IsImportStep1));
+                    OnPropertyChanged(nameof(IsImportStep2));
+                    OnPropertyChanged(nameof(IsImportStep3));
+                    OnPropertyChanged(nameof(IsImportStep4));
+                    OnPropertyChanged(nameof(IsImportStep5));
+                }
+            }
+        }
+
+        public bool IsImportStep1 => ImportWizardStep == 1;
+        public bool IsImportStep2 => ImportWizardStep == 2;
+        public bool IsImportStep3 => ImportWizardStep == 3;
+        public bool IsImportStep4 => ImportWizardStep == 4;
+        public bool IsImportStep5 => ImportWizardStep == 5;
+
+        private string _selectedImportFilePath;
+        public string SelectedImportFilePath
+        {
+            get => _selectedImportFilePath;
+            set => SetProperty(ref _selectedImportFilePath, value);
+        }
+
+        private string _selectedImportFileName;
+        public string SelectedImportFileName
+        {
+            get => _selectedImportFileName;
+            set => SetProperty(ref _selectedImportFileName, value);
+        }
+
+        private long _selectedImportFileSizeBytes;
+        public long SelectedImportFileSizeBytes
+        {
+            get => _selectedImportFileSizeBytes;
+            set
+            {
+                if (SetProperty(ref _selectedImportFileSizeBytes, value))
+                    OnPropertyChanged(nameof(SelectedImportFileSizeLabel));
+            }
+        }
+
+        public string SelectedImportFileSizeLabel
+        {
+            get
+            {
+                if (SelectedImportFileSizeBytes <= 0) return "0 KB";
+                double kb = SelectedImportFileSizeBytes / 1024.0;
+                if (kb < 1024) return $"{kb:0.#} KB";
+                double mb = kb / 1024.0;
+                return $"{mb:0.##} MB";
+            }
+        }
+
+        private ImportMode _selectedImportMode = ImportMode.Merge;
+        public ImportMode SelectedImportMode
+        {
+            get => _selectedImportMode;
+            set => SetProperty(ref _selectedImportMode, value);
+        }
+
+        private DuplicateStrategy _selectedDuplicateStrategy = DuplicateStrategy.KeepExisting;
+        public DuplicateStrategy SelectedDuplicateStrategy
+        {
+            get => _selectedDuplicateStrategy;
+            set => SetProperty(ref _selectedDuplicateStrategy, value);
+        }
+
+        private int _importPreviewNewCount;
+        public int ImportPreviewNewCount
+        {
+            get => _importPreviewNewCount;
+            set => SetProperty(ref _importPreviewNewCount, value);
+        }
+
+        private int _importPreviewDuplicatesCount;
+        public int ImportPreviewDuplicatesCount
+        {
+            get => _importPreviewDuplicatesCount;
+            set => SetProperty(ref _importPreviewDuplicatesCount, value);
+        }
+
+        private ImportResult _lastImportResult = new ImportResult();
+        public ImportResult LastImportResult
+        {
+            get => _lastImportResult;
+            set => SetProperty(ref _lastImportResult, value);
+        }
+
+        public string SelectedImportModeLabel =>
+            SelectedImportMode switch
+            {
+                ImportMode.Merge => "Merge",
+                ImportMode.ReplaceAll => "Replace all",
+                _ => "Merge"
+            };
+
+        public string SelectedDuplicateStrategyLabel =>
+            SelectedDuplicateStrategy switch
+            {
+                DuplicateStrategy.KeepExisting => "Keep existing",
+                DuplicateStrategy.OverwriteExisting => "Overwrite existing",
+                DuplicateStrategy.RenameImported => "Rename imported",
+                _ => "Keep existing"
+            };
+
+        // ===== callbacks =====
         public Action? OnDataImported { get; set; }
         public Action<SetupTotpViewModel>? OnOpen2FASetup { get; set; }
         public Action<bool>? OnThemeChanged { get; set; }
@@ -146,12 +290,21 @@ namespace Sailock.ViewModels
         /// </summary>
         public Action? OnRequestLogout { get; set; }
 
+        // ===== commands =====
         public ICommand Enable2FACommand { get; }
         public ICommand ChangeMasterPassCommand { get; }
         public ICommand OpenChangeMasterPasswordCommand { get; }
         public ICommand ConfirmChangeMasterPasswordCommand { get; }
         public ICommand CancelChangeMasterPasswordCommand { get; }
+
+        // Import Wizard commands
         public ICommand ImportCommand { get; }
+        public ICommand CancelImportWizardCommand { get; }
+        public ICommand NextImportWizardStepCommand { get; }
+        public ICommand BackImportWizardStepCommand { get; }
+        public ICommand ConfirmImportWizardCommand { get; }
+        public ICommand FinishImportWizardCommand { get; }
+
         public ICommand ExportCommand { get; }
         public ICommand OpenDeleteModalCommand { get; }
         public ICommand ConfirmDeleteCommand { get; }
@@ -231,7 +384,14 @@ namespace Sailock.ViewModels
             ConfirmChangeMasterPasswordCommand = new RelayCommand(_ => ChangeMasterPassword());
 
             ChangeMasterPassCommand = new RelayCommand(_ => ChangeMasterPassword());
-            ImportCommand = new RelayCommand(_ => Import());
+
+            ImportCommand = new RelayCommand(_ => StartImportWizard());
+            CancelImportWizardCommand = new RelayCommand(_ => CloseImportWizard());
+            NextImportWizardStepCommand = new RelayCommand(_ => NextImportWizardStep());
+            BackImportWizardStepCommand = new RelayCommand(_ => BackImportWizardStep());
+            ConfirmImportWizardCommand = new RelayCommand(_ => ConfirmImportWizard());
+            FinishImportWizardCommand = new RelayCommand(_ => CloseImportWizard());
+
             ExportCommand = new RelayCommand(_ => Export());
             OpenDeleteModalCommand = new RelayCommand(_ => IsDeleteModalOpen = true);
             ConfirmDeleteCommand = new RelayCommand(_ => DeleteAllData());
@@ -239,7 +399,6 @@ namespace Sailock.ViewModels
 
             AcceptReLoginCommand = new RelayCommand(_ =>
             {
-                // User clicked accept on re-login modal — logout now
                 OnRequestLogout?.Invoke();
             });
         }
@@ -265,20 +424,16 @@ namespace Sailock.ViewModels
                 return;
             }
 
-            // Persist using the new password (re-encrypt vault)
             _storage.Save(_appData, NewMasterPasswordInput);
-
-            // Update local stored master password inside this VM so further operations here (if any) use the new pass
             _masterPassword = NewMasterPasswordInput;
 
             MasterPasswordErrorMessage = null;
             IsChangeMasterPasswordModalOpen = false;
-
-            // Show re-login required modal
             IsReLoginModalOpen = true;
         }
 
-        private void Import()
+        // ===== IMPORT WIZARD FLOW =====
+        private void StartImportWizard()
         {
             var dialog = new Microsoft.Win32.OpenFileDialog
             {
@@ -288,19 +443,178 @@ namespace Sailock.ViewModels
 
             if (dialog.ShowDialog() != true) return;
 
-            var imported = _storage.Import(dialog.FileName, _masterPassword);
+            var info = new System.IO.FileInfo(dialog.FileName);
 
+            SelectedImportFilePath = dialog.FileName;
+            SelectedImportFileName = info.Name;
+            SelectedImportFileSizeBytes = info.Exists ? info.Length : 0;
+
+            SelectedImportMode = ImportMode.Merge;
+            SelectedDuplicateStrategy = DuplicateStrategy.KeepExisting;
+            ImportWizardStep = 1;
+            LastImportResult = new ImportResult();
+
+            BuildImportPreview();
+
+            IsImportWizardOpen = true;
+        }
+
+        private void CloseImportWizard()
+        {
+            IsImportWizardOpen = false;
+            ImportWizardStep = 1;
+        }
+
+        private void NextImportWizardStep()
+        {
+            if (ImportWizardStep == 1)
+            {
+                ImportWizardStep = 2;
+                return;
+            }
+
+            if (ImportWizardStep == 2)
+            {
+                // Si es ReplaceAll, saltamos duplicados
+                ImportWizardStep = SelectedImportMode == ImportMode.ReplaceAll ? 4 : 3;
+                return;
+            }
+
+            if (ImportWizardStep == 3)
+            {
+                ImportWizardStep = 4;
+                return;
+            }
+
+            if (ImportWizardStep < 5)
+                ImportWizardStep++;
+        }
+
+        private void BackImportWizardStep()
+        {
+            if (ImportWizardStep == 4 && SelectedImportMode == ImportMode.ReplaceAll)
+            {
+                ImportWizardStep = 2;
+                return;
+            }
+
+            if (ImportWizardStep > 1)
+                ImportWizardStep--;
+        }
+
+        private void BuildImportPreview()
+        {
+            ImportPreviewNewCount = 0;
+            ImportPreviewDuplicatesCount = 0;
+
+            var imported = _storage.Import(SelectedImportFilePath, _masterPassword);
             if (imported == null)
             {
                 StatusMessage = "Error: password does not match the file.";
                 return;
             }
 
-            _appData.Entries.Clear();
-            _appData.Entries.AddRange(imported.Entries);
+            foreach (var incoming in imported.Entries)
+            {
+                bool duplicate = _appData.Entries.Any(e =>
+                    string.Equals(e.Title?.Trim(), incoming.Title?.Trim(), StringComparison.OrdinalIgnoreCase) &&
+                    string.Equals(e.Username?.Trim(), incoming.Username?.Trim(), StringComparison.OrdinalIgnoreCase) &&
+                    string.Equals(e.Email?.Trim(), incoming.Email?.Trim(), StringComparison.OrdinalIgnoreCase));
+
+                if (duplicate) ImportPreviewDuplicatesCount++;
+                else ImportPreviewNewCount++;
+            }
+        }
+
+        private void ConfirmImportWizard()
+        {
+            var imported = _storage.Import(SelectedImportFilePath, _masterPassword);
+            if (imported == null)
+            {
+                StatusMessage = "Error: password does not match the file.";
+                return;
+            }
+
+            var result = ApplyImport(imported, SelectedImportMode, SelectedDuplicateStrategy);
+            LastImportResult = result;
+
             _storage.Save(_appData, _masterPassword);
-            StatusMessage = $"{imported.Entries.Count} entries imported successfully.";
             OnDataImported?.Invoke();
+
+            StatusMessage = $"Import complete. Added: {result.Added}, Updated: {result.Updated}, Skipped: {result.Skipped}, Errors: {result.Errors}";
+
+            OnPropertyChanged(nameof(SelectedImportModeLabel));
+            OnPropertyChanged(nameof(SelectedDuplicateStrategyLabel));
+
+            ImportWizardStep = 5;
+        }
+
+        private ImportResult ApplyImport(AppData imported, ImportMode mode, DuplicateStrategy strategy)
+        {
+            var result = new ImportResult();
+
+            if (imported == null)
+            {
+                result.Errors++;
+                return result;
+            }
+
+            if (mode == ImportMode.ReplaceAll)
+            {
+                _appData.Entries.Clear();
+                _appData.Entries.AddRange(imported.Entries);
+                result.Added = imported.Entries.Count;
+                return result;
+            }
+
+            foreach (var incoming in imported.Entries)
+            {
+                if (incoming == null)
+                {
+                    result.Errors++;
+                    continue;
+                }
+
+                var existing = _appData.Entries.FirstOrDefault(e =>
+                    string.Equals(e.Title?.Trim(), incoming.Title?.Trim(), StringComparison.OrdinalIgnoreCase) &&
+                    string.Equals(e.Username?.Trim(), incoming.Username?.Trim(), StringComparison.OrdinalIgnoreCase) &&
+                    string.Equals(e.Email?.Trim(), incoming.Email?.Trim(), StringComparison.OrdinalIgnoreCase));
+
+                if (existing == null)
+                {
+                    _appData.Entries.Add(incoming);
+                    result.Added++;
+                    continue;
+                }
+
+                switch (strategy)
+                {
+                    case DuplicateStrategy.KeepExisting:
+                        result.Skipped++;
+                        break;
+
+                    case DuplicateStrategy.OverwriteExisting:
+                        existing.Category = incoming.Category;
+                        existing.Title = incoming.Title;
+                        existing.Email = incoming.Email;
+                        existing.Username = incoming.Username;
+                        existing.Password = incoming.Password;
+                        existing.Url = incoming.Url;
+                        existing.Note = incoming.Note;
+                        existing.UpdatedAt = DateTime.Now;
+                        result.Updated++;
+                        break;
+
+                    case DuplicateStrategy.RenameImported:
+                        incoming.Title = $"{incoming.Title} (imported)";
+                        incoming.Id = Guid.NewGuid();
+                        _appData.Entries.Add(incoming);
+                        result.Added++;
+                        break;
+                }
+            }
+
+            return result;
         }
 
         private void Export()
@@ -334,6 +648,7 @@ namespace Sailock.ViewModels
             _appData.Settings.IsHighContrast = _isHighContrast;
             _appData.Settings.Language = _selectedLanguage;
             _appData.Settings.TextSize = _selectedTextSize;
+
             _storage.Save(_appData, _masterPassword);
         }
     }

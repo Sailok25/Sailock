@@ -162,4 +162,40 @@
     <sys:String x:Key="Modal_ReLogin_Title">Relogin Required</sys:String>
     <sys:String x:Key="Modal_ReLogin_Body">Your master password has been updated successfully. Please log in again to complete the change.</sys:String>
     <sys:String x:Key="Modal_ReLogin_Accept">Accept</sys:String>
+
+    <!-- Import Wizard modal -->
+    <sys:String x:Key="Import_Step1_Title">1 - File selection</sys:String>
+    <sys:String x:Key="Import_Step1_Header">Import file</sys:String>
+    <sys:String x:Key="Import_Step2_Title">2 - Import mode</sys:String>
+    <sys:String x:Key="Import_Step2_Header">How do you want to import data?</sys:String>
+    <sys:String x:Key="Import_Step3_Title">3 - Duplicates</sys:String>
+    <sys:String x:Key="Import_Step3_Header">What should we do with duplicates?</sys:String>
+    <sys:String x:Key="Import_Step4_Title">4 - Confirmation</sys:String>
+    <sys:String x:Key="Import_Step4_Header">Confirm import</sys:String>
+    <sys:String x:Key="Import_Step5_Title">5 - Result</sys:String>
+    <sys:String x:Key="Import_Step5_Header">Import completed</sys:String>
+
+    <sys:String x:Key="Import_Button_Cancel">Cancel</sys:String>
+    <sys:String x:Key="Import_Button_Continue">Continue</sys:String>
+    <sys:String x:Key="Import_Button_Back">Back</sys:String>
+    <sys:String x:Key="Import_Button_Next">Next</sys:String>
+    <sys:String x:Key="Import_Button_Import">Import</sys:String>
+    <sys:String x:Key="Import_Button_Close">Close</sys:String>
+
+    <sys:String x:Key="Import_Mode_Merge">Merge (recommended)</sys:String>
+    <sys:String x:Key="Import_Mode_ReplaceAll">Replace all current data</sys:String>
+    <sys:String x:Key="Import_Duplicate_Keep">Keep existing</sys:String>
+    <sys:String x:Key="Import_Duplicate_Overwrite">Overwrite existing</sys:String>
+    <sys:String x:Key="Import_Duplicate_Rename">Rename imported</sys:String>
+
+    <sys:String x:Key="Import_Preview_Label">Preview:</sys:String>
+
+    <sys:String x:Key="Import_Summary_File">File: {0}</sys:String>
+    <sys:String x:Key="Import_Summary_Mode">Mode: {0}</sys:String>
+    <sys:String x:Key="Import_Summary_Duplicates">Duplicates: {0}</sys:String>
+
+    <sys:String x:Key="Import_Result_Added">New items added: {0}</sys:String>
+    <sys:String x:Key="Import_Result_Updated">Items updated: {0}</sys:String>
+    <sys:String x:Key="Import_Result_Skipped">Duplicates skipped: {0}</sys:String>
+    <sys:String x:Key="Import_Result_Errors">Errors: {0}</sys:String>
 </ResourceDictionary>
