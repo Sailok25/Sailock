@@ -40,34 +40,5 @@ namespace Sailock.Views
             if (DataContext is SettingsViewModel vm)
                 vm.ConfirmMasterPasswordInput = ((PasswordBox)sender).Password;
         }
-
-        // Import mode combobox (step 2)
-        private void ImportModeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (DataContext is not SettingsViewModel vm) return;
-            if (sender is not ComboBox cb) return;
-            if (cb.SelectedIndex < 0) return;
-
-            vm.SelectedImportMode = cb.SelectedIndex switch
-            {
-                0 => ImportMode.Merge,
-                1 => ImportMode.ReplaceAll,
-            };
-        }
-
-        // Duplicate strategy combobox (step 3)
-        private void DuplicateModeCombo_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (DataContext is not SettingsViewModel vm) return;
-            if (sender is not ComboBox cb) return;
-            if (cb.SelectedIndex < 0) return;
-
-            vm.SelectedDuplicateStrategy = cb.SelectedIndex switch
-            {
-                0 => DuplicateStrategy.KeepExisting,
-                1 => DuplicateStrategy.OverwriteExisting,
-                _ => DuplicateStrategy.RenameImported
-            };
-        }
     }
 }

@@ -607,11 +607,10 @@
                            FontSize="18"
                            Margin="0,0,0,16"/>
 
-                        <ComboBox SelectedIndex="0"
+                        <ComboBox SelectedIndex="{Binding SelectedImportModeIndex, Mode=TwoWay}"
                           Style="{StaticResource SailockComboBox}"
                           Height="34"
-                          Margin="0,0,0,18"
-                          SelectionChanged="ImportModeCombo_SelectionChanged">
+                          Margin="0,0,0,18">
                             <ComboBoxItem Content="{DynamicResource Import_Mode_Merge}"/>
                             <ComboBoxItem Content="{DynamicResource Import_Mode_ReplaceAll}"/>
                         </ComboBox>
@@ -642,12 +641,11 @@
                            Foreground="{DynamicResource AppForeground}" FontSize="11" Margin="0,4,0,0"/>
                         <TextBlock Text="{Binding ImportPreviewDuplicatesCount, Converter={StaticResource ResourceFormatConverter}, ConverterParameter=Import_Preview_Duplicates}"
                            Foreground="{DynamicResource AppForeground}" FontSize="11" Margin="0,4,0,14"/>
-                        
-                        <ComboBox SelectedIndex="0"
+
+                        <ComboBox SelectedIndex="{Binding SelectedDuplicateStrategyIndex, Mode=TwoWay}"
                           Style="{StaticResource SailockComboBox}"
                           Height="34"
-                          Margin="0,0,0,18"
-                          SelectionChanged="DuplicateModeCombo_SelectionChanged">
+                          Margin="0,0,0,18">
                             <ComboBoxItem Content="{DynamicResource Import_Duplicate_Keep}"/>
                             <ComboBoxItem Content="{DynamicResource Import_Duplicate_Overwrite}"/>
                             <ComboBoxItem Content="{DynamicResource Import_Duplicate_Rename}"/>

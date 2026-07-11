@@ -232,14 +232,40 @@ namespace Sailock.ViewModels
         public ImportMode SelectedImportMode
         {
             get => _selectedImportMode;
-            set => SetProperty(ref _selectedImportMode, value);
+            set
+            {
+                if (SetProperty(ref _selectedImportMode, value))
+                {
+                    OnPropertyChanged(nameof(SelectedImportModeIndex));
+                    OnPropertyChanged(nameof(SelectedImportModeLabel));
+                }
+            }
+        }
+
+        public int SelectedImportModeIndex
+        {
+            get => (int)SelectedImportMode;
+            set => SelectedImportMode = (ImportMode)value;
         }
 
         private DuplicateStrategy _selectedDuplicateStrategy = DuplicateStrategy.KeepExisting;
         public DuplicateStrategy SelectedDuplicateStrategy
         {
             get => _selectedDuplicateStrategy;
-            set => SetProperty(ref _selectedDuplicateStrategy, value);
+            set
+            {
+                if (SetProperty(ref _selectedDuplicateStrategy, value))
+                {
+                    OnPropertyChanged(nameof(SelectedDuplicateStrategyIndex));
+                    OnPropertyChanged(nameof(SelectedDuplicateStrategyLabel));
+                }
+            }
+        }
+
+        public int SelectedDuplicateStrategyIndex
+        {
+            get => (int)SelectedDuplicateStrategy;
+            set => SelectedDuplicateStrategy = (DuplicateStrategy)value;
         }
 
         private int _importPreviewNewCount;
