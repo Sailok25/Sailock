@@ -179,4 +179,6 @@
     <sys:String x:Key="Import_Result_Updated">Éléments mis à jour : {0}</sys:String>
     <sys:String x:Key="Import_Result_Skipped">Doublons ignorés : {0}</sys:String>
     <sys:String x:Key="Import_Result_Errors">Erreurs : {0}</sys:String>
+    <sys:String x:Key="Import_Preview_New">Nouveaux : {0}</sys:String>
+    <sys:String x:Key="Import_Preview_Duplicates">Doublons : {0}</sys:String>
 </ResourceDictionary>

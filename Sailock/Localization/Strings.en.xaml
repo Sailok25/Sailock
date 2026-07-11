@@ -198,4 +198,6 @@
     <sys:String x:Key="Import_Result_Updated">Items updated: {0}</sys:String>
     <sys:String x:Key="Import_Result_Skipped">Duplicates skipped: {0}</sys:String>
     <sys:String x:Key="Import_Result_Errors">Errors: {0}</sys:String>
+    <sys:String x:Key="Import_Preview_New">New: {0}</sys:String>
+    <sys:String x:Key="Import_Preview_Duplicates">Duplicates: {0}</sys:String>
 </ResourceDictionary>

@@ -18,6 +18,7 @@
             <helpers:InverseBoolConverter x:Key="InverseBoolConverter"/>
             <helpers:StringToImageSourceConverter x:Key="StringToImageSourceConverter"/>
             <helpers:CountToVisibilityConverter x:Key="CountToVisibilityConverter"/>
+            <helpers:ResourceFormatConverter x:Key="ResourceFormatConverter"/>
 
             <!-- Recursos de contraste -->
             <Thickness x:Key="ContrastBorderThickness">1</Thickness>

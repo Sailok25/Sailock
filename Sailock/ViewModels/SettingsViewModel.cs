@@ -92,6 +92,8 @@ namespace Sailock.ViewModels
                 SetProperty(ref _selectedLanguage, value);
                 LocalizationService.ApplyLanguage(value);
                 PersistSettings();
+                OnPropertyChanged(nameof(SelectedImportModeLabel));
+                OnPropertyChanged(nameof(SelectedDuplicateStrategyLabel));
                 OnLanguageChanged?.Invoke();
             }
         }
@@ -261,21 +263,26 @@ namespace Sailock.ViewModels
             set => SetProperty(ref _lastImportResult, value);
         }
 
+        private static string T(string key)
+        {
+            return System.Windows.Application.Current.TryFindResource(key) as string ?? key;
+        }
+
         public string SelectedImportModeLabel =>
             SelectedImportMode switch
             {
-                ImportMode.Merge => "Merge",
-                ImportMode.ReplaceAll => "Replace all",
-                _ => "Merge"
+                ImportMode.Merge => T("Import_Mode_Merge"),
+                ImportMode.ReplaceAll => T("Import_Mode_ReplaceAll"),
+                _ => T("Import_Mode_Merge")
             };
 
         public string SelectedDuplicateStrategyLabel =>
             SelectedDuplicateStrategy switch
             {
-                DuplicateStrategy.KeepExisting => "Keep existing",
-                DuplicateStrategy.OverwriteExisting => "Overwrite existing",
-                DuplicateStrategy.RenameImported => "Rename imported",
-                _ => "Keep existing"
+                DuplicateStrategy.KeepExisting => T("Import_Duplicate_Keep"),
+                DuplicateStrategy.OverwriteExisting => T("Import_Duplicate_Overwrite"),
+                DuplicateStrategy.RenameImported => T("Import_Duplicate_Rename"),
+                _ => T("Import_Duplicate_Keep")
             };
 
         // ===== callbacks =====
@@ -541,7 +548,11 @@ namespace Sailock.ViewModels
             _storage.Save(_appData, _masterPassword);
             OnDataImported?.Invoke();
 
-            StatusMessage = $"Import complete. Added: {result.Added}, Updated: {result.Updated}, Skipped: {result.Skipped}, Errors: {result.Errors}";
+            StatusMessage = string.Join(" · ",
+                string.Format(T("Import_Result_Added"), result.Added),
+                string.Format(T("Import_Result_Updated"), result.Updated),
+                string.Format(T("Import_Result_Skipped"), result.Skipped),
+                string.Format(T("Import_Result_Errors"), result.Errors));
 
             OnPropertyChanged(nameof(SelectedImportModeLabel));
             OnPropertyChanged(nameof(SelectedDuplicateStrategyLabel));
