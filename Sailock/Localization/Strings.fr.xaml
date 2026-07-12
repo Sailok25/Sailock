@@ -50,6 +50,9 @@
     <sys:String x:Key="Modal_CurrentPassword">Mot de passe actuel</sys:String>
     <sys:String x:Key="Modal_NewPassword">Nouveau mot de passe</sys:String>
     <sys:String x:Key="Modal_ConfirmNewPassword">Confirmer le nouveau mot de passe</sys:String>
+    <sys:String x:Key="MasterPass_Error_CurrentIncorrect">Le mot de passe actuel est incorrect.</sys:String>
+    <sys:String x:Key="MasterPass_Error_NewTooShort">Le nouveau mot de passe doit contenir au moins 8 caractères.</sys:String>
+    <sys:String x:Key="MasterPass_Error_NewMismatch">Les nouveaux mots de passe ne correspondent pas.</sys:String>
 
     <!-- ── GeneratorView ── -->
     <sys:String x:Key="Generator_Title">Générateur</sys:String>

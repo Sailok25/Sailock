@@ -58,6 +58,9 @@
     <sys:String x:Key="Modal_CurrentPassword">Current Password</sys:String>
     <sys:String x:Key="Modal_NewPassword">New Password</sys:String>
     <sys:String x:Key="Modal_ConfirmNewPassword">Confirm New Password</sys:String>
+    <sys:String x:Key="MasterPass_Error_CurrentIncorrect">The current password is incorrect.</sys:String>
+    <sys:String x:Key="MasterPass_Error_NewTooShort">The new password must be at least 8 characters long.</sys:String>
+    <sys:String x:Key="MasterPass_Error_NewMismatch">The new passwords do not match.</sys:String>
 
     <!-- ── GeneratorView ── -->
     <sys:String x:Key="Generator_Title">Generator</sys:String>

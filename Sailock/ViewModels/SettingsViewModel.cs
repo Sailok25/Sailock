@@ -441,19 +441,19 @@ namespace Sailock.ViewModels
             if (string.IsNullOrEmpty(CurrentMasterPasswordInput) ||
                 CurrentMasterPasswordInput != _masterPassword)
             {
-                MasterPasswordErrorMessage = "Current password is incorrect.";
+                MasterPasswordErrorMessage = T("MasterPass_Error_CurrentIncorrect");
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(NewMasterPasswordInput) || NewMasterPasswordInput.Length < 4)
+            if (string.IsNullOrWhiteSpace(NewMasterPasswordInput) || NewMasterPasswordInput.Length < 6)
             {
-                MasterPasswordErrorMessage = "New password is too short.";
+                MasterPasswordErrorMessage = T("MasterPass_Error_NewTooShort");
                 return;
             }
 
             if (NewMasterPasswordInput != ConfirmMasterPasswordInput)
             {
-                MasterPasswordErrorMessage = "New passwords do not match.";
+                MasterPasswordErrorMessage = T("MasterPass_Error_NewMismatch");
                 return;
             }
 
