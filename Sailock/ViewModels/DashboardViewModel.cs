@@ -219,6 +219,9 @@ namespace Sailock.ViewModels
         {
             if (string.IsNullOrWhiteSpace(EditingEntry?.Title)) return;
 
+            EditingEntry.CreatedAt = System.DateTime.Now;
+            EditingEntry.UpdatedAt = System.DateTime.Now;
+
             _allEntries.Add(EditingEntry);
             _appData.Entries.Add(EditingEntry);
             Persist();

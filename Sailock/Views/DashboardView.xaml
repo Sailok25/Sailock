@@ -84,13 +84,13 @@
                    FontSize="11"/>
 
                 <TextBlock Grid.Column="4"
-                   Text="Date Created"
+                   Text="{DynamicResource Dashboard_ColDateCreated}"
                    Foreground="#444444"
                    FontFamily="/Fonts/#JetBrains Mono"
                    FontSize="11"/>
 
                 <TextBlock Grid.Column="5"
-                   Text="Date Modified"
+                   Text="{DynamicResource Dashboard_ColDateModified}"
                    Foreground="#444444"
                    FontFamily="/Fonts/#JetBrains Mono"
                    FontSize="11"/>

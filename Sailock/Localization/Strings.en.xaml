@@ -31,6 +31,8 @@
     <sys:String x:Key="Dashboard_ColWebsite">Website</sys:String>
     <sys:String x:Key="Modal_FieldUrl">Website / URL</sys:String>
     <sys:String x:Key="Dashboard_CategoryAll">All</sys:String>
+    <sys:String x:Key="Dashboard_ColDateCreated">Date Created</sys:String>
+    <sys:String x:Key="Dashboard_ColDateModified">Date Modified</sys:String>
 
     <!-- Modal Add New -->
     <sys:String x:Key="Modal_AddNew_Title">Add New</sys:String>

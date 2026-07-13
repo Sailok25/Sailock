@@ -22,7 +22,9 @@
     <sys:String x:Key="Dashboard_CopyPassword">[copier]</sys:String>
     <sys:String x:Key="Dashboard_Edit">[ Modifier ]</sys:String>
     <sys:String x:Key="Dashboard_CategoryAll">Tous</sys:String>
-
+    <sys:String x:Key="Dashboard_ColDateCreated">Date de création</sys:String>
+    <sys:String x:Key="Dashboard_ColDateModified">Date de modification</sys:String>
+    
     <!-- Modal Add New -->
     <sys:String x:Key="Modal_AddNew_Title">Ajouter</sys:String>
     <sys:String x:Key="Modal_FieldTitle">Titre</sys:String>
