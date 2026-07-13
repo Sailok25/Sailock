@@ -260,7 +260,9 @@ namespace Sailock.ViewModels
                 Username = _pendingEditEntry.Username,
                 Password = _pendingEditEntry.Password,
                 Url = _pendingEditEntry.Url,
-                Note = _pendingEditEntry.Note
+                Note = _pendingEditEntry.Note,
+                CreatedAt = _pendingEditEntry.CreatedAt,
+                UpdatedAt = _pendingEditEntry.UpdatedAt
             };
 
             // Detectar cambios en tiempo real
@@ -316,7 +318,7 @@ namespace Sailock.ViewModels
             SelectedEntry.Password = EditingEntry.Password;
             SelectedEntry.Url = EditingEntry.Url;
             SelectedEntry.Note = EditingEntry.Note;
-
+            SelectedEntry.UpdatedAt = System.DateTime.Now;
             var index = _allEntries.IndexOf(SelectedEntry);
             if (index >= 0)
             {

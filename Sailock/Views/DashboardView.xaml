@@ -65,9 +65,11 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="160"/>
                     <ColumnDefinition Width="110"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="160"/>
-                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="70"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Text="{DynamicResource Dashboard_ColTitle}"
                            Foreground="#444444" FontFamily="/Fonts/#JetBrains Mono" FontSize="11" Margin="4,0,0,0"/>
@@ -75,10 +77,30 @@
                            Foreground="#444444" FontFamily="/Fonts/#JetBrains Mono" FontSize="11"/>
                 <TextBlock Grid.Column="2" Text="{DynamicResource Dashboard_ColValue}"
                            Foreground="#444444" FontFamily="/Fonts/#JetBrains Mono" FontSize="11"/>
-                <TextBlock Grid.Column="3" Text="{DynamicResource Dashboard_ColWebsite}"
-                           Foreground="#444444" FontFamily="/Fonts/#JetBrains Mono" FontSize="11"/>
-                <TextBlock Grid.Column="4" Text="{DynamicResource Dashboard_ColOptions}"
-                           Foreground="#444444" FontFamily="/Fonts/#JetBrains Mono" FontSize="11" HorizontalAlignment="Right" Margin="0,0,8,0"/>
+                <TextBlock Grid.Column="3"
+                   Text="{DynamicResource Dashboard_ColWebsite}"
+                   Foreground="#444444"
+                   FontFamily="/Fonts/#JetBrains Mono"
+                   FontSize="11"/>
+
+                <TextBlock Grid.Column="4"
+                   Text="Date Created"
+                   Foreground="#444444"
+                   FontFamily="/Fonts/#JetBrains Mono"
+                   FontSize="11"/>
+
+                <TextBlock Grid.Column="5"
+                   Text="Date Modified"
+                   Foreground="#444444"
+                   FontFamily="/Fonts/#JetBrains Mono"
+                   FontSize="11"/>
+
+                <TextBlock Grid.Column="6"
+                   Text=""
+                   Foreground="#444444"
+                   FontFamily="/Fonts/#JetBrains Mono"
+                   FontSize="11"
+                   HorizontalAlignment="Center"/>   
             </Grid>
 
             <Rectangle Grid.Row="2" Height="1" Fill="#1A1A1A" VerticalAlignment="Bottom" Margin="0,0,0,-1"/>
@@ -95,9 +117,11 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="160"/>
                                     <ColumnDefinition Width="110"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="160"/>
-                                    <ColumnDefinition Width="92"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="70"/>
                                 </Grid.ColumnDefinitions>
 
                                 <TextBlock Grid.Column="0" Text="{Binding Title}"
@@ -159,16 +183,33 @@
                                         </Style>
                                     </TextBlock.Style>
                                 </TextBlock>
+                                <!-- Date Created -->
+                                <TextBlock Grid.Column="4"
+                                   Text="{Binding CreatedAt, StringFormat={}{0:dd MMM yyyy HH:mm}}"
+                                   Foreground="{DynamicResource AppForeground}"
+                                   FontFamily="/Fonts/#JetBrains Mono"
+                                   FontSize="11"
+                                   VerticalAlignment="Center"
+                                   TextTrimming="CharacterEllipsis"/>
 
-                                <Button Grid.Column="4"
-                                        Content="{DynamicResource Dashboard_Edit}"
+                                 <!-- Date Modified -->
+                                <TextBlock Grid.Column="5"
+                                   Text="{Binding UpdatedAt, StringFormat={}{0:dd MMM yyyy HH:mm}}"
+                                   Foreground="{DynamicResource AppForeground}"
+                                   FontFamily="/Fonts/#JetBrains Mono"
+                                   FontSize="11"
+                                   VerticalAlignment="Center"
+                                   TextTrimming="CharacterEllipsis"/>
+                                
+                                <Button Grid.Column="6"
+                                        Content="⋮"
                                         Foreground="{DynamicResource AppAccent}" Background="Transparent" BorderThickness="0"
                                         FontFamily="/Fonts/#JetBrains Mono" FontSize="12" Cursor="Hand"
-                                        HorizontalAlignment="Right" VerticalAlignment="Center"
+                                        HorizontalAlignment="Center" VerticalAlignment="Center"
                                         Command="{Binding DataContext.OpenEditModalCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                         CommandParameter="{Binding}"/>
 
-                                <Rectangle Grid.ColumnSpan="5" Height="1" Fill="#111111" VerticalAlignment="Bottom"/>
+                                <Rectangle Grid.ColumnSpan="7" Height="1" Fill="#111111" VerticalAlignment="Bottom"/>
                             </Grid>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
