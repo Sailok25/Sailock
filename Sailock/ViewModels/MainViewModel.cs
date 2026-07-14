@@ -164,6 +164,8 @@ namespace Sailock.ViewModels
         private void Logout()
         {
             _dashboardVM = null;
+            Application.Current.Resources["GlobalScale"] = 1.0;
+            Application.Current.Resources["GlobalScaleInverse"] = 1.0;
             ShowLogin();
         }
     }

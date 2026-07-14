@@ -19,7 +19,9 @@
             <helpers:StringToImageSourceConverter x:Key="StringToImageSourceConverter"/>
             <helpers:CountToVisibilityConverter x:Key="CountToVisibilityConverter"/>
             <helpers:ResourceFormatConverter x:Key="ResourceFormatConverter"/>
-
+            <helpers:TopBarColorConverter x:Key="TopBarColorConverter"/>
+            <helpers:TopBarForegroundConverter x:Key="TopBarForegroundConverter"/>
+            
             <!-- Recursos de contraste -->
             <Thickness x:Key="ContrastBorderThickness">1</Thickness>
             <SolidColorBrush x:Key="ContrastBorderBrush" Color="#2A2A2A"/>

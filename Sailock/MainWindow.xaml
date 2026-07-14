@@ -27,20 +27,20 @@
 
         <!-- TopBar -->
         <Grid Grid.Row="0"
-              Background="{DynamicResource TopBarBackground}"
-              MouseLeftButtonDown="TopBar_MouseLeftButtonDown">
+          Background="{Binding CurrentView, Converter={StaticResource TopBarColorConverter}}"
+          MouseLeftButtonDown="TopBar_MouseLeftButtonDown">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
             <TextBlock Text="SAILOCK"
-                       Foreground="#222222"
-                       FontFamily="/Fonts/#JetBrains Mono"
-                       FontSize="11"
-                       VerticalAlignment="Center"
-                       Margin="12,0,0,0"
-                       Grid.Column="0"/>
+                   Foreground="{Binding CurrentView, Converter={StaticResource TopBarForegroundConverter}}"
+                   FontFamily="/Fonts/#JetBrains Mono"
+                   FontSize="11"
+                   VerticalAlignment="Center"
+                   Margin="12,0,0,0"
+                   Grid.Column="0"/>
 
             <StackPanel Grid.Column="1" Orientation="Horizontal">
                 <Button x:Name="BtnMinimize" Content="─" Width="46" Height="32"
