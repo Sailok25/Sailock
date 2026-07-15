@@ -1,6 +1,31 @@
 # Changelog — Sailock
 All changes to Sailock are documented here.
 
+## [1.5.0] - 2026-07-16
+
+### Added
+* New import wizard with support for Merge, Replace, and Custom import modes
+* Configurable duplicate handling during import (Keep existing, Overwrite, or Rename)
+* Date Created and Date Modified columns in the Dashboard
+* Full localization for all Settings dropdown values (English, Spanish, German, and French)
+
+### Changed
+* Redesigned import workflow with confirmation before applying changes
+* Dashboard now uses a compact three-dot context menu instead of the Edit button
+* Improved Dashboard layout and date formatting
+* Login screen now always starts in dark mode and applies the selected theme after unlocking
+* Updated interface text to use sentence capitalization
+* Removed the in-app Changelog view; release notes are now available in the GitHub repository
+
+### Fixed
+* Softer light theme colors for improved readability
+* Fixed Auto-Lock label visibility in the light theme
+* Fixed Auto-Lock description text color in Settings
+* Fixed missing translations in the Change Master Password dialog
+* Fixed theme persistence when launching the application
+
+---
+
 ## [1.4.2] - 2026-07-01
 
 ### Fixed
