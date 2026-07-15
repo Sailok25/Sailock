@@ -1,6 +1,31 @@
 # Changelog — Sailock
 Todos los cambios de Sailock se documentan aquí.
 
+## [1.5.0] - 2026-07-16
+
+### Añadido
+* Nuevo asistente de importación con los modos Combinar, Reemplazar y Personalizado
+* Gestión configurable de duplicados durante la importación (Mantener existente, Sobrescribir o Renombrar)
+* Nuevas columnas Fecha de creación y Fecha de modificación en el Panel principal
+* Localización completa de todos los valores desplegables de Configuración (inglés, español, alemán y francés)
+
+### Cambiado
+* Flujo de importación rediseñado con confirmación antes de aplicar los cambios
+* El Panel principal ahora utiliza un menú contextual de tres puntos en lugar del botón Editar
+* Mejorado el diseño del Panel principal y el formato de fecha
+* La pantalla de inicio de sesión ahora siempre comienza con el tema oscuro y aplica el tema seleccionado tras desbloquear la bóveda
+* Los textos de la interfaz ahora utilizan mayúsculas y minúsculas de forma coherente
+* Eliminada la vista de Registro de cambios integrada; las notas de versión ahora están disponibles en el repositorio de GitHub
+
+### Corregido
+* Colores más suaves en el tema claro para mejorar la legibilidad
+* Corregida la visibilidad de la etiqueta de Bloqueo automático en el tema claro
+* Corregido el color del texto descriptivo de Bloqueo automático en Configuración
+* Corregidas las traducciones faltantes en el cuadro de diálogo Cambiar contraseña maestra
+* Corregida la persistencia del tema al iniciar la aplicación
+
+---
+
 ## [1.4.2] - 2026-07-01
 
 ### Fixed
