@@ -24,6 +24,7 @@
     <sys:String x:Key="Dashboard_CategoryAll">Tous</sys:String>
     <sys:String x:Key="Dashboard_ColDateCreated">Date de création</sys:String>
     <sys:String x:Key="Dashboard_ColDateModified">Date de modification</sys:String>
+    <sys:String x:Key="Dashboard_SearchPlaceholder">Filtrer par service, données, catégorie...</sys:String>
     
     <!-- Modal Add New -->
     <sys:String x:Key="Modal_AddNew_Title">Ajouter</sys:String>
@@ -97,8 +98,20 @@
     <sys:String x:Key="Settings_Contrast_Off">Non</sys:String>
     <sys:String x:Key="Settings_TextSize_Title">Taille du texte</sys:String>
     <sys:String x:Key="Settings_TextSize_Desc">Augmentez ou diminuez la taille de l'interface</sys:String>
+    <sys:String x:Key="Settings_TextSize_Small">Petit</sys:String>
+    <sys:String x:Key="Settings_TextSize_Default">Normal</sys:String>
+    <sys:String x:Key="Settings_TextSize_Large">Grand</sys:String>
     <sys:String x:Key="Settings_Language_Title">Langue</sys:String>
     <sys:String x:Key="Settings_Language_Desc">Choisissez votre langue préférée</sys:String>
+    <sys:String x:Key="Settings_Language_English">English</sys:String>
+    <sys:String x:Key="Settings_Language_Spanish">Español</sys:String>
+    <sys:String x:Key="Settings_Language_German">Deutsch</sys:String>
+    <sys:String x:Key="Settings_Language_French">Français</sys:String>
+    <sys:String x:Key="Settings_AutoLock_Disabled">Désactivé</sys:String>
+    <sys:String x:Key="Settings_AutoLock_30Sec">30 sec</sys:String>
+    <sys:String x:Key="Settings_AutoLock_1Min">1 min</sys:String>
+    <sys:String x:Key="Settings_AutoLock_2Min">2 min</sys:String>
+    <sys:String x:Key="Settings_AutoLock_5Min">5 min</sys:String>
     <sys:String x:Key="Settings_Import_Title">Importer</sys:String>
     <sys:String x:Key="Settings_Import_Desc">Importez un fichier .slock</sys:String>
     <sys:String x:Key="Settings_Import_Button">Importer</sys:String>
