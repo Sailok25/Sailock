@@ -1,6 +1,31 @@
 # Changelog — Sailock
 Tous les changements de Sailock sont documentés ici.
 
+## [1.5.0] - 2026-07-16
+
+### Ajouté
+* Nouvel assistant d'importation avec les modes Fusionner, Remplacer et Personnalisé
+* Gestion configurable des doublons lors de l'importation (Conserver, Écraser ou Renommer)
+* Nouvelles colonnes Date de création et Date de modification dans le tableau de bord
+* Localisation complète de toutes les valeurs des listes déroulantes des Paramètres (anglais, espagnol, allemand et français)
+
+### Modifié
+* Processus d'importation repensé avec une confirmation avant l'application des modifications
+* Le tableau de bord utilise désormais un menu contextuel à trois points au lieu du bouton Modifier
+* Amélioration de la disposition du tableau de bord et du format des dates
+* L'écran de connexion démarre désormais toujours avec le thème sombre et applique le thème sélectionné après le déverrouillage du coffre
+* Les textes de l'interface utilisent désormais une capitalisation cohérente
+* Suppression de la fenêtre du journal des modifications intégrée ; les notes de version sont désormais disponibles dans le dépôt GitHub
+
+### Corrigé
+* Couleurs plus douces dans le thème clair pour améliorer le confort visuel
+* Correction de la visibilité de l'étiquette du verrouillage automatique dans le thème clair
+* Correction de la couleur du texte descriptif du verrouillage automatique dans les Paramètres
+* Correction des traductions manquantes dans la boîte de dialogue Modifier le mot de passe principal
+* Correction de la persistance du thème au démarrage de l'application
+
+---
+
 ## [1.4.2] - 2026-07-01
 
 ### Fixed
