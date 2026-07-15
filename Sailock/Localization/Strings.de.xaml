@@ -22,9 +22,10 @@
     <sys:String x:Key="Dashboard_CopyPassword">[kopieren]</sys:String>
     <sys:String x:Key="Dashboard_Edit">[ Bearbeiten ]</sys:String>
     <sys:String x:Key="Dashboard_CategoryAll">Alle</sys:String>
-    <sys:String x:Key="Dashboard_ColDateCreated">Date Created</sys:String>
-    <sys:String x:Key="Dashboard_ColDateModified">Date Modified</sys:String>
-
+    <sys:String x:Key="Dashboard_ColDateCreated">Erstellungsdatum</sys:String>
+    <sys:String x:Key="Dashboard_ColDateModified">Änderungsdatum</sys:String>
+    <sys:String x:Key="Dashboard_SearchPlaceholder">Nach Service, Daten, Kategorie filtern...</sys:String>
+    
     <!-- Modal Add New -->
     <sys:String x:Key="Modal_AddNew_Title">Hinzufügen</sys:String>
     <sys:String x:Key="Modal_FieldTitle">Titel</sys:String>
@@ -97,8 +98,20 @@
     <sys:String x:Key="Settings_Contrast_Off">Aus</sys:String>
     <sys:String x:Key="Settings_TextSize_Title">Textgröße</sys:String>
     <sys:String x:Key="Settings_TextSize_Desc">Vergrößern oder verkleinern Sie die Oberflächengröße</sys:String>
+    <sys:String x:Key="Settings_TextSize_Small">Klein</sys:String>
+    <sys:String x:Key="Settings_TextSize_Default">Standard</sys:String>
+    <sys:String x:Key="Settings_TextSize_Large">Groß</sys:String>
     <sys:String x:Key="Settings_Language_Title">Sprache</sys:String>
     <sys:String x:Key="Settings_Language_Desc">Wählen Sie Ihre bevorzugte Sprache</sys:String>
+    <sys:String x:Key="Settings_Language_English">English</sys:String>
+    <sys:String x:Key="Settings_Language_Spanish">Español</sys:String>
+    <sys:String x:Key="Settings_Language_German">Deutsch</sys:String>
+    <sys:String x:Key="Settings_Language_French">Français</sys:String>
+    <sys:String x:Key="Settings_AutoLock_Disabled">Deaktiviert</sys:String>
+    <sys:String x:Key="Settings_AutoLock_30Sec">30 Sek</sys:String>
+    <sys:String x:Key="Settings_AutoLock_1Min">1 Min</sys:String>
+    <sys:String x:Key="Settings_AutoLock_2Min">2 Min</sys:String>
+    <sys:String x:Key="Settings_AutoLock_5Min">5 Min</sys:String>
     <sys:String x:Key="Settings_Import_Title">Importieren</sys:String>
     <sys:String x:Key="Settings_Import_Desc">Importieren Sie eine .slock-Datei</sys:String>
     <sys:String x:Key="Settings_Import_Button">Importieren</sys:String>

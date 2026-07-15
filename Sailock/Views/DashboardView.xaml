@@ -31,7 +31,7 @@
 
                 <TextBox Grid.Column="0"
                          Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
-                         Tag="Filtra por servicio, datos, categoría..."
+                         Tag="{DynamicResource Dashboard_SearchPlaceholder}"
                          Style="{StaticResource ModalTextBoxWithPlaceholder}"
                          Background="{DynamicResource TextBoxBackground}"
                          Foreground="{DynamicResource TextBoxForeground}"
@@ -100,7 +100,7 @@
                    Foreground="#444444"
                    FontFamily="/Fonts/#JetBrains Mono"
                    FontSize="11"
-                   HorizontalAlignment="Center"/>   
+                   HorizontalAlignment="Center"/>
             </Grid>
 
             <Rectangle Grid.Row="2" Height="1" Fill="#1A1A1A" VerticalAlignment="Bottom" Margin="0,0,0,-1"/>
@@ -192,7 +192,7 @@
                                    VerticalAlignment="Center"
                                    TextTrimming="CharacterEllipsis"/>
 
-                                 <!-- Date Modified -->
+                                <!-- Date Modified -->
                                 <TextBlock Grid.Column="5"
                                    Text="{Binding UpdatedAt, StringFormat={}{0:dd MMM yyyy HH:mm}}"
                                    Foreground="{DynamicResource AppForeground}"
@@ -200,7 +200,7 @@
                                    FontSize="11"
                                    VerticalAlignment="Center"
                                    TextTrimming="CharacterEllipsis"/>
-                                
+
                                 <Button Grid.Column="6"
                                         Content="⋮"
                                         Foreground="{DynamicResource AppAccent}" Background="Transparent" BorderThickness="0"

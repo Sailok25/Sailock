@@ -116,7 +116,7 @@
                             <ComboBox Grid.Column="1"
                                       Width="110"
                                       Style="{StaticResource SailockComboBox}"
-                                      ItemsSource="{x:Static local:SettingsView.AutoLockOptions}"
+                                      ItemsSource="{Binding AutoLockOptions}"
                                       SelectedItem="{Binding SelectedAutoLockTimeout, Mode=TwoWay}"/>
                         </Grid>
                     </StackPanel>
@@ -218,7 +218,7 @@
                                       SelectedItem="{Binding SelectedTextSize, Mode=TwoWay}"
                                       Width="160"
                                       Style="{StaticResource SailockComboBox}"
-                                      ItemsSource="{x:Static local:SettingsView.TextSizeOptions}"/>
+                                      ItemsSource="{Binding TextSizeOptions}"/>
                         </Grid>
 
                         <Rectangle Height="1" Fill="{DynamicResource ContrastSeparatorBrush}"/>
@@ -244,7 +244,7 @@
                                       SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}"
                                       Width="160"
                                       Style="{StaticResource SailockComboBox}"
-                                      ItemsSource="{x:Static local:SettingsView.LanguageOptions}"/>
+                                      ItemsSource="{Binding LanguageOptions}"/>
                         </Grid>
 
                     </StackPanel>

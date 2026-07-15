@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 using Sailock.Helpers;
@@ -34,6 +35,7 @@ namespace Sailock.ViewModels
         private readonly StorageService _storage;
         private string _masterPassword;
         private readonly AppData _appData;
+        private bool _isUpdatingOptions = false; // Flag para evitar bucles
 
         private bool _is2FAEnabled;
         public bool Is2FAEnabled
@@ -48,15 +50,17 @@ namespace Sailock.ViewModels
             get => _selectedAutoLockTimeout;
             set
             {
+                if (_isUpdatingOptions) return; // Evitar bucle
+
                 SetProperty(ref _selectedAutoLockTimeout, value);
-                bool enabled = value != "Disabled";
+                bool enabled = value != GetTranslatedAutoLockOption("Disabled");
                 OnAutoLockChanged?.Invoke(enabled, value);
                 PersistSettings();
                 OnPropertyChanged(nameof(AutoLockEnabled));
             }
         }
 
-        public bool AutoLockEnabled => _selectedAutoLockTimeout != "Disabled";
+        public bool AutoLockEnabled => _selectedAutoLockTimeout != GetTranslatedAutoLockOption("Disabled");
 
         private bool _isDarkTheme;
         public bool IsDarkTheme
@@ -89,8 +93,14 @@ namespace Sailock.ViewModels
             get => _selectedLanguage;
             set
             {
+                if (_isUpdatingOptions) return; // Evitar bucle
+
                 SetProperty(ref _selectedLanguage, value);
                 LocalizationService.ApplyLanguage(value);
+
+                // Actualizar las listas traducidas ANTES de cambiar las propiedades
+                RefreshTranslatedOptions();
+
                 PersistSettings();
                 OnPropertyChanged(nameof(SelectedImportModeLabel));
                 OnPropertyChanged(nameof(SelectedDuplicateStrategyLabel));
@@ -106,10 +116,33 @@ namespace Sailock.ViewModels
             get => _selectedTextSize;
             set
             {
+                if (_isUpdatingOptions) return; // Evitar bucle
+
                 SetProperty(ref _selectedTextSize, value);
-                ThemeService.ApplyTextSize(value);
+                ThemeService.ApplyTextSize(GetTextSizeKey(value));
                 PersistSettings();
             }
+        }
+
+        private ObservableCollection<string> _textSizeOptions;
+        public ObservableCollection<string> TextSizeOptions
+        {
+            get => _textSizeOptions;
+            set => SetProperty(ref _textSizeOptions, value);
+        }
+
+        private ObservableCollection<string> _languageOptions;
+        public ObservableCollection<string> LanguageOptions
+        {
+            get => _languageOptions;
+            set => SetProperty(ref _languageOptions, value);
+        }
+
+        private ObservableCollection<string> _autoLockOptions;
+        public ObservableCollection<string> AutoLockOptions
+        {
+            get => _autoLockOptions;
+            set => SetProperty(ref _autoLockOptions, value);
         }
 
         private bool _isDeleteModalOpen;
@@ -133,7 +166,6 @@ namespace Sailock.ViewModels
             set => SetProperty(ref _statusMessage, value);
         }
 
-        // --- Change Master Password ---
         private bool _isChangeMasterPasswordModalOpen;
         public bool IsChangeMasterPasswordModalOpen
         {
@@ -152,7 +184,6 @@ namespace Sailock.ViewModels
         public string NewMasterPasswordInput { get; set; }
         public string ConfirmMasterPasswordInput { get; set; }
 
-        // --- Re-login required modal ---
         private bool _isReLoginModalOpen;
         public bool IsReLoginModalOpen
         {
@@ -160,7 +191,6 @@ namespace Sailock.ViewModels
             set => SetProperty(ref _isReLoginModalOpen, value);
         }
 
-        // ===== IMPORT WIZARD =====
         private bool _isImportWizardOpen;
         public bool IsImportWizardOpen
         {
@@ -311,41 +341,30 @@ namespace Sailock.ViewModels
                 _ => T("Import_Duplicate_Keep")
             };
 
-        // ===== callbacks =====
         public Action? OnDataImported { get; set; }
         public Action<SetupTotpViewModel>? OnOpen2FASetup { get; set; }
         public Action<bool>? OnThemeChanged { get; set; }
         public Action<bool, string>? OnAutoLockChanged { get; set; }
         public Action<string>? OnMasterPasswordChanged { get; set; }
-
-        /// <summary>
-        /// This action is provided by the host (MainViewModel) so SettingsViewModel can request a logout/relogin.
-        /// </summary>
         public Action? OnRequestLogout { get; set; }
 
-        // ===== commands =====
         public ICommand Enable2FACommand { get; }
         public ICommand ChangeMasterPassCommand { get; }
         public ICommand OpenChangeMasterPasswordCommand { get; }
         public ICommand ConfirmChangeMasterPasswordCommand { get; }
         public ICommand CancelChangeMasterPasswordCommand { get; }
-
-        // Import Wizard commands
         public ICommand ImportCommand { get; }
         public ICommand CancelImportWizardCommand { get; }
         public ICommand NextImportWizardStepCommand { get; }
         public ICommand BackImportWizardStepCommand { get; }
         public ICommand ConfirmImportWizardCommand { get; }
         public ICommand FinishImportWizardCommand { get; }
-
         public ICommand ExportCommand { get; }
         public ICommand OpenDeleteModalCommand { get; }
         public ICommand ConfirmDeleteCommand { get; }
         public ICommand CancelDeleteCommand { get; }
         public ICommand ConfirmDisable2FACommand { get; }
         public ICommand CancelDisable2FACommand { get; }
-
-        // Command to accept and logout on re-login modal
         public ICommand AcceptReLoginCommand { get; }
 
         public SettingsViewModel(AppData appData, StorageService storage, string masterPassword)
@@ -358,16 +377,21 @@ namespace Sailock.ViewModels
             _isDarkTheme = _appData.Settings.IsDarkTheme;
             _isHighContrast = _appData.Settings.IsHighContrast;
             _selectedLanguage = _appData.Settings.Language;
-            _selectedTextSize = _appData.Settings.TextSize;
 
             if (!string.IsNullOrEmpty(_appData.Settings.AutoLockTimeout))
                 _selectedAutoLockTimeout = _appData.Settings.AutoLockTimeout;
             else
                 _selectedAutoLockTimeout = _appData.Settings.AutoLockEnabled ? "2 min" : "Disabled";
 
+            // Inicializar opciones traducidas
+            RefreshTranslatedOptionsInternal();
+
+            // Ahora sí asignar el TextSize después de que las opciones estén actualizadas
+            _selectedTextSize = GetTextSizeDisplay(_appData.Settings.TextSize);
+
             ThemeService.ApplyTheme(_isDarkTheme);
             ThemeService.ApplyContrast(_isHighContrast);
-            ThemeService.ApplyTextSize(_selectedTextSize);
+            ThemeService.ApplyTextSize(_appData.Settings.TextSize);
             LocalizationService.ApplyLanguage(_selectedLanguage);
 
             ConfirmDisable2FACommand = new RelayCommand(_ =>
@@ -436,6 +460,101 @@ namespace Sailock.ViewModels
             });
         }
 
+        /// <summary>
+        /// Versión interna para inicialización sin desencadenar eventos
+        /// </summary>
+        private void RefreshTranslatedOptionsInternal()
+        {
+            TextSizeOptions = new ObservableCollection<string>
+            {
+                T("Settings_TextSize_Small"),
+                T("Settings_TextSize_Default"),
+                T("Settings_TextSize_Large")
+            };
+
+            LanguageOptions = new ObservableCollection<string>
+            {
+                T("Settings_Language_English"),
+                T("Settings_Language_Spanish"),
+                T("Settings_Language_German"),
+                T("Settings_Language_French")
+            };
+
+            AutoLockOptions = new ObservableCollection<string>
+            {
+                T("Settings_AutoLock_Disabled"),
+                T("Settings_AutoLock_30Sec"),
+                T("Settings_AutoLock_1Min"),
+                T("Settings_AutoLock_2Min"),
+                T("Settings_AutoLock_5Min")
+            };
+        }
+
+        /// <summary>
+        /// Versión pública para cambio de idioma
+        /// </summary>
+        private void RefreshTranslatedOptions()
+        {
+            _isUpdatingOptions = true; // Activar flag para evitar bucles
+
+            try
+            {
+                RefreshTranslatedOptionsInternal();
+
+                // Convertir valores internos a valores traducidos
+                var internalTextSize = GetTextSizeKey(_selectedTextSize);
+                _selectedTextSize = GetTextSizeDisplay(internalTextSize);
+                OnPropertyChanged(nameof(SelectedTextSize));
+
+                var internalAutoLock = GetInternalAutoLockValue(_selectedAutoLockTimeout);
+                _selectedAutoLockTimeout = GetTranslatedAutoLockOption(internalAutoLock);
+                OnPropertyChanged(nameof(SelectedAutoLockTimeout));
+                OnPropertyChanged(nameof(AutoLockEnabled));
+            }
+            finally
+            {
+                _isUpdatingOptions = false; // Desactivar flag
+            }
+        }
+
+        private string GetTextSizeDisplay(string internalValue)
+        {
+            return internalValue switch
+            {
+                "Small" => T("Settings_TextSize_Small"),
+                "Large" => T("Settings_TextSize_Large"),
+                _ => T("Settings_TextSize_Default")
+            };
+        }
+
+        private string GetTextSizeKey(string displayValue)
+        {
+            if (displayValue == T("Settings_TextSize_Small")) return "Small";
+            if (displayValue == T("Settings_TextSize_Large")) return "Large";
+            return "Default";
+        }
+
+        private string GetTranslatedAutoLockOption(string internalValue)
+        {
+            return internalValue switch
+            {
+                "30 sec" => T("Settings_AutoLock_30Sec"),
+                "1 min" => T("Settings_AutoLock_1Min"),
+                "5 min" => T("Settings_AutoLock_5Min"),
+                "Disabled" => T("Settings_AutoLock_Disabled"),
+                _ => T("Settings_AutoLock_2Min")
+            };
+        }
+
+        private string GetInternalAutoLockValue(string displayValue)
+        {
+            if (displayValue == T("Settings_AutoLock_30Sec")) return "30 sec";
+            if (displayValue == T("Settings_AutoLock_1Min")) return "1 min";
+            if (displayValue == T("Settings_AutoLock_5Min")) return "5 min";
+            if (displayValue == T("Settings_AutoLock_Disabled")) return "Disabled";
+            return "2 min";
+        }
+
         private void ChangeMasterPassword()
         {
             if (string.IsNullOrEmpty(CurrentMasterPasswordInput) ||
@@ -465,7 +584,6 @@ namespace Sailock.ViewModels
             IsReLoginModalOpen = true;
         }
 
-        // ===== IMPORT WIZARD FLOW =====
         private void StartImportWizard()
         {
             var dialog = new Microsoft.Win32.OpenFileDialog
@@ -508,7 +626,6 @@ namespace Sailock.ViewModels
 
             if (ImportWizardStep == 2)
             {
-                // Si es ReplaceAll, saltamos duplicados
                 ImportWizardStep = SelectedImportMode == ImportMode.ReplaceAll ? 4 : 3;
                 return;
             }
@@ -679,12 +796,12 @@ namespace Sailock.ViewModels
         private void PersistSettings()
         {
             _appData.Settings.Is2FAEnabled = _is2FAEnabled;
-            _appData.Settings.AutoLockEnabled = _selectedAutoLockTimeout != "Disabled";
-            _appData.Settings.AutoLockTimeout = _selectedAutoLockTimeout;
+            _appData.Settings.AutoLockEnabled = _selectedAutoLockTimeout != T("Settings_AutoLock_Disabled");
+            _appData.Settings.AutoLockTimeout = GetInternalAutoLockValue(_selectedAutoLockTimeout);
             _appData.Settings.IsDarkTheme = _isDarkTheme;
             _appData.Settings.IsHighContrast = _isHighContrast;
             _appData.Settings.Language = _selectedLanguage;
-            _appData.Settings.TextSize = _selectedTextSize;
+            _appData.Settings.TextSize = GetTextSizeKey(_selectedTextSize);
 
             _storage.Save(_appData, _masterPassword);
         }
