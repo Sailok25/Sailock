@@ -1,6 +1,31 @@
 # Changelog — Sailock
 Alle Änderungen an Sailock werden hier dokumentiert.
 
+## [1.5.0] - 2026-07-16
+
+### Hinzugefügt
+* Neuer Import-Assistent mit den Modi Zusammenführen, Ersetzen und Benutzerdefiniert
+* Konfigurierbare Behandlung doppelter Einträge beim Import (Beibehalten, Überschreiben oder Umbenennen)
+* Neue Spalten Erstellungsdatum und Änderungsdatum im Dashboard
+* Vollständige Lokalisierung aller Dropdown-Werte in den Einstellungen (Englisch, Spanisch, Deutsch und Französisch)
+
+### Geändert
+* Importvorgang mit Bestätigung vor dem Anwenden der Änderungen neu gestaltet
+* Das Dashboard verwendet jetzt ein kompaktes Drei-Punkte-Kontextmenü anstelle der Schaltfläche Bearbeiten
+* Dashboard-Layout und Datumsformatierung verbessert
+* Der Anmeldebildschirm startet jetzt immer im dunklen Design und übernimmt das ausgewählte Design nach dem Entsperren des Tresors
+* Die Benutzeroberfläche verwendet jetzt eine einheitliche Satzschreibung
+* Das integrierte Änderungsprotokoll wurde entfernt; Versionshinweise sind jetzt im GitHub-Repository verfügbar
+
+### Behoben
+* Angenehmere Farben im hellen Design für bessere Lesbarkeit
+* Sichtbarkeit der Auto-Sperren-Beschriftung im hellen Design korrigiert
+* Farbe des Beschreibungstextes für die Auto-Sperre in den Einstellungen korrigiert
+* Fehlende Übersetzungen im Dialog zum Ändern des Master-Passworts korrigiert
+* Problem mit der Übernahme des Designs beim Start der Anwendung behoben
+
+---
+
 ## [1.4.2] - 2026-07-01
 
 ### Fixed
