@@ -14,7 +14,7 @@
 
 ---
 
-## ✦ Features
+## Features
 
 - **AES-256 encrypted** local storage using a custom `.slock` file format
 - **Master password authentication** — key derived with PBKDF2 (100,000 iterations)
@@ -28,7 +28,7 @@
 
 ---
 
-## ✦ Screenshots
+## Screenshots
 
 <p align="center">
   <img src="Images/Login.png" width="49%" alt="Login screen"/>
@@ -44,7 +44,7 @@
 
 ---
 
-## ✦ Tech Stack
+## Tech Stack
 | Layer | Technology |
 |---|---|
 | Language | C# 12 / .NET 8 |
@@ -57,7 +57,7 @@
 
 ---
 
-## ✦ Project Structure
+## Project Structure
 ```
 Sailock/
 ├── Helpers/         # RelayCommand, ViewModelBase, Converters, QR helper
@@ -71,11 +71,9 @@ Sailock/
 
 ---
 
-## ✦ Getting Started
+## Getting Started
 ### Requirements
-
 - Windows 10 or later (64-bit)
-- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) *(only required for building from source)*
 
 ### Download
 Head to the [**Releases**](https://github.com/Sailok25/Sailock/releases/latest) page and download the latest `.exe`. No installation required — it's a self-contained single file.
@@ -96,7 +94,7 @@ On first launch, Sailock will prompt you to create a master password. This passw
 
 ---
 
-## ✦ Security
+## Security
 | Property | Detail |
 |---|---|
 | Encryption | AES-256 (CBC) |
@@ -110,12 +108,12 @@ Each save operation generates a new salt and IV, meaning no two encrypted files 
 
 ---
 
-## ✦ Changelog
+## Changelog
 See [CHANGELOG.md](https://github.com/Sailok25/Sailock/blob/master/Sailock/CHANGELOG.md) for the full version history.
 
 ---
 
-## ✦ License
+## License
 Copyright © 2025 Alba Ayala Vilanova. All rights reserved.
 
 This project is source-available for reading and contribution purposes only.
@@ -124,5 +122,5 @@ See [LICENSE](LICENSE) for full terms.
 
 ---
 
-## ✦ Author
+## Author
 Developed by **Alba Ayala Vilanova** — [GitHub @Sailok25](https://github.com/Sailok25)
