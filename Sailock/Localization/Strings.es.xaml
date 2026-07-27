@@ -1,3 +1,4 @@
+Sailock/Localization/Strings.es.xaml
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
@@ -5,7 +6,7 @@
     <!-- ── MainWindow / Sidebar ── -->
     <sys:String x:Key="Nav_Dashboard">Panel Central</sys:String>
     <sys:String x:Key="Nav_Generator">Generador</sys:String>
-    <sys:String x:Key="Nav_Settings">Ajustes</sys:String>
+    <sys:String x:Key="Nav_Settings">Configuración</sys:String>
     <sys:String x:Key="Nav_Logout">Cerrar sesión</sys:String>
 
     <!-- ── LoginView ── -->
@@ -29,7 +30,7 @@
     <sys:String x:Key="Dashboard_FieldPassword">Contraseña:</sys:String>
     <sys:String x:Key="Dashboard_CopyPassword">[copiar]</sys:String>
     <sys:String x:Key="Dashboard_Edit">[ Editar ]</sys:String>
-    <sys:String x:Key="Dashboard_CategoryAll">Todo</sys:String>
+    <sys:String x:Key="Dashboard_CategoryAll">Mostrar Todo</sys:String>
     <sys:String x:Key="Dashboard_ColDateCreated">Fecha de creación</sys:String>
     <sys:String x:Key="Dashboard_ColDateModified">Fecha de modificación</sys:String>
     <sys:String x:Key="Dashboard_SearchPlaceholder">Filtra por servicio, datos, categoría...</sys:String>
@@ -82,7 +83,7 @@
     <sys:String x:Key="Generator_Generate">Generar</sys:String>
 
     <!-- ── SettingsView ── -->
-    <sys:String x:Key="Settings_Title">Ajustes</sys:String>
+    <sys:String x:Key="Settings_Title">Configuración</sys:String>
 
     <!-- Section headers -->
     <sys:String x:Key="Settings_Security">Seguridad</sys:String>
