@@ -21,7 +21,7 @@
     <sys:String x:Key="Dashboard_FieldPassword">Mot de passe :</sys:String>
     <sys:String x:Key="Dashboard_CopyPassword">[copier]</sys:String>
     <sys:String x:Key="Dashboard_Edit">[ Modifier ]</sys:String>
-    <sys:String x:Key="Dashboard_CategoryAll">Tous</sys:String>
+    <sys:String x:Key="Dashboard_CategoryAll">Afficher tout</sys:String>
     <sys:String x:Key="Dashboard_ColDateCreated">Date de création</sys:String>
     <sys:String x:Key="Dashboard_ColDateModified">Date de modification</sys:String>
     <sys:String x:Key="Dashboard_SearchPlaceholder">Filtrer par service, données, catégorie...</sys:String>
