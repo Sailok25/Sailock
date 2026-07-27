@@ -1,5 +1,5 @@
 <div align="center">
-<img src="Sailock/Resources/sailock.ico" width="100px" alt="Sailock Logo" />
+<img src="Sailock/Resources/green_sailock.ico" width="100px" alt="Sailock Logo" />
   <h1>Sailock</h1>
   <p>A local-first password manager for Windows. No cloud, no internet — your data never leaves your device.</p>
 </div>
