@@ -34,7 +34,7 @@
     <sys:String x:Key="Dashboard_ColDateCreated">Date Created</sys:String>
     <sys:String x:Key="Dashboard_ColDateModified">Date Modified</sys:String>
     <sys:String x:Key="Dashboard_SearchPlaceholder">Filter by service, data, category...</sys:String>
-    
+
     <!-- Modal Add New -->
     <sys:String x:Key="Modal_AddNew_Title">Add New</sys:String>
     <sys:String x:Key="Modal_FieldTitle">Title</sys:String>
