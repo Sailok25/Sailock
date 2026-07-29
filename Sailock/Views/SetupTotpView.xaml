@@ -1,11 +1,11 @@
-﻿<UserControl x:Class="Sailock.Views.SetupTotpView"
+<UserControl x:Class="Sailock.Views.SetupTotpView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             Background="#000000">
+             Background="{DynamicResource AppBackground}">
 
     <Grid>
-        <Border Background="#111111"
-                BorderBrush="#00ab26"
+        <Border Background="{DynamicResource AppSurface2}"
+                BorderBrush="{DynamicResource AppAccent}"
                 BorderThickness="1"
                 Width="420"
                 HorizontalAlignment="Center"
@@ -14,14 +14,14 @@
             <StackPanel>
 
                 <TextBlock Text="{DynamicResource Totp_Title}"
-                           Foreground="White"
+                           Foreground="{DynamicResource AppForeground}"
                            FontFamily="/Fonts/#JetBrains Mono"
                            FontSize="22"
                            HorizontalAlignment="Center"
                            Margin="0,0,0,8"/>
 
                 <TextBlock Text="{DynamicResource Totp_ScanDesc}"
-                           Foreground="#666666"
+                           Foreground="{DynamicResource AppForegroundDim}"
                            FontFamily="/Fonts/#JetBrains Mono"
                            FontSize="11"
                            TextAlignment="Center"
@@ -34,21 +34,21 @@
                        Margin="0,0,0,16"/>
 
                 <TextBlock Text="{DynamicResource Totp_ManualKey}"
-                           Foreground="#444444"
+                           Foreground="{DynamicResource AppForegroundDim}"
                            FontFamily="/Fonts/#JetBrains Mono"
                            FontSize="10"
                            HorizontalAlignment="Center"
                            Margin="0,0,0,4"/>
 
                 <TextBlock Text="{Binding Secret}"
-                           Foreground="#00FF41"
+                           Foreground="{DynamicResource AppAccent}"
                            FontFamily="/Fonts/#JetBrains Mono"
                            FontSize="11"
                            HorizontalAlignment="Center"
                            Margin="0,0,0,20"/>
 
                 <TextBlock Text="{DynamicResource Totp_CodeLabel}"
-                           Foreground="#666666"
+                           Foreground="{DynamicResource AppForegroundDim}"
                            FontFamily="/Fonts/#JetBrains Mono"
                            FontSize="11"
                            HorizontalAlignment="Center"
